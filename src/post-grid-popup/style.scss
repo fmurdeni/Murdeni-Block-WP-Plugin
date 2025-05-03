@@ -1,0 +1,272 @@
+/**
+ * Frontend styles for the Post Grid Popup block
+ */
+
+.murdeni-post-grid-popup {
+  margin-bottom: 2rem;
+}
+
+/* Grid container */
+.murdeni-post-grid-popup-container {
+  display: grid;
+  grid-template-columns: repeat(var(--murdeni-pgp-columns, 3), 1fr);
+  gap: var(--murdeni-pgp-grid-gap, 20px);
+  
+  @media (max-width: 991px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 575px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card styles */
+.murdeni-post-grid-popup-card {
+  height: 100%;
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+/* Card style variations */
+.murdeni-post-grid-popup-card-style-bordered .murdeni-post-grid-popup-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  
+  &:hover {
+    border-color: #ccc;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.murdeni-post-grid-popup-card-style-shadowed .murdeni-post-grid-popup-card {
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  
+  &:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.murdeni-post-grid-popup-card-style-plain .murdeni-post-grid-popup-card {
+  background: transparent;
+  
+  &:hover {
+    transform: translateY(-3px);
+  }
+}
+
+/* Image wrapper */
+.murdeni-post-grid-popup-image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Image */
+.murdeni-post-grid-popup-image {
+  position: relative;
+  width: 100%;
+  padding-top: var(--murdeni-pgp-aspect-ratio, 56.25%);
+  overflow: hidden;
+}
+
+.murdeni-post-grid-popup-thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.murdeni-post-grid-popup-card:hover .murdeni-post-grid-popup-thumbnail {
+  transform: scale(1.05);
+}
+
+/* Content */
+.murdeni-post-grid-popup-content {
+  padding: 1.25rem;
+}
+
+/* Category */
+.murdeni-post-grid-popup-category {
+  margin-bottom: 0.5rem;
+  
+  span {
+    display: inline-block;
+    font-size: var(--murdeni-pgp-meta-font-size, 12px);
+    font-weight: 500;
+    color: #0073aa;
+    background-color: rgba(0, 115, 170, 0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+  }
+}
+
+/* Title */
+.murdeni-post-grid-popup-title {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: var(--murdeni-pgp-title-font-size, 18px);
+  font-weight: 600;
+  line-height: 1.3;
+  color: #333;
+}
+
+/* Meta */
+.murdeni-post-grid-popup-meta {
+  margin-bottom: 0.75rem;
+  font-size: var(--murdeni-pgp-meta-font-size, 12px);
+  color: #666;
+}
+
+.murdeni-post-grid-popup-meta-separator {
+  margin: 0 0.3rem;
+}
+
+/* Excerpt */
+.murdeni-post-grid-popup-excerpt {
+  margin-bottom: 1rem;
+  font-size: var(--murdeni-pgp-content-font-size, 14px);
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Button */
+.murdeni-post-grid-popup-button-wrapper {
+  margin-top: auto;
+}
+
+.murdeni-post-grid-popup-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #0073aa;
+  color: #fff;
+  font-size: var(--murdeni-pgp-content-font-size, 14px);
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: #005a87;
+  }
+}
+
+/* Modal */
+.murdeni-post-grid-popup-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.murdeni-post-grid-popup-modal-content {
+  position: relative;
+  background-color: #fff;
+  margin: 30px auto;
+  padding: 0;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  
+  @media (max-width: 767px) {
+    width: 95%;
+    margin: 15px auto;
+  }
+}
+
+.murdeni-post-grid-popup-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  
+  &:hover {
+    color: #ddd;
+  }
+}
+
+.murdeni-post-grid-popup-modal-header {
+  padding: 20px 30px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #eee;
+}
+
+.murdeni-post-grid-popup-modal-title {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  line-height: 1.3;
+  color: #333;
+}
+
+.murdeni-post-grid-popup-modal-meta {
+  font-size: 14px;
+  color: #666;
+}
+
+.murdeni-post-grid-popup-modal-image {
+  width: 100%;
+  
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.murdeni-post-grid-popup-modal-body {
+  padding: 30px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  
+  p {
+    margin-bottom: 1rem;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+  }
+  
+  ul, ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+  
+  blockquote {
+    border-left: 4px solid #0073aa;
+    padding-left: 1rem;
+    margin-left: 0;
+    color: #555;
+  }
+}

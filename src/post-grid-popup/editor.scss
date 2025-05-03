@@ -1,0 +1,41 @@
+/**
+ * Editor styles for the Post Grid Popup block
+ */
+
+.wp-block-murdeni-post-grid-popup {
+  position: relative;
+  
+  // Taxonomy control in the sidebar
+  .murdeni-post-grid-taxonomy-control {
+    margin-bottom: 16px;
+    
+    select {
+      box-sizing: border-box;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #8d96a0;
+    }
+    
+    .components-base-control__help {
+      margin-top: 4px;
+      font-style: italic;
+      font-size: 12px;
+      color: #757575;
+    }
+  }
+}
+
+// Loading state
+.murdeni-post-grid-popup-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+// ServerSideRender preview adjustments
+.wp-block-murdeni-post-grid-popup {
+  .components-placeholder {
+    min-height: 200px;
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "murdeni/testimonial-slider",
+  "version": "1.0.0",
+  "title": "Murdeni Testimonial Slider",
+  "category": "murdeni-blocks",
+  "icon": "format-status",
+  "description": "Display testimonials in a beautiful slider format.",
+  "keywords": ["testimonial", "slider", "reviews", "feedback", "clients"],
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"]
+  },
+  "textdomain": "murdeni-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "attributes": {
+    "testimonials": {
+      "type": "array",
+      "default": [
+        {
+          "id": "testimonial-1",
+          "rating": 5,
+          "content": "Feri adalah pengembang web yang sangat profesional. Dia menyelesaikan proyek e-commerce kami tepat waktu dan hasilnya melebihi ekspektasi. Komunikasi lancar dan dia sangat responsif terhadap revisi.",
+          "authorName": "Ahmad Rizky",
+          "authorPosition": "CEO, Rizky Store",
+          "authorImage": "https://placehold.co/150x150/0d6efd/ffffff.png?text=A"
+        },
+        {
+          "id": "testimonial-2",
+          "rating": 5,
+          "content": "Saya sangat puas dengan website perusahaan yang dibuat oleh Feri. Desainnya modern, responsif, dan mudah dikelola. Proses pengerjaan sangat transparan dan Feri selalu memberikan saran yang bermanfaat.",
+          "authorName": "Sarah Wijaya",
+          "authorPosition": "Marketing Director, Wijaya Corp",
+          "authorImage": "https://placehold.co/150x150/dc3545/ffffff.png?text=S"
+        },
+        {
+          "id": "testimonial-3",
+          "rating": 5,
+          "content": "Bekerja dengan Feri adalah pengalaman yang menyenangkan. Dia memahami kebutuhan bisnis kami dan mengimplementasikannya dengan sempurna. Plugin WordPress yang dia kembangkan sangat membantu operasional kami.",
+          "authorName": "Budi Santoso",
+          "authorPosition": "Owner, Santoso Travel",
+          "authorImage": "https://placehold.co/150x150/28a745/ffffff.png?text=B"
+        }
+      ]
+    },
+    "slidesToShow": {
+      "type": "number",
+      "default": 1
+    },
+    "autoplay": {
+      "type": "boolean",
+      "default": true
+    },
+    "autoplaySpeed": {
+      "type": "number",
+      "default": 3000
+    },
+    "arrows": {
+      "type": "boolean",
+      "default": true
+    },
+    "dots": {
+      "type": "boolean",
+      "default": true
+    },
+    "infinite": {
+      "type": "boolean",
+      "default": true
+    },
+    "speed": {
+      "type": "number",
+      "default": 500
+    },
+    "pauseOnHover": {
+      "type": "boolean",
+      "default": true
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "#ffffff"
+    },
+    "textColor": {
+      "type": "string",
+      "default": "#333333"
+    },
+    "ratingColor": {
+      "type": "string",
+      "default": "#FFD700"
+    },
+    "borderRadius": {
+      "type": "number",
+      "default": 8
+    },
+    "boxShadow": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

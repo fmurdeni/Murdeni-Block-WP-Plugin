@@ -1,0 +1,101 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "murdeni/portfolio-grid",
+  "version": "1.0.0",
+  "title": "Murdeni Portfolio Grid",
+  "category": "murdeni-blocks",
+  "icon": "grid-view",
+  "description": "Display portfolio items in a grid layout with hover effects and popup details.",
+  "keywords": ["portfolio", "grid", "gallery"],
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"]
+  },
+  "textdomain": "murdeni-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "attributes": {
+    "postType": {
+      "type": "string",
+      "default": "post"
+    },
+    "postsToShow": {
+      "type": "number",
+      "default": 6
+    },
+    "order": {
+      "type": "string",
+      "default": "desc"
+    },
+    "orderBy": {
+      "type": "string",
+      "default": "date"
+    },
+    "categories": {
+      "type": "array",
+      "default": []
+    },
+    "tags": {
+      "type": "array",
+      "default": []
+    },
+    "taxonomies": {
+      "type": "object",
+      "default": {}
+    },
+    "columns": {
+      "type": "number",
+      "default": 3
+    },
+    "displayTitle": {
+      "type": "boolean",
+      "default": true
+    },
+    "displayCategory": {
+      "type": "boolean",
+      "default": true
+    },
+    "imageSize": {
+      "type": "string",
+      "default": "medium"
+    },
+    "aspectRatio": {
+      "type": "string",
+      "default": "1:1"
+    },
+    "gridGap": {
+      "type": "number",
+      "default": 20
+    },
+    "titleFontSize": {
+      "type": "number",
+      "default": 18
+    },
+    "metaFontSize": {
+      "type": "number",
+      "default": 12
+    },
+    "hoverEffect": {
+      "type": "string",
+      "default": "zoom"
+    },
+    "overlayColor": {
+      "type": "string",
+      "default": "rgba(0, 0, 0, 0.7)"
+    },
+    "overlayTextColor": {
+      "type": "string",
+      "default": "#ffffff"
+    },
+    "borderRadius": {
+      "type": "number",
+      "default": 0
+    },
+    "overlayContentPosition": {
+      "type": "string",
+      "default": "center"
+    }
+  }
+}

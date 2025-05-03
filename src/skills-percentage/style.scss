@@ -1,0 +1,56 @@
+/**
+ * Frontend styles for the Skills Percentage block
+ */
+
+.murdeni-skills-percentage {
+    &-container {
+        --murdeni-skills-spacing: 20px;
+        --murdeni-skills-font-size: 16px;
+        --murdeni-skills-text-color: #333333;
+        
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    &-item {
+        margin-bottom: var(--murdeni-skills-spacing);
+        
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: var(--murdeni-skills-font-size);
+        color: var(--murdeni-skills-text-color);
+        font-weight: 500;
+    }
+    
+    &-name {
+        flex: 1;
+    }
+    
+    &-value {
+        font-weight: 700;
+        margin-left: 10px;
+    }
+    
+    &-bar-bg {
+        width: 100%;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    
+    &-bar {
+        height: 100%;
+        width: 0; /* Will be set by JS animation */
+        background-color: #219a68;
+        border-radius: 10px;
+        transition: width 1.5s ease-in-out;
+    }
+    
+}

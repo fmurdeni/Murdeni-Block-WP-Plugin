@@ -1,0 +1,126 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "murdeni/post-grid-popup",
+  "version": "1.0.0",
+  "title": "Murdeni Post Grid Popup",
+  "category": "murdeni-blocks",
+  "description": "Display posts or custom post types in a grid layout with popup details.",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "textdomain": "murdeni-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "attributes": {
+    "postType": {
+      "type": "string",
+      "default": "post"
+    },
+    "postsToShow": {
+      "type": "number",
+      "default": 6
+    },
+    "order": {
+      "type": "string",
+      "default": "desc"
+    },
+    "orderBy": {
+      "type": "string",
+      "default": "date"
+    },
+    "categories": {
+      "type": "array",
+      "default": []
+    },
+    "tags": {
+      "type": "array",
+      "default": []
+    },
+    "taxonomies": {
+      "type": "object",
+      "default": {}
+    },
+    "columns": {
+      "type": "number",
+      "default": 3
+    },
+    "displayFeaturedImage": {
+      "type": "boolean",
+      "default": true
+    },
+    "displayTitle": {
+      "type": "boolean",
+      "default": true
+    },
+    "displayExcerpt": {
+      "type": "boolean",
+      "default": true
+    },
+    "excerptLength": {
+      "type": "number",
+      "default": 20
+    },
+    "displayCategory": {
+      "type": "boolean",
+      "default": true
+    },
+    "imageSize": {
+      "type": "string",
+      "default": "medium"
+    },
+    "aspectRatio": {
+      "type": "string",
+      "default": "16:9"
+    },
+    "gridGap": {
+      "type": "number",
+      "default": 20
+    },
+    "cardStyle": {
+      "type": "string",
+      "default": "bordered"
+    },
+    "titleFontSize": {
+      "type": "number",
+      "default": 18
+    },
+    "contentFontSize": {
+      "type": "number",
+      "default": 14
+    },
+    "metaFontSize": {
+      "type": "number",
+      "default": 12
+    },
+    "alignment": {
+      "type": "string",
+      "default": "left"
+    },
+    "displayDate": {
+      "type": "boolean",
+      "default": true
+    },
+    "displayAuthor": {
+      "type": "boolean",
+      "default": false
+    },
+    "displayPopupButton": {
+      "type": "boolean",
+      "default": true
+    },
+    "popupButtonText": {
+      "type": "string",
+      "default": "View Details"
+    },
+    "displayFullContent": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
