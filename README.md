@@ -127,7 +127,7 @@ The Testimonial Slider block presents testimonials in a responsive slider format
 
 ## Credits
 
-Developed by Murdeni
+Developed by Murdeni.com
 
 ## License
 
