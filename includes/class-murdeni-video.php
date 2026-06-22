@@ -124,6 +124,7 @@ class Murdeni_Video {
 
 		// Get YouTube video ID.
 		$video_id = $this->get_youtube_video_id( $video_url );
+		$is_short = $this->is_youtube_short_url( $video_url );
 		
 		if ( empty( $video_id ) ) {
 			return '';
@@ -184,7 +185,7 @@ class Murdeni_Video {
 		// Start output.
 		ob_start();
 		?>
-		<div class="murdeni-video" style="<?php echo esc_attr( $container_style ); ?>">
+		<div class="murdeni-video <?php echo $is_short ? 'is-short' : ''; ?>" style="<?php echo esc_attr( $container_style ); ?>">
 			<div class="murdeni-video__wrapper" style="<?php echo esc_attr( $wrapper_style ); ?>">
 				<div class="murdeni-video__inner" style="<?php echo esc_attr( $aspect_ratio_style ); ?>">
 					<img 
@@ -196,6 +197,7 @@ class Murdeni_Video {
 						class="murdeni-video__overlay" 
 						style="background-color: <?php echo esc_attr( $overlay_color ); ?>;"
 						data-video-id="<?php echo esc_attr( $video_id ); ?>"
+						data-video-layout="<?php echo $is_short ? 'short' : 'default'; ?>"
 					>
 						<div class="murdeni-video__play-button" style="<?php echo esc_attr( $play_button_style ); ?>">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -261,5 +263,15 @@ class Murdeni_Video {
 		preg_match( $pattern, $url, $matches );
 
 		return isset( $matches[1] ) ? $matches[1] : '';
+	}
+
+	/**
+	 * Check whether the YouTube URL is a Shorts URL.
+	 *
+	 * @param string $url YouTube URL.
+	 * @return bool
+	 */
+	private function is_youtube_short_url( $url ) {
+		return ! empty( $url ) && (bool) preg_match( '/youtube\.com\/shorts\//i', $url );
 	}
 }

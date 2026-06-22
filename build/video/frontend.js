@@ -35,9 +35,10 @@ function initMurdeniVideoLightbox() {
             
             // Get video ID
             const videoId = this.getAttribute('data-video-id');
+            const videoLayout = this.getAttribute('data-video-layout') || 'default';
             
             if (videoId) {
-                openVideoLightbox(videoId);
+                openVideoLightbox(videoId, videoLayout);
             }
         });
     });
@@ -88,12 +89,14 @@ function createVideoLightbox() {
 /**
  * Open video lightbox
  */
-function openVideoLightbox(videoId) {
+function openVideoLightbox(videoId, videoLayout = 'default') {
     const lightbox = document.querySelector('.murdeni-video__lightbox');
     const content = lightbox.querySelector('.murdeni-video__lightbox-content');
+    const isShort = videoLayout === 'short';
     
     // Clear content
     content.innerHTML = '';
+    lightbox.classList.toggle('is-short', isShort);
     
     // Create iframe
     const iframe = document.createElement('iframe');
@@ -120,6 +123,7 @@ function closeVideoLightbox() {
     
     // Hide lightbox
     lightbox.classList.remove('is-active');
+    lightbox.classList.remove('is-short');
     document.body.style.overflow = '';
     
     // Clear content after animation
