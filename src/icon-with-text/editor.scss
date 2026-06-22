@@ -1,0 +1,30 @@
+/**
+ * Icon with Text Block editor-specific styles
+ */
+
+.wp-block-murdeni-icon-with-text {
+    // Editor-specific styles
+    .murdeni-icon-with-text__text {
+        cursor: text;
+    }
+
+    // Make sure the block is visible in the editor
+    min-height: 40px;
+    border: 1px dashed transparent;
+    padding: 8px;
+
+    &:hover {
+        border-color: #ddd;
+    }
+
+    // Improve visibility of controls
+    .components-button.has-icon {
+        justify-content: center;
+        min-width: 30px;
+    }
+
+    // Improve visibility when selected
+    &.is-selected {
+        border-color: #007cba;
+    }
+}

@@ -36,10 +36,19 @@ const Edit = ({ attributes, setAttributes }) => {
         ratingColor,
         borderRadius,
         boxShadow,
+        showOverallRating,
+        reviewerCount,
+        overallRatingText,
+        showReviewLink,
+        reviewLinkText,
+        reviewLinkUrl,
+        fixedHeight,
+        slideHeight,
     } = attributes;
 
     const blockProps = useBlockProps({
-        className: 'testimonial-slider-editor',
+        className: `testimonial-slider-editor${fixedHeight ? ' fixed-height' : ''}`,
+        style: fixedHeight ? { '--slide-height': `${slideHeight}px` } : {},
     });
 
     // Function to handle adding a new testimonial
@@ -96,6 +105,17 @@ const Edit = ({ attributes, setAttributes }) => {
         return stars;
     };
 
+    // Function to calculate average rating from all testimonials
+    const calculateAverageRating = () => {
+        if (!testimonials.length) return 0;
+        
+        const sum = testimonials.reduce((total, testimonial) => {
+            return total + (testimonial.rating || 0);
+        }, 0);
+        
+        return sum / testimonials.length;
+    };
+    
     // State to track active testimonial for editing
     const [activeTestimonial, setActiveTestimonial] = useState(0);
 
@@ -154,6 +174,69 @@ const Edit = ({ attributes, setAttributes }) => {
                         onChange={(value) => setAttributes({ pauseOnHover: value })}
                     />
                 </PanelBody>
+                <PanelBody title={__('Rating Settings', 'murdeni-blocks')} initialOpen={false}>
+                    <ToggleControl
+                        label={__('Show Overall Rating', 'murdeni-blocks')}
+                        checked={showOverallRating}
+                        onChange={(value) => setAttributes({ showOverallRating: value })}
+                    />
+                    {showOverallRating && (
+                        <>
+                            <RangeControl
+                                label={__('Reviewer Count', 'murdeni-blocks')}
+                                value={reviewerCount}
+                                onChange={(value) => setAttributes({ reviewerCount: value })}
+                                min={0}
+                                max={1000}
+                            />
+                            <TextControl
+                                label={__('Rating Text Format', 'murdeni-blocks')}
+                                help={__('Use %d as placeholder for reviewer count', 'murdeni-blocks')}
+                                value={overallRatingText}
+                                onChange={(value) => setAttributes({ overallRatingText: value })}
+                            />
+                            
+                            <ToggleControl
+                                label={__('Show Review Link', 'murdeni-blocks')}
+                                checked={showReviewLink}
+                                onChange={(value) => setAttributes({ showReviewLink: value })}
+                            />
+                            
+                            {showReviewLink && (
+                                <>
+                                    <TextControl
+                                        label={__('Review Link Text', 'murdeni-blocks')}
+                                        value={reviewLinkText}
+                                        onChange={(value) => setAttributes({ reviewLinkText: value })}
+                                    />
+                                    <TextControl
+                                        label={__('Review Link URL', 'murdeni-blocks')}
+                                        value={reviewLinkUrl}
+                                        onChange={(value) => setAttributes({ reviewLinkUrl: value })}
+                                    />
+                                </>
+                            )}
+                        </>
+                    )}
+                </PanelBody>
+                <PanelBody title={__('Height Settings', 'murdeni-blocks')} initialOpen={false}>
+                    <ToggleControl
+                        label={__('Fixed Height Slides', 'murdeni-blocks')}
+                        help={__('Enable to make all slides the same height', 'murdeni-blocks')}
+                        checked={fixedHeight}
+                        onChange={(value) => setAttributes({ fixedHeight: value })}
+                    />
+                    {fixedHeight && (
+                        <RangeControl
+                            label={__('Slide Height (px)', 'murdeni-blocks')}
+                            value={slideHeight}
+                            onChange={(value) => setAttributes({ slideHeight: value })}
+                            min={100}
+                            max={800}
+                            step={10}
+                        />
+                    )}
+                </PanelBody>
                 <PanelBody title={__('Style Settings', 'murdeni-blocks')} initialOpen={false}>
                     <PanelRow>
                         <span>{__('Background Color', 'murdeni-blocks')}</span>
@@ -195,6 +278,24 @@ const Edit = ({ attributes, setAttributes }) => {
             </InspectorControls>
 
             <div {...blockProps}>
+                {showOverallRating && (
+                    <div className="testimonial-overall-rating">
+                        <div className="overall-rating-stars">
+                            {renderStars(calculateAverageRating())}
+                            <span className="average-rating">{calculateAverageRating().toFixed(1)}</span>
+                        </div>
+                        <div className="overall-rating-text">
+                            {overallRatingText.replace('%d', reviewerCount)}
+                        </div>
+                        {showReviewLink && (
+                            <div className="review-link">
+                                <a href={reviewLinkUrl} target="_blank" rel="noopener noreferrer">
+                                    {reviewLinkText}
+                                </a>
+                            </div>
+                        )}
+                    </div>
+                )}
                 <div className="testimonial-slider-tabs">
                     {testimonials.map((testimonial, index) => (
                         <button

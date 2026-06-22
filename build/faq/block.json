@@ -1,0 +1,121 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "murdeni/faq",
+  "version": "1.0.0",
+  "title": "FAQ",
+  "category": "murdeni-blocks",
+  "icon": "format-status",
+  "description": "Display FAQs in an expandable accordion format with smooth animations.",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "textdomain": "murdeni-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "attributes": {
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "id": "item-0",
+          "question": "Pertanyaan FAQ #1",
+          "answer": "Jawaban untuk pertanyaan #1."
+        }
+      ]
+    },
+    "allowMultipleOpen": {
+      "type": "boolean",
+      "default": false
+    },
+    "initiallyOpen": {
+      "type": "boolean",
+      "default": false
+    },
+    "titleTag": {
+      "type": "string",
+      "default": "h3"
+    },
+    "titleFontSize": {
+      "type": "number",
+      "default": 18
+    },
+    "titleColor": {
+      "type": "string",
+      "default": ""
+    },
+    "contentFontSize": {
+      "type": "number",
+      "default": 16
+    },
+    "contentColor": {
+      "type": "string",
+      "default": ""
+    },
+    "borderWidth": {
+      "type": "number",
+      "default": 1
+    },
+    "borderColor": {
+      "type": "string",
+      "default": "#e0e0e0"
+    },
+    "borderRadius": {
+      "type": "number",
+      "default": 4
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "activeBackgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "iconColor": {
+      "type": "string",
+      "default": ""
+    },
+    "iconPosition": {
+      "type": "string",
+      "default": "right"
+    },
+    "iconType": {
+      "type": "string",
+      "default": "plus-minus"
+    },
+    "spacing": {
+      "type": "number",
+      "default": 10
+    },
+    "padding": {
+      "type": "number",
+      "default": 15
+    },
+    "sectionTitle": {
+      "type": "string",
+      "default": "Frequently Asked Questions"
+    },
+    "sectionTitleTag": {
+      "type": "string",
+      "default": "h2"
+    },
+    "sectionTitleFontSize": {
+      "type": "number",
+      "default": 24
+    },
+    "sectionTitleColor": {
+      "type": "string",
+      "default": ""
+    },
+    "sectionTitleAlign": {
+      "type": "string",
+      "default": "center"
+    }
+  }
+}

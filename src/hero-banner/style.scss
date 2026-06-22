@@ -1,0 +1,83 @@
+/**
+ * Hero Banner block styles
+ */
+
+.murdeni-hero-banner {
+  position: relative;
+  background-color: #f5f5f5;
+  overflow: hidden;
+  
+  &__content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  &__title {
+    margin-bottom: 0.5em;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  
+  &__subtitle {
+    margin-bottom: 1em;
+    font-weight: 500;
+    
+    &--small {
+      font-size: 1rem;
+    }
+    
+    &--medium {
+      font-size: 1.25rem;
+    }
+    
+    &--large {
+      font-size: 1.5rem;
+    }
+  }
+  
+  &__description {
+    margin-bottom: 1.5em;
+    line-height: 1.6;
+  }
+  
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  &__button {
+    display: inline-block;
+    padding: 0.75em 1.5em;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    
+  }
+  
+  // Alignment
+  &.align-left {
+    text-align: left;
+    
+    .murdeni-hero-banner__buttons {
+      justify-content: flex-start;
+    }
+  }
+  
+  &.align-center {
+    text-align: center;
+    
+    .murdeni-hero-banner__buttons {
+      justify-content: center;
+    }
+  }
+  
+  &.align-right {
+    text-align: right;
+    
+    .murdeni-hero-banner__buttons {
+      justify-content: flex-end;
+    }
+  }
+}

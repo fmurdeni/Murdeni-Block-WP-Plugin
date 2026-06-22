@@ -1,0 +1,98 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "murdeni/accordion",
+    "version": "1.0.0",
+    "title": "Accordion",
+    "category": "murdeni-blocks",
+    "icon": "list-view",
+    "description": "Display FAQs in an expandable accordion format.",
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"]
+    },
+    "textdomain": "murdeni-blocks",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "attributes": {
+        "items": {
+            "type": "array",
+            "default": [
+                {
+                    "id": "item-0",
+                    "question": "",
+                    "answer": ""
+                }
+            ]
+        },
+        "allowMultipleOpen": {
+            "type": "boolean",
+            "default": false
+        },
+        "initiallyOpen": {
+            "type": "boolean",
+            "default": false
+        },
+        "titleTag": {
+            "type": "string",
+            "default": "h3"
+        },
+        "titleFontSize": {
+            "type": "number",
+            "default": 18
+        },
+        "titleColor": {
+            "type": "string",
+            "default": ""
+        },
+        "contentFontSize": {
+            "type": "number",
+            "default": 16
+        },
+        "contentColor": {
+            "type": "string",
+            "default": ""
+        },
+        "borderWidth": {
+            "type": "number",
+            "default": 1
+        },
+        "borderColor": {
+            "type": "string",
+            "default": "#e0e0e0"
+        },
+        "borderRadius": {
+            "type": "number",
+            "default": 4
+        },
+        "backgroundColor": {
+            "type": "string",
+            "default": ""
+        },
+        "activeBackgroundColor": {
+            "type": "string",
+            "default": ""
+        },
+        "iconColor": {
+            "type": "string",
+            "default": ""
+        },
+        "iconPosition": {
+            "type": "string",
+            "default": "right"
+        },
+        "iconType": {
+            "type": "string",
+            "default": "plus-minus"
+        },
+        "spacing": {
+            "type": "number",
+            "default": 10
+        },
+        "padding": {
+            "type": "number",
+            "default": 15
+        }
+    }
+}

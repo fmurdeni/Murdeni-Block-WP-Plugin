@@ -1,0 +1,142 @@
+/**
+ * CTA Block styles for both editor and frontend
+ */
+
+.murdeni-cta {
+    position: relative;
+    margin: 0;
+    box-sizing: border-box;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+
+    &__content {
+        position: relative;
+        z-index: 2;
+    }
+
+    &__title {
+        margin-top: 0;
+        margin-bottom: 20px;
+        line-height: 1.2;
+    }
+
+    &__description {
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+
+    &__button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    &__button {
+        display: inline-block;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        border: none;
+
+        &:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        &--small {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        &--medium {
+            padding: 12px 24px;
+            font-size: 16px;
+        }
+
+        &--large {
+            padding: 16px 32px;
+            font-size: 18px;
+        }
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    // Layout variations
+    &--centered {
+        text-align: center;
+        padding: 60px 30px;
+
+        .murdeni-cta__button-container {
+            justify-content: center;
+        }
+    }
+
+    &--split {
+        display: flex;
+        flex-direction: column;
+        padding: 60px 30px;
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+            align-items: center;
+
+            .murdeni-cta__content {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .murdeni-cta__text-content {
+                flex: 1;
+                padding-right: 40px;
+            }
+
+            .murdeni-cta__button-container {
+                margin-top: 0;
+                justify-content: flex-start;
+            }
+        }
+    }
+
+    &--banner {
+        padding: 30px;
+        
+        @media (min-width: 768px) {
+            .murdeni-cta__content {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .murdeni-cta__text-content {
+                flex: 1;
+                padding-right: 40px;
+            }
+
+            .murdeni-cta__title {
+                margin-bottom: 0;
+            }
+
+            .murdeni-cta__description {
+                margin-bottom: 0;
+            }
+
+            .murdeni-cta__button-container {
+                margin-top: 0;
+                flex-shrink: 0;
+            }
+        }
+    }
+}

@@ -26,7 +26,7 @@
           "content": "Feri adalah pengembang web yang sangat profesional. Dia menyelesaikan proyek e-commerce kami tepat waktu dan hasilnya melebihi ekspektasi. Komunikasi lancar dan dia sangat responsif terhadap revisi.",
           "authorName": "Ahmad Rizky",
           "authorPosition": "CEO, Rizky Store",
-          "authorImage": "https://placehold.co/150x150/0d6efd/ffffff.png?text=A"
+          "authorImage": ""
         },
         {
           "id": "testimonial-2",
@@ -34,7 +34,7 @@
           "content": "Saya sangat puas dengan website perusahaan yang dibuat oleh Feri. Desainnya modern, responsif, dan mudah dikelola. Proses pengerjaan sangat transparan dan Feri selalu memberikan saran yang bermanfaat.",
           "authorName": "Sarah Wijaya",
           "authorPosition": "Marketing Director, Wijaya Corp",
-          "authorImage": "https://placehold.co/150x150/dc3545/ffffff.png?text=S"
+          "authorImage": ""
         },
         {
           "id": "testimonial-3",
@@ -42,7 +42,7 @@
           "content": "Bekerja dengan Feri adalah pengalaman yang menyenangkan. Dia memahami kebutuhan bisnis kami dan mengimplementasikannya dengan sempurna. Plugin WordPress yang dia kembangkan sangat membantu operasional kami.",
           "authorName": "Budi Santoso",
           "authorPosition": "Owner, Santoso Travel",
-          "authorImage": "https://placehold.co/150x150/28a745/ffffff.png?text=B"
+          "authorImage": ""
         }
       ]
     },
@@ -97,6 +97,38 @@
     "boxShadow": {
       "type": "boolean",
       "default": true
+    },
+    "showOverallRating": {
+      "type": "boolean",
+      "default": false
+    },
+    "reviewerCount": {
+      "type": "number",
+      "default": 0
+    },
+    "overallRatingText": {
+      "type": "string",
+      "default": "Berdasarkan %d ulasan pelanggan"
+    },
+    "showReviewLink": {
+      "type": "boolean",
+      "default": false
+    },
+    "reviewLinkText": {
+      "type": "string",
+      "default": "Tambahkan Ulasan"
+    },
+    "reviewLinkUrl": {
+      "type": "string",
+      "default": "#"
+    },
+    "fixedHeight": {
+      "type": "boolean",
+      "default": false
+    },
+    "slideHeight": {
+      "type": "number",
+      "default": 300
     }
   }
 }

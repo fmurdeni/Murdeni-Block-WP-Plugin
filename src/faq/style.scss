@@ -1,0 +1,104 @@
+/**
+ * Murdeni FAQ Block Styles
+ * 
+ * Frontend styles for the FAQ block.
+ */
+
+.murdeni-faq {
+    margin-bottom: 30px;
+    
+    &__items {
+        width: 100%;
+    }
+    
+    &__item {
+        margin-bottom: 10px;
+        border: 1px solid var(--color-background-faq-border, #e0e0e0);
+        border-radius: 4px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        
+        &.is-open {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+    }
+    
+    &__header {
+        padding: 15px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--color-background-faq-header, #fff);
+        transition: background-color 0.3s ease;
+        
+        h1, h2, h3, h4, h5, h6, p {
+            margin: 0;
+            padding: 0;
+            flex: 1;
+        }
+        
+        &:hover {
+            background-color: var(--color-background-faq-header-hover, #f9f9f9);
+        }
+        
+        .is-open & {
+            border-bottom: 1px solid var(--color-background-faq-header-hover, #e0e0e0);
+        }
+    }
+    
+    &__content {        
+        background-color: var(--color-background-faq-content, #fff);
+        overflow: hidden;
+
+        
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+    &__answer {
+        padding: 15px;
+    }
+    
+    &__icon {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+        
+        &.is-active {
+            transform: rotate(180deg);
+        }
+    }
+    
+    // Animation classes
+    &__content {
+        transition: height 0.3s ease-in-out;
+    }
+}
+
+// RTL Support
+html[dir="rtl"] {
+    .murdeni-faq {
+        &__header {
+            &[data-icon-position="left"] {
+                flex-direction: row;
+            }
+            
+            &[data-icon-position="right"] {
+                flex-direction: row-reverse;
+            }
+        }
+    }
+}
+
+// Responsive styles
+@media (max-width: 767px) {
+    .murdeni-faq {
+        &__header {
+            padding: 12px;
+        }
+    }
+}

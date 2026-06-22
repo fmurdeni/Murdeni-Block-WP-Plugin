@@ -103,6 +103,7 @@ class Murdeni_Testimonial_Slider {
     public function render_testimonial_slider($attributes) {
         // Extract attributes
         $testimonials = isset($attributes['testimonials']) ? $attributes['testimonials'] : array();
+        $top_image = isset($attributes['topImage']) ? $attributes['topImage'] : '';
         $slides_to_show = isset($attributes['slidesToShow']) ? $attributes['slidesToShow'] : 1;
         $autoplay = isset($attributes['autoplay']) ? $attributes['autoplay'] : true;
         $autoplay_speed = isset($attributes['autoplaySpeed']) ? $attributes['autoplaySpeed'] : 3000;
@@ -116,6 +117,14 @@ class Murdeni_Testimonial_Slider {
         $rating_color = isset($attributes['ratingColor']) ? $attributes['ratingColor'] : '#FFD700';
         $border_radius = isset($attributes['borderRadius']) ? $attributes['borderRadius'] : 8;
         $box_shadow = isset($attributes['boxShadow']) ? $attributes['boxShadow'] : true;
+        $show_overall_rating = isset($attributes['showOverallRating']) ? $attributes['showOverallRating'] : false;
+        $reviewer_count = isset($attributes['reviewerCount']) ? $attributes['reviewerCount'] : 0;
+        $overall_rating_text = isset($attributes['overallRatingText']) ? $attributes['overallRatingText'] : 'Berdasarkan %d ulasan pelanggan';
+        $show_review_link = isset($attributes['showReviewLink']) ? $attributes['showReviewLink'] : false;
+        $review_link_text = isset($attributes['reviewLinkText']) ? $attributes['reviewLinkText'] : 'Tambahkan Ulasan';
+        $review_link_url = isset($attributes['reviewLinkUrl']) ? $attributes['reviewLinkUrl'] : '#';
+        $fixed_height = isset($attributes['fixedHeight']) ? $attributes['fixedHeight'] : false;
+        $slide_height = isset($attributes['slideHeight']) ? $attributes['slideHeight'] : 300;
         
         // Generate unique ID for this block instance
         $block_id = 'murdeni-testimonial-slider-' . uniqid();
@@ -131,11 +140,61 @@ class Murdeni_Testimonial_Slider {
                 --testimonial-text-color: <?php echo esc_attr($text_color); ?>;
                 --testimonial-rating-color: <?php echo esc_attr($rating_color); ?>;
                 --testimonial-border-radius: <?php echo esc_attr($border_radius); ?>px;
-                --testimonial-box-shadow: <?php echo $box_shadow ? '0 4px 16px rgba(0, 0, 0, 0.1)' : 'none'; ?>;
+                --testimonial-box-shadow: <?php echo $box_shadow ? '0 0 10px rgba(0, 0, 0, 0.1)' : 'none'; ?>;
+                <?php if ($fixed_height) : ?>
+                --testimonial-slide-height: <?php echo esc_attr($slide_height); ?>px;
+                <?php endif; ?>
             }
+            
+            <?php if ($fixed_height) : ?>
+            #<?php echo esc_attr($block_id); ?> .testimonial-card {
+                height: var(--testimonial-slide-height, 300px);
+                overflow-y: auto;
+            }
+            <?php endif; ?>
         </style>
         
         <div id="<?php echo esc_attr($block_id); ?>" class="testimonial-slider-container">
+            <div class="testimonial-header">
+
+                <?php if ($show_overall_rating && !empty($testimonials)) : 
+                    // Calculate average rating
+                    $total_rating = 0;
+                    foreach ($testimonials as $testimonial) {
+                        $total_rating += isset($testimonial['rating']) ? $testimonial['rating'] : 0;
+                    }
+                    $average_rating = count($testimonials) > 0 ? $total_rating / count($testimonials) : 0;
+                    $formatted_rating = number_format($average_rating, 1);
+                ?>
+                
+                <div class="testimonial-overall-rating">
+                    <div class="overall-rating-stars">
+                        <?php 
+                        // Output stars based on average rating
+                        for ($i = 0; $i < 5; $i++) {
+                            echo '<span class="' . ($i < $average_rating ? 'star filled' : 'star empty') . '">★</span>';
+                        }
+                        ?>
+                        <span class="average-rating"><?php echo esc_html($formatted_rating); ?></span>
+                    </div>
+                    <div class="overall-rating-text">
+                        <?php echo esc_html(sprintf($overall_rating_text, $reviewer_count)); ?>
+                    </div>
+                    <?php if ($show_review_link) : ?>
+                    <div class="review-link">
+                        <a href="<?php echo esc_url($review_link_url); ?>" target="_blank" rel="noopener noreferrer">
+                            <?php echo esc_html($review_link_text); ?>
+                        </a>
+                    </div>
+                    <?php endif; ?>
+                </div>
+                <?php endif; ?>
+
+                <?php if (!empty($top_image)) : ?>
+                <img src="<?php echo esc_url($top_image); ?>" alt="" />
+                <?php endif; ?>
+            </div>
+            
             <div class="testimonial-slider" 
                 data-slides-to-show="<?php echo esc_attr($slides_to_show); ?>"
                 data-autoplay="<?php echo esc_attr($autoplay ? 'true' : 'false'); ?>"
@@ -155,10 +214,27 @@ class Murdeni_Testimonial_Slider {
                         $content = isset($testimonial['content']) ? $testimonial['content'] : '';
                         $author_name = isset($testimonial['authorName']) ? $testimonial['authorName'] : '';
                         $author_position = isset($testimonial['authorPosition']) ? $testimonial['authorPosition'] : '';
-                        $author_image = isset($testimonial['authorImage']) ? $testimonial['authorImage'] : '';
+                        $author_image = /* isset($testimonial['authorImage']) && !empty($testimonial['authorImage']) ? $testimonial['authorImage'] : */ '';
+                        $bottom_image = isset($testimonial['bottomImage']) && !empty($testimonial['bottomImage']) ? $testimonial['bottomImage'] : '';
+                        
+                        if (empty($author_image)) {
+                            $last_letter = substr($author_name, 4);
+                            $color = strtoupper(substr(dechex(crc32($last_letter)), 0, 6));
+                            $initials = substr($author_name, 0, 1);
+                            $author_image = "https://placehold.co/150x150/$color/ffffff.png?text=" . $initials;
+                        }
                         ?>
                         <div class="testimonial-slide">
                             <div class="testimonial-card">
+                                <div class="testimonial-author">
+                                    <div class="author-image">
+                                        <img src="<?php echo esc_url($author_image); ?>" alt="<?php echo esc_attr($author_name); ?>" />
+                                    </div>
+                                    <div class="author-info">
+                                        <h4><?php echo esc_html($author_name); ?></h4>
+                                        <p><?php echo esc_html($author_position); ?></p>
+                                    </div>
+                                </div>
                                 <div class="testimonial-rating">
                                     <?php 
                                     // Output stars based on rating
@@ -170,15 +246,11 @@ class Murdeni_Testimonial_Slider {
                                 <div class="testimonial-content">
                                     <p><?php echo wp_kses_post($content); ?></p>
                                 </div>
-                                <div class="testimonial-author">
-                                    <div class="author-image">
-                                        <img src="<?php echo esc_url($author_image); ?>" alt="<?php echo esc_attr($author_name); ?>" />
-                                    </div>
-                                    <div class="author-info">
-                                        <h4><?php echo esc_html($author_name); ?></h4>
-                                        <p><?php echo esc_html($author_position); ?></p>
-                                    </div>
+                                <?php if (!empty($bottom_image)) : ?>
+                                <div class="testimonial-bottom-image">
+                                    <img src="<?php echo esc_url($bottom_image); ?>" alt="" />
                                 </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                         <?php

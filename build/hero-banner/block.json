@@ -1,0 +1,126 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "murdeni/hero-banner",
+  "version": "1.0.0",
+  "title": "Hero Banner",
+  "category": "murdeni-blocks",
+  "description": "Display a hero banner with background image, title, subtitle, description, and buttons.",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "textdomain": "murdeni-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "attributes": {
+    "backgroundImage": {
+      "type": "object",
+      "default": {
+        "url": "",
+        "id": 0,
+        "alt": ""
+      }
+    },
+    "overlayDark": {
+      "type": "boolean",
+      "default": false
+    },
+    "title": {
+      "type": "string",
+      "default": "Hero Banner Title"
+    },
+    "titleType": {
+      "type": "string",
+      "default": "h2"
+    },
+    "titleSize": {
+      "type": "number",
+      "default": 32
+    },
+    "subtitle": {
+      "type": "string",
+      "default": "Subtitle text goes here"
+    },
+    "subtitleSize": {
+      "type": "string",
+      "default": "medium"
+    },
+    "description": {
+      "type": "string",
+      "default": "Add your description text here. This is a hero banner block with customizable options."
+    },
+    "buttons": {
+      "type": "array",
+      "default": [
+        {
+          "text": "Learn More",
+          "url": "#",
+          "isExternal": false,
+          "buttonStyle": "primary"
+        }
+      ]
+    },
+    "contentAlign": {
+      "type": "string",
+      "default": "left"
+    },
+    "verticalAlign": {
+      "type": "string",
+      "default": "center"
+    },
+    "fullHeight": {
+      "type": "boolean",
+      "default": false
+    },
+    "showSubtitle": {
+      "type": "boolean",
+      "default": true
+    },
+    "minHeight": {
+      "type": "number",
+      "default": 400
+    },
+    "paddingTop": {
+      "type": "number",
+      "default": 60
+    },
+    "paddingBottom": {
+      "type": "number",
+      "default": 60
+    },
+    "showUspList": {
+      "type": "boolean",
+      "default": false
+    },
+    "uspItems": {
+      "type": "array",
+      "default": [
+        {
+          "icon": {
+            "url": "",
+            "id": 0,
+            "alt": ""
+          },
+          "text": "USP Item 1"
+        }
+      ]
+    },
+    "uspLayout": {
+      "type": "string",
+      "default": "horizontal"
+    },
+    "uspIconSize": {
+      "type": "number",
+      "default": 24
+    },
+    "uspSpacing": {
+      "type": "number",
+      "default": 10
+    }
+  }
+}

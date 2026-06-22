@@ -1,0 +1,108 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "murdeni/media-gallery",
+    "version": "0.1.0",
+    "title": "Murdeni Media Gallery",
+    "category": "murdeni-blocks",
+    "icon": "format-gallery",
+    "description": "Display a gallery of images and YouTube videos with popup functionality.",
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"]
+    },
+    "textdomain": "murdeni-blocks",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "attributes": {
+        "items": {
+            "type": "array",
+            "default": []
+        },
+        "columns": {
+            "type": "number",
+            "default": 3
+        },
+        "gapSize": {
+            "type": "number",
+            "default": 20
+        },
+        "aspectRatio": {
+            "type": "string",
+            "default": "1:1"
+        },
+        "thumbnailSize": {
+            "type": "string",
+            "default": "medium"
+        },
+        "lightboxEnabled": {
+            "type": "boolean",
+            "default": true
+        },
+        "showCaptions": {
+            "type": "boolean",
+            "default": true
+        },
+        "captionPosition": {
+            "type": "string",
+            "default": "below"
+        },
+        "displayHeader": {
+            "type": "boolean",
+            "default": true
+        },
+        "headerTitle": {
+            "type": "string",
+            "default": "Media Gallery"
+        },
+        "displayViewAll": {
+            "type": "boolean",
+            "default": true
+        },
+        "viewAllText": {
+            "type": "string",
+            "default": "View All"
+        },
+        "viewAllUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "captionFontSize": {
+            "type": "number",
+            "default": 14
+        },
+        "captionColor": {
+            "type": "string",
+            "default": ""
+        },
+        "overlayColor": {
+            "type": "string",
+            "default": "rgba(0,0,0,0.7)"
+        },
+        "overlayOpacity": {
+            "type": "number",
+            "default": 70
+        },
+        "hoverEffect": {
+            "type": "string",
+            "default": "zoom"
+        },
+        "borderRadius": {
+            "type": "number",
+            "default": 0
+        },
+        "borderWidth": {
+            "type": "number",
+            "default": 0
+        },
+        "borderColor": {
+            "type": "string",
+            "default": ""
+        },
+        "boxShadow": {
+            "type": "boolean",
+            "default": false
+        }
+    }
+}

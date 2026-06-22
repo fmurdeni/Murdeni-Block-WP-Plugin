@@ -1,0 +1,125 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "murdeni/cta",
+    "version": "1.0.0",
+    "title": "CTA",
+    "category": "murdeni-blocks",
+    "icon": "megaphone",
+    "description": "Display a Call to Action section with customizable title, description, button, layout and background.",
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"]
+    },
+    "textdomain": "murdeni-blocks",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "attributes": {
+        "title": {
+            "type": "string",
+            "default": "Ready to Get Started?"
+        },
+        "titleTag": {
+            "type": "string",
+            "default": "h2"
+        },
+        "titleFontSize": {
+            "type": "number",
+            "default": 32
+        },
+        "titleColor": {
+            "type": "string",
+            "default": ""
+        },
+        "description": {
+            "type": "string",
+            "default": "Join us today and discover how our services can help you achieve your goals."
+        },
+        "descriptionFontSize": {
+            "type": "number",
+            "default": 18
+        },
+        "descriptionColor": {
+            "type": "string",
+            "default": ""
+        },
+        "buttonText": {
+            "type": "string",
+            "default": "Contact Us"
+        },
+        "buttonUrl": {
+            "type": "string",
+            "default": "#"
+        },
+        "buttonNewTab": {
+            "type": "boolean",
+            "default": false
+        },
+        "buttonBackgroundColor": {
+            "type": "string",
+            "default": ""
+        },
+        "buttonTextColor": {
+            "type": "string",
+            "default": ""
+        },
+        "buttonBorderRadius": {
+            "type": "number",
+            "default": 4
+        },
+        "buttonSize": {
+            "type": "string",
+            "default": "medium"
+        },
+        "layout": {
+            "type": "string",
+            "default": "centered"
+        },
+        "contentWidth": {
+            "type": "number",
+            "default": 800
+        },
+        "contentAlignment": {
+            "type": "string",
+            "default": "center"
+        },
+        "padding": {
+            "type": "object",
+            "default": {
+                "top": 60,
+                "right": 30,
+                "bottom": 60,
+                "left": 30
+            }
+        },
+        "backgroundColor": {
+            "type": "string",
+            "default": ""
+        },
+        "backgroundImage": {
+            "type": "object",
+            "default": {
+                "url": "",
+                "id": 0,
+                "alt": ""
+            }
+        },
+        "backgroundOverlay": {
+            "type": "string",
+            "default": ""
+        },
+        "backgroundOverlayOpacity": {
+            "type": "number",
+            "default": 0.7
+        },
+        "borderRadius": {
+            "type": "number",
+            "default": 0
+        },
+        "boxShadow": {
+            "type": "boolean",
+            "default": false
+        }
+    }
+}

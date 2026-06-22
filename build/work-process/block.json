@@ -1,0 +1,103 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "murdeni/work-process",
+  "version": "1.0.0",
+  "title": "Work Process",
+  "category": "murdeni-blocks",
+  "description": "Display a step-by-step work process with icons, titles, and descriptions.",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "textdomain": "murdeni-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Proses Cepat, Hasiil Sempurna"
+    },
+    "description": {
+      "type": "string",
+      "default": "Dari pemesanan hingga pemasangan, semua kami lakukan dengan rapi dan terukur."
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "id": "item-1",
+          "icon": {
+            "url": "",
+            "id": 0,
+            "alt": ""
+          },
+          "number": "01",
+          "title": "Hubungi Kami",
+          "description": "Konsultasikan kebutuhan kaca mobil Anda lewat WhatsApp atau telepon."
+        },
+        {
+          "id": "item-2",
+          "icon": {
+            "url": "",
+            "id": 0,
+            "alt": ""
+          },
+          "number": "02",
+          "title": "Penjadwalan",
+          "description": "Tentukan jadwal pemasangan di bengkel kami atau layanan home service."
+        },
+        {
+          "id": "item-3",
+          "icon": {
+            "url": "",
+            "id": 0,
+            "alt": ""
+          },
+          "number": "03",
+          "title": "Pemasangan Profesional",
+          "description": "Tim berpengalaman memasang kaca dengan alat dan teknik terbaik."
+        },
+        {
+          "id": "item-4",
+          "icon": {
+            "url": "",
+            "id": 0,
+            "alt": ""
+          },
+          "number": "04",
+          "title": "Finishing & Garansi",
+          "description": "Cek hasil pemasangan, terima garansi resmi hingga 3 tahun."
+        }
+      ]
+    },
+    "contentAlign": {
+      "type": "string",
+      "default": "center"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "textColor": {
+      "type": "string",
+      "default": ""
+    },
+    "iconBackgroundColor": {
+      "type": "string",
+      "default": "#e6f7f5"
+    },
+    "iconColor": {
+      "type": "string",
+      "default": "#00b8a9"
+    },
+    "numberColor": {
+      "type": "string",
+      "default": "#00b8a9"
+    }
+  }
+}

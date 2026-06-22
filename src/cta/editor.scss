@@ -1,0 +1,25 @@
+/**
+ * CTA Block editor-specific styles
+ */
+
+.wp-block-murdeni-cta {
+    // Editor-specific styles
+    .murdeni-cta__title,
+    .murdeni-cta__description,
+    .murdeni-cta__button-text {
+        cursor: text;
+    }
+
+    .murdeni-cta__button {
+        cursor: default;
+    }
+
+    // Make sure the block is visible in the editor
+    min-height: 100px;
+    border: 1px dashed #ddd;
+
+    // Improve visibility of overlay settings
+    &:hover .murdeni-cta__overlay {
+        opacity: 0.7 !important;
+    }
+}

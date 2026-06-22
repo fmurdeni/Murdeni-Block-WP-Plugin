@@ -1,0 +1,54 @@
+/**
+ * Murdeni Video block editor styles
+ */
+
+.murdeni-video {
+    &__placeholder {
+        min-height: 200px;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        align-items: center !important;
+        justify-content: center !important;
+        
+        .components-placeholder__fieldset {
+            justify-content: center !important;
+        }
+    }
+    
+    &__change-image {
+        position: absolute !important;
+        top: 10px;
+        right: 10px;
+        z-index: 10;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    &__wrapper:hover &__change-image {
+        opacity: 1;
+    }
+    
+    &__title-input {
+        margin-top: 10px;
+        
+        .components-base-control__field {
+            margin-bottom: 0;
+        }
+        
+        input {
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+        }
+    }
+}
+
+.murdeni-color-label {
+    margin-bottom: 8px;
+    margin-top: 16px;
+    display: block;
+    font-weight: 500;
+}

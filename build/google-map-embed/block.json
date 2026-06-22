@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "murdeni/google-map-embed",
+  "version": "1.0.0",
+  "title": "Google Map Embed",
+  "category": "murdeni-blocks",
+  "icon": "location-alt",
+  "description": "Embed a Google Map with customizable options.",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "textdomain": "murdeni-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "attributes": {
+    "embedCode": {
+      "type": "string",
+      "default": ""
+    },
+    "mapUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "height": {
+      "type": "number",
+      "default": 400
+    },
+    "width": {
+      "type": "number",
+      "default": 100
+    },
+    "zoom": {
+      "type": "number",
+      "default": 14
+    },
+    "showControls": {
+      "type": "boolean",
+      "default": true
+    },
+    "allowFullscreen": {
+      "type": "boolean",
+      "default": true
+    },
+    "borderRadius": {
+      "type": "number",
+      "default": 0
+    },
+    "boxShadow": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

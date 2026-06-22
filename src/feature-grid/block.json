@@ -1,0 +1,82 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "murdeni/feature-grid",
+  "version": "1.0.0",
+  "title": "Feature Grid",
+  "category": "murdeni-blocks",
+  "description": "Display a grid of features with illustration images, titles, and descriptions.",
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"]
+  },
+  "textdomain": "murdeni-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Our Features"
+    },
+    "description": {
+      "type": "string",
+      "default": "Discover the amazing features we offer"
+    },
+    "columns": {
+      "type": "number",
+      "default": 3
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "id": "item-1",
+          "image": {
+            "url": "",
+            "id": 0,
+            "alt": ""
+          },
+          "title": "Feature 1",
+          "description": "Description for feature 1"
+        },
+        {
+          "id": "item-2",
+          "image": {
+            "url": "",
+            "id": 0,
+            "alt": ""
+          },
+          "title": "Feature 2",
+          "description": "Description for feature 2"
+        },
+        {
+          "id": "item-3",
+          "image": {
+            "url": "",
+            "id": 0,
+            "alt": ""
+          },
+          "title": "Feature 3",
+          "description": "Description for feature 3"
+        }
+      ]
+    },
+    "imageSize": {
+      "type": "number",
+      "default": 80
+    },
+    "contentAlign": {
+      "type": "string",
+      "default": "center"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "textColor": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}

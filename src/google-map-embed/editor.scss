@@ -1,0 +1,36 @@
+/**
+ * Google Map Embed Block editor-specific styles
+ */
+
+.wp-block-murdeni-google-map-embed {
+    // Editor-specific styles
+    border: 1px dashed transparent;
+    padding: 8px;
+    
+    &:hover {
+        border-color: #ddd;
+    }
+    
+    // Improve visibility when selected
+    &.is-selected {
+        border-color: #007cba;
+    }
+    
+    // Error message styling
+    .murdeni-google-map-embed__error {
+        color: #cc1818;
+        margin-bottom: 15px;
+        padding: 8px;
+        background-color: #f8d7da;
+        border-radius: 4px;
+    }
+    
+    // Placeholder styling
+    .components-placeholder {
+        min-height: 200px;
+        
+        .components-textarea-control__input {
+            font-family: monospace;
+        }
+    }
+}

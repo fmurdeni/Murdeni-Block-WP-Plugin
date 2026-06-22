@@ -1,0 +1,100 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "murdeni/video",
+    "version": "1.0.0",
+    "title": "Murdeni Video",
+    "category": "murdeni-blocks",
+    "icon": "video-alt3",
+    "description": "Display a video thumbnail with play button that opens in a popup.",
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"]
+    },
+    "textdomain": "murdeni-blocks",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "attributes": {
+        "videoUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "thumbnailUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "thumbnailId": {
+            "type": "number",
+            "default": 0
+        },
+        "title": {
+            "type": "string",
+            "default": ""
+        },
+        "aspectRatio": {
+            "type": "string",
+            "default": "16:9"
+        },
+        "maxWidth": {
+            "type": "number",
+            "default": 0
+        },
+        "borderRadius": {
+            "type": "number",
+            "default": 0
+        },
+        "borderWidth": {
+            "type": "number",
+            "default": 0
+        },
+        "borderColor": {
+            "type": "string",
+            "default": ""
+        },
+        "boxShadow": {
+            "type": "boolean",
+            "default": false
+        },
+        "overlayColor": {
+            "type": "string",
+            "default": "rgba(0,0,0,0.5)"
+        },
+        "overlayOpacity": {
+            "type": "number",
+            "default": 50
+        },
+        "playButtonSize": {
+            "type": "string",
+            "default": "medium"
+        },
+        "playButtonColor": {
+            "type": "string",
+            "default": "#ffffff"
+        },
+        "playButtonBgColor": {
+            "type": "string",
+            "default": "rgba(0,0,0,0.6)"
+        },
+        "showTitle": {
+            "type": "boolean",
+            "default": false
+        },
+        "titlePosition": {
+            "type": "string",
+            "default": "below"
+        },
+        "titleFontSize": {
+            "type": "number",
+            "default": 16
+        },
+        "titleColor": {
+            "type": "string",
+            "default": ""
+        },
+        "titleAlignment": {
+            "type": "string",
+            "default": "center"
+        }
+    }
+}

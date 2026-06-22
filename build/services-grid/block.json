@@ -1,0 +1,95 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "murdeni/services-grid",
+  "version": "1.0.0",
+  "title": "Services Grid",
+  "category": "murdeni-blocks",
+  "description": "Display a grid of services with images, titles, descriptions, and buttons.",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "textdomain": "murdeni-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Our Services"
+    },
+    "description": {
+      "type": "string",
+      "default": "Discover the amazing services we offer"
+    },
+    "layout": {
+      "type": "string",
+      "default": "grid"
+    },
+    "columns": {
+      "type": "number",
+      "default": 3
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "id": "item-1",
+          "image": {
+            "url": "",
+            "id": 0,
+            "alt": ""
+          },
+          "buttonText": "Learn More",
+          "buttonUrl": "",
+          "title": "Service 1",
+          "description": "Description for service 1"
+        },
+        {
+          "id": "item-2",
+          "image": {
+            "url": "",
+            "id": 0,
+            "alt": ""
+          },
+          "buttonText": "Learn More",
+          "buttonUrl": "",
+          "title": "Service 2",
+          "description": "Description for service 2"
+        },
+        {
+          "id": "item-3",
+          "image": {
+            "url": "",
+            "id": 0,
+            "alt": ""
+          },
+          "buttonText": "Learn More",
+          "buttonUrl": "",
+          "title": "Service 3",
+          "description": "Description for service 3"
+        }
+      ]
+    },
+    "imageSize": {
+      "type": "number",
+      "default": 80
+    },
+    "contentAlign": {
+      "type": "string",
+      "default": "center"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "textColor": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}

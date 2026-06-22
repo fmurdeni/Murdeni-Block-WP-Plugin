@@ -1,0 +1,158 @@
+/**
+ * Services Grid block styles for both editor and frontend
+ */
+
+.murdeni-services-grid {
+    padding: 1.25rem 0;
+    
+    &__header {
+        margin-bottom: 2rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    &__title {
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+    
+    &__description {
+        margin-bottom: 2rem;
+        opacity: 0.8;
+    }
+    
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 1.25rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        
+        @media (max-width: 992px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        @media (max-width: 576px) {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    &__item {
+        position: relative;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        &-inner {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        &-image-container {
+            margin-bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        
+        &-image {
+            width: 100%;
+            
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: auto;
+            }
+        }
+        
+        &-content {
+            padding: 1rem;
+            text-align: center;
+            
+        }
+        
+        &-title {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+            text-align: left;
+        }
+        
+        &-description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        
+        &-button-container {
+            margin-top: 1rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        &-button-text {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background-color: #0073aa;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            
+            &:hover {
+                background-color: #005b87;
+            }
+        }
+        
+        &-button-url {
+            font-size: 0.8rem;
+            color: #666;
+            width: 100%;
+            max-width: 250px;
+        }
+    }
+    
+    // Alignment variations
+    &.align-left {
+        .murdeni-services-grid__header,
+        .murdeni-services-grid__item-inner {
+            text-align: left;
+            align-items: flex-start;
+        }
+    }
+    
+    &.align-center {
+        .murdeni-services-grid__header,
+        .murdeni-services-grid__item-inner {
+            text-align: center;
+            align-items: center;
+        }
+    }
+    
+    &.align-right {
+        .murdeni-services-grid__header,
+        .murdeni-services-grid__item-inner {
+            text-align: right;
+            align-items: flex-end;
+        }
+    }
+}

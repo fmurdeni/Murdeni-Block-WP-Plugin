@@ -1,0 +1,107 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "murdeni/gallery-carousel",
+  "version": "0.1.0",
+  "title": "Murdeni Gallery Carousel",
+  "category": "murdeni-blocks",
+  "icon": "slides",
+  "description": "Display a carousel of images and YouTube videos with slider functionality.",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "textdomain": "murdeni-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "attributes": {
+    "items": {
+      "type": "array",
+      "default": []
+    },
+    "slidesToShow": {
+      "type": "number",
+      "default": 3
+    },
+    "gapSize": {
+      "type": "number",
+      "default": 20
+    },
+    "aspectRatio": {
+      "type": "string",
+      "default": "1:1"
+    },
+    "thumbnailSize": {
+      "type": "string",
+      "default": "medium"
+    },
+    "showArrows": {
+      "type": "boolean",
+      "default": true
+    },
+    "showDots": {
+      "type": "boolean",
+      "default": true
+    },
+    "autoplay": {
+      "type": "boolean",
+      "default": false
+    },
+    "autoplaySpeed": {
+      "type": "number",
+      "default": 3000
+    },
+    "displayHeader": {
+      "type": "boolean",
+      "default": true
+    },
+    "headerTitle": {
+      "type": "string",
+      "default": "Gallery Carousel"
+    },
+    "displayViewAll": {
+      "type": "boolean",
+      "default": true
+    },
+    "viewAllText": {
+      "type": "string",
+      "default": "View All"
+    },
+    "viewAllUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "overlayColor": {
+      "type": "string",
+      "default": "rgba(0,0,0,0.7)"
+    },
+    "overlayOpacity": {
+      "type": "number",
+      "default": 70
+    },
+    "hoverEffect": {
+      "type": "string",
+      "default": "zoom"
+    },
+    "borderRadius": {
+      "type": "number",
+      "default": 0
+    },
+    "borderWidth": {
+      "type": "number",
+      "default": 0
+    },
+    "borderColor": {
+      "type": "string",
+      "default": ""
+    },
+    "boxShadow": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

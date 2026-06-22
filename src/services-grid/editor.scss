@@ -1,0 +1,88 @@
+/**
+ * Services Grid block editor styles
+ */
+
+.wp-block-murdeni-services-grid {
+    padding-bottom: 60px !important;
+    
+    .murdeni-services-grid {
+        &__item {
+            position: relative;
+            
+            
+            &-inner {
+                position: relative;
+            }
+            
+            &-remove {
+                position: absolute;
+                top: 0.5rem;
+                right: 0.5rem;
+                padding: 0;
+                z-index: 10;
+            }
+            
+            &-image-container {
+                width: 100%;
+            }
+            
+            &-image {
+                position: relative;
+                width: 100%;
+                
+                &-actions {
+                    position: absolute;
+                    bottom: -10px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    display: none;
+                }
+                
+                &:hover {
+                    .murdeni-services-grid__item-image-actions {
+                        display: flex;
+                    }
+                }
+                
+                &-button {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    border: 2px dashed #ccc;
+                    background-color: #f7f7f7;
+                    width: 100% !important;
+                    
+                    svg {
+                        width: 24px;
+                        height: 24px;
+                        margin-bottom: 5px;
+                    }
+                    
+                    span {
+                        font-size: 12px;
+                    }
+                    
+                    &:hover {
+                        background-color: #f0f0f0;
+                    }
+                }
+            }
+        }
+        
+        &__add-item {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            
+            &-button {
+                display: flex;
+                align-items: center;
+                
+                svg {
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+}

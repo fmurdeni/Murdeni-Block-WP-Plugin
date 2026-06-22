@@ -1,0 +1,121 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "murdeni/custom-listing",
+  "version": "1.0.0",
+  "title": "Custom Listing",
+  "category": "murdeni-blocks",
+  "description": "Display a listing of items with images, titles, descriptions, and multiple buttons.",
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "textdomain": "murdeni-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Custom Listing"
+    },
+    "description": {
+      "type": "string",
+      "default": "Display your custom items with multiple action buttons"
+    },
+    "layout": {
+      "type": "string",
+      "default": "grid"
+    },
+    "columns": {
+      "type": "number",
+      "default": 3
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "id": "item-1",
+          "image": {
+            "url": "",
+            "id": 0,
+            "alt": ""
+          },
+          "title": "Item 1",
+          "description": "Description for item 1",
+          "buttons": [
+            {
+              "id": "btn-1-1",
+              "text": "Learn More",
+              "url": "",
+              "style": "primary"
+            }
+          ]
+        },
+        {
+          "id": "item-2",
+          "image": {
+            "url": "",
+            "id": 0,
+            "alt": ""
+          },
+          "title": "Item 2",
+          "description": "Description for item 2",
+          "buttons": [
+            {
+              "id": "btn-2-1",
+              "text": "Learn More",
+              "url": "",
+              "style": "primary"
+            }
+          ]
+        },
+        {
+          "id": "item-3",
+          "image": {
+            "url": "",
+            "id": 0,
+            "alt": ""
+          },
+          "title": "Item 3",
+          "description": "Description for item 3",
+          "buttons": [
+            {
+              "id": "btn-3-1",
+              "text": "Learn More",
+              "url": "",
+              "style": "primary"
+            }
+          ]
+        }
+      ]
+    },
+    "imageSize": {
+      "type": "number",
+      "default": 80
+    },
+    "contentAlign": {
+      "type": "string",
+      "default": "center"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "textColor": {
+      "type": "string",
+      "default": ""
+    },
+    "buttonSpacing": {
+      "type": "number",
+      "default": 10
+    },
+    "buttonAlignment": {
+      "type": "string",
+      "default": "center"
+    }
+  }
+}

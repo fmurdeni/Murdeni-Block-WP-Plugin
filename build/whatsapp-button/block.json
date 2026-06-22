@@ -1,0 +1,133 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "murdeni/whatsapp-button",
+  "version": "1.0.0",
+  "title": "WhatsApp Button",
+  "category": "murdeni-blocks",
+  "icon": "whatsapp",
+  "description": "Add a customizable WhatsApp chat button to your website.",
+  "keywords": [
+    "whatsapp",
+    "chat",
+    "button",
+    "contact",
+    "social"
+  ],
+  "supports": {
+    "html": false,
+    "align": [
+      "left",
+      "center",
+      "right"
+    ]
+  },
+  "textdomain": "murdeni-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "attributes": {
+    "phoneNumber": {
+      "type": "string",
+      "default": ""
+    },
+    "message": {
+      "type": "string",
+      "default": "Hello, I have a question about your services."
+    },
+    "buttonText": {
+      "type": "string",
+      "default": "Chat via WhatsApp"
+    },
+    "buttonSubtitle": {
+      "type": "string",
+      "default": ""
+    },
+    "buttonSize": {
+      "type": "string",
+      "default": "medium",
+      "enum": [
+        "small",
+        "medium",
+        "large"
+      ]
+    },
+    "buttonStyle": {
+      "type": "string",
+      "default": "filled",
+      "enum": [
+        "filled",
+        "outline",
+        "image"
+      ]
+    },
+    "buttonColor": {
+      "type": "string",
+      "default": "#25D366"
+    },
+    "textColor": {
+      "type": "string",
+      "default": "#FFFFFF"
+    },
+    "borderRadius": {
+      "type": "number",
+      "default": 4
+    },
+    "showIcon": {
+      "type": "boolean",
+      "default": true
+    },
+    "iconPosition": {
+      "type": "string",
+      "default": "before",
+      "enum": [
+        "before",
+        "after"
+      ]
+    },
+    "buttonWidth": {
+      "type": "string",
+      "default": "auto",
+      "enum": [
+        "auto",
+        "full"
+      ]
+    },
+    "customClass": {
+      "type": "string",
+      "default": ""
+    },
+    "openInNewTab": {
+      "type": "boolean",
+      "default": true
+    },
+    "floatingButton": {
+      "type": "boolean",
+      "default": false
+    },
+    "floatingPosition": {
+      "type": "string",
+      "default": "bottom-right",
+      "enum": [
+        "bottom-right",
+        "bottom-left"
+      ]
+    },
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "imageWidth": {
+      "type": "number",
+      "default": 200
+    },
+    "imageHeight": {
+      "type": "number",
+      "default": 0
+    },
+    "imageAlt": {
+      "type": "string",
+      "default": "WhatsApp Chat"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+/**
+ * Google Map Embed Block styles for both editor and frontend
+ */
+
+.murdeni-google-map-embed {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    &__container {
+        position: relative;
+        overflow: hidden;
+        
+        iframe {
+            border: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    
+    // Responsive styles
+    @media (max-width: 767px) {
+        &__container {
+            height: 300px !important; // Override inline style for mobile
+        }
+    }
+}

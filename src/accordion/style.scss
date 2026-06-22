@@ -1,0 +1,161 @@
+/**
+ * Murdeni Accordion block styles for both editor and frontend
+ */
+
+.murdeni-accordion {
+    margin-bottom: 2em;
+    
+    &__item {
+        overflow: hidden;
+        transition: all 0.3s ease;
+        
+        &.is-open {
+            .murdeni-accordion__content {
+                display: block;
+            }
+        }
+    }
+    
+    &__header { 
+        display: flex;
+        align-items: center;
+        transition: background-color 0.3s ease;
+        
+        &:hover {
+            opacity: 0.9;
+        }
+        
+        &--left {
+            flex-direction: row;
+            
+            .murdeni-accordion__icon {
+                margin-right: 15px; // Increase margin for better spacing
+                order: -1; // Ensure icon appears before text
+            }
+        }
+        
+        &--right {
+            flex-direction: row;
+            justify-content: space-between;
+            
+            .murdeni-accordion__icon {
+                margin-left: 15px; // Increase margin for better spacing
+            }
+        }
+    }
+    
+    &__title {
+        margin: 0;
+        flex-grow: 1;
+    }
+    
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative; // Add position relative for stable rotation
+        flex-shrink: 0; // Prevent icon from shrinking
+        
+        svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease; // Move transition to SVG element
+            display: block; // Ensure proper display
+        }
+    }
+    
+    // Chevron icon animation
+    &__item.is-open &__icon.icon-chevron svg {
+        transform: rotate(180deg);
+    }
+    
+    // Plus/minus icon animation
+    &__item.is-open &__icon.icon-plus-minus svg {
+        transform: rotate(90deg);
+        opacity: 0.8;
+    }
+    
+    &__content {
+        display: none;
+        overflow: hidden;
+        transition: height 300ms ease;
+
+        &-inner {
+            padding: var(--spacing-padding, 15px);
+        }
+        
+        p:first-child {
+            margin-top: 0;
+        }
+        
+        p:last-child {
+            margin-bottom: 0;
+        }
+        
+        // Class-based animation styles
+        &--open {
+            display: block;
+        }
+        
+        &--animating {
+            transition: height 300ms ease, opacity 300ms ease, transform 300ms ease;
+        }
+        
+        &--opening {
+            opacity: 0;
+            transform: translateY(-10px);
+            animation: accordionFadeIn 300ms forwards;
+        }
+        
+        &--closing {
+            opacity: 1;
+            transform: translateY(0);
+            animation: accordionFadeOut 300ms forwards;
+        }
+    }
+}
+
+// Animation keyframes for accordion content
+@keyframes accordionFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes accordionFadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+.murdeni-accordion__content {
+    animation: accordionSlideDown 0.3s ease-in-out;
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+    .murdeni-accordion {
+        &__header {
+            padding: 12px !important;
+        }        
+        
+    }
+}
+
+@media (max-width: 480px) {
+    .murdeni-accordion {
+        &__header {
+            padding: 10px !important;
+        }        
+    }
+}

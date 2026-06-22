@@ -1,0 +1,84 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "murdeni/icon-with-text",
+  "version": "1.0.0",
+  "title": "Icon with Text",
+  "category": "murdeni-blocks",
+  "icon": "format-image",
+  "description": "Display an icon alongside text with customizable layout, position, and styling options.",
+  "supports": {
+    "html": false,
+    "align": [
+      "left",
+      "center",
+      "right"
+    ]
+  },
+  "textdomain": "murdeni-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "attributes": {
+    "iconImage": {
+      "type": "object",
+      "default": {
+        "url": "",
+        "id": 0,
+        "alt": ""
+      }
+    },
+    "iconSvg": {
+      "type": "string",
+      "default": ""
+    },
+    "useUploadedIcon": {
+      "type": "boolean",
+      "default": true
+    },
+    "text": {
+      "type": "string",
+      "default": "Your text here"
+    },
+    "layout": {
+      "type": "string",
+      "default": "inline"
+    },
+    "iconPosition": {
+      "type": "string",
+      "default": "before"
+    },
+    "iconSize": {
+      "type": "number",
+      "default": 24
+    },
+    "fontSize": {
+      "type": "number",
+      "default": 16
+    },
+    "textColor": {
+      "type": "string",
+      "default": ""
+    },
+    "iconColor": {
+      "type": "string",
+      "default": ""
+    },
+    "spacing": {
+      "type": "number",
+      "default": 10
+    },
+    "verticalAlignment": {
+      "type": "string",
+      "default": "center"
+    },
+    "linkUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "linkTarget": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

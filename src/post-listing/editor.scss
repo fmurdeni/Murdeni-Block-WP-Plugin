@@ -1,0 +1,39 @@
+/**
+ * Post Listing block editor styles
+ */
+
+.wp-block-murdeni-post-listing {
+  .murdeni-post-listing {
+    &__item {
+      &-inner {
+        transition: box-shadow 0.3s ease;
+        
+        &:hover {
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+      }
+      
+      &-title {
+        cursor: text;
+      }
+      
+      &-read-more-link {
+        cursor: pointer;
+        pointer-events: none;
+      }
+    }
+  }
+  
+  .components-placeholder {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    
+    .components-spinner {
+      margin: 1em auto;
+    }
+  }
+}
