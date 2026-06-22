@@ -36,6 +36,54 @@
             const infinite = $slider.data('infinite') !== undefined ? $slider.data('infinite') : true;
             const speed = $slider.data('speed') || 500;
             const pauseOnHover = $slider.data('pause-on-hover') !== undefined ? $slider.data('pause-on-hover') : true;
+            const originalCount = $slider.children().length;
+            const smoothLoop = infinite && originalCount > 1;
+            let isLoopResetting = false;
+
+            if (smoothLoop && !$slider.data('smooth-loop-ready')) {
+                const $originalSlides = $slider.children().clone(true, true);
+                $slider.empty();
+                $slider.append($originalSlides.clone(true, true));
+                $slider.append($originalSlides.clone(true, true));
+                $slider.append($originalSlides.clone(true, true));
+                $slider.data('smooth-loop-ready', true);
+            }
+
+            function getOriginalIndex(index) {
+                return ((index % originalCount) + originalCount) % originalCount;
+            }
+
+            function updateLoopDots(index) {
+                const $dots = $slider.next('.murdeni-loop-dots');
+                const activeIndex = getOriginalIndex(index);
+
+                $dots.find('li').removeClass('slick-active');
+                $dots.find('li').eq(activeIndex).addClass('slick-active');
+            }
+
+            function buildLoopDots() {
+                if (!smoothLoop || !dots) {
+                    return;
+                }
+
+                $slider.next('.murdeni-loop-dots').remove();
+
+                const $dots = $('<ul class="slick-dots murdeni-loop-dots" role="tablist"></ul>');
+
+                for (let i = 0; i < originalCount; i++) {
+                    const $item = $('<li role="presentation"><button type="button" role="tab">' + (i + 1) + '</button></li>');
+
+                    $item.on('click', function(event) {
+                        event.preventDefault();
+                        $slider.slick('slickGoTo', originalCount + i);
+                    });
+
+                    $dots.append($item);
+                }
+
+                $slider.after($dots);
+                updateLoopDots(originalCount);
+            }
             
             // Initialize Slick slider
             $slider.slick({
@@ -44,8 +92,9 @@
                 autoplay: autoplay,
                 autoplaySpeed: autoplaySpeed,
                 arrows: arrows,
-                dots: dots,
-                infinite: infinite,
+                dots: smoothLoop ? false : dots,
+                infinite: smoothLoop ? false : infinite,
+                initialSlide: smoothLoop ? originalCount : 0,
                 speed: speed,
                 pauseOnHover: pauseOnHover,
                 adaptiveHeight: true,
@@ -81,6 +130,28 @@
                     }
                 ]
             });
+
+            buildLoopDots();
+
+            if (smoothLoop) {
+                $slider.on('afterChange', function(event, slick, currentSlide) {
+                    updateLoopDots(currentSlide);
+
+                    if (isLoopResetting) {
+                        return;
+                    }
+
+                    if (currentSlide < originalCount) {
+                        isLoopResetting = true;
+                        $slider.slick('slickGoTo', currentSlide + originalCount, true);
+                        isLoopResetting = false;
+                    } else if (currentSlide >= originalCount * 2) {
+                        isLoopResetting = true;
+                        $slider.slick('slickGoTo', currentSlide - originalCount, true);
+                        isLoopResetting = false;
+                    }
+                });
+            }
             
             // Add fade-in effect after initialization
             setTimeout(function() {
