@@ -67,11 +67,11 @@
     },
     "cardBottomTitle": {
       "type": "string",
-      "default": "Sentra Autoglass Tangerang - Kaca..."
+      "default": "Klik Kaca Mobil Tangerang - Garansi & Cepat 2 Jam Beres"
     },
     "cardBottomSubtitle": {
       "type": "string",
-      "default": "Toyota Calya"
+      "default": "Bengkel Kaca Mobil"
     },
     "cardReviewLinkText": {
       "type": "string",

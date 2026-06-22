@@ -126,8 +126,8 @@ class Murdeni_Testimonial_Slider {
         $review_link_url = isset($attributes['reviewLinkUrl']) ? $attributes['reviewLinkUrl'] : '#';
         $fixed_height = isset($attributes['fixedHeight']) ? $attributes['fixedHeight'] : false;
         $slide_height = isset($attributes['slideHeight']) ? $attributes['slideHeight'] : 300;
-        $card_bottom_title = isset($attributes['cardBottomTitle']) ? $attributes['cardBottomTitle'] : 'Sentra Autoglass Tangerang - Kaca...';
-        $card_bottom_subtitle = isset($attributes['cardBottomSubtitle']) ? $attributes['cardBottomSubtitle'] : 'Toyota Calya';
+        $card_bottom_title = isset($attributes['cardBottomTitle']) ? $attributes['cardBottomTitle'] : 'Klik Kaca Mobil Tangerang - Garansi & Cepat 2 Jam Beres';
+        $card_bottom_subtitle = isset($attributes['cardBottomSubtitle']) ? $attributes['cardBottomSubtitle'] : 'Bengkel Kaca Mobil';
         $card_review_link_text = isset($attributes['cardReviewLinkText']) ? $attributes['cardReviewLinkText'] : __('Lihat di Google', 'murdeni-blocks');
         
         // Generate unique ID for this block instance
