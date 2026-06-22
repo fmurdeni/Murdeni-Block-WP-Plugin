@@ -16,9 +16,30 @@
     var PanelBody = components.PanelBody;
     var PanelRow = components.PanelRow;
     var RangeControl = components.RangeControl;
-    var ToggleControl = components.ToggleControl;
-    var ColorPicker = components.ColorPicker;
-    var TextControl = components.TextControl;
+	    var ToggleControl = components.ToggleControl;
+	    var ColorPicker = components.ColorPicker;
+	    var TextControl = components.TextControl;
+
+	    var avatarColors = ['#16a34a', '#0ea5e9', '#f97316', '#8b5cf6', '#ef4444', '#0891b2'];
+
+	    function getInitials(name) {
+	        var words = (name || '').trim().split(/\s+/).filter(Boolean);
+	        if (!words.length) {
+	            return '+';
+	        }
+	        return words.slice(0, 2).map(function (word) { return word.charAt(0).toUpperCase(); }).join('');
+	    }
+
+	    function getAvatarColor(testimonial) {
+	        if (testimonial && testimonial.authorAvatarColor) {
+	            return testimonial.authorAvatarColor;
+	        }
+	        var name = (testimonial && (testimonial.authorName || testimonial.id)) || '';
+	        var total = name.split('').reduce(function (sum, character) {
+	            return sum + character.charCodeAt(0);
+	        }, 0);
+	        return avatarColors[total % avatarColors.length];
+	    }
 
     function renderStars(rating, color, onRate) {
         var stars = [];
@@ -77,9 +98,10 @@
                     content: '',
 	                    authorName: '',
 	                    authorPosition: '',
-	                    authorImage: '',
-	                    reviewTime: '',
-	                    reviewUrl: ''
+		                    authorImage: '',
+		                    authorAvatarColor: avatarColors[testimonials.length % avatarColors.length],
+		                    reviewTime: '',
+		                    reviewUrl: ''
 	                }])
 	            });
             setActiveTestimonial(testimonials.length);
@@ -311,10 +333,10 @@
                                             {
                                                 onClick: renderProps.open,
                                                 className: 'image-button',
-                                                style: { backgroundImage: active.authorImage ? 'url(' + active.authorImage + ')' : undefined }
-                                            },
-                                            !active.authorImage && __('Upload', 'murdeni-blocks')
-                                        );
+	                                                style: active.authorImage ? { backgroundImage: 'url(' + active.authorImage + ')' } : { backgroundColor: getAvatarColor(active) }
+	                                            },
+	                                            !active.authorImage && getInitials(active.authorName)
+	                                        );
                                     }
                                 })
                             )

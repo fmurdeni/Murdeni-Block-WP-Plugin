@@ -27,6 +27,7 @@
           "authorName": "Ahmad Rizky",
           "authorPosition": "CEO, Rizky Store",
           "authorImage": "",
+          "authorAvatarColor": "#16a34a",
           "reviewTime": "2 minggu lalu",
           "reviewUrl": ""
         },
@@ -37,6 +38,7 @@
           "authorName": "Sarah Wijaya",
           "authorPosition": "Marketing Director, Wijaya Corp",
           "authorImage": "",
+          "authorAvatarColor": "#0ea5e9",
           "reviewTime": "2 minggu lalu",
           "reviewUrl": ""
         },
@@ -47,6 +49,7 @@
           "authorName": "Budi Santoso",
           "authorPosition": "Owner, Santoso Travel",
           "authorImage": "",
+          "authorAvatarColor": "#f97316",
           "reviewTime": "3 minggu lalu",
           "reviewUrl": ""
         }

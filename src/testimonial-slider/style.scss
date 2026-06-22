@@ -63,8 +63,8 @@
         padding: 2px 0;
     }
 
-    .testimonial-slide {
-        padding: 10px 8px;
+	    .testimonial-slide {
+	        padding: 10px 14px;
         box-sizing: border-box;
     }
 
@@ -98,8 +98,8 @@
         p {
             margin: 0;
             color: var(--testimonial-text-color, #333333);
-            font-size: 16px;
-            line-height: 1.45;
+	            font-size: 14px;
+	            line-height: 1.55;
             position: relative;
         }
     }
@@ -118,12 +118,24 @@
         overflow: hidden;
         flex-shrink: 0;
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
+	        img {
+	            width: 100%;
+	            height: 100%;
+	            object-fit: cover;
+	        }
+
+	        .author-initials {
+	            align-items: center;
+	            color: #fff;
+	            display: flex;
+	            font-size: 18px;
+	            font-weight: 700;
+	            height: 100%;
+	            justify-content: center;
+	            line-height: 1;
+	            width: 100%;
+	        }
+	    }
 
     .author-info {
         min-width: 0;
@@ -157,19 +169,21 @@
         white-space: nowrap;
     }
 
-    .testimonial-card-bottom {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 16px;
-        border-top: 1px solid #e5e5e5;
-        margin-top: 18px;
-        padding-top: 14px;
-    }
+	    .testimonial-card-bottom {
+	        display: grid;
+	        grid-template-columns: minmax(0, 1fr) auto;
+	        align-items: flex-start;
+	        gap: 16px;
+	        border-top: 1px solid #e5e5e5;
+	        margin-top: 18px;
+	        padding-top: 14px;
+	        min-width: 0;
+	    }
 
-    .testimonial-bottom-copy {
-        min-width: 0;
-    }
+	    .testimonial-bottom-copy {
+	        min-width: 0;
+	        overflow: hidden;
+	    }
 
     .testimonial-bottom-title {
         color: #111;
@@ -181,21 +195,25 @@
         white-space: nowrap;
     }
 
-    .testimonial-bottom-subtitle {
-        color: #555;
-        font-size: 13px;
-        line-height: 1.25;
-        margin-top: 2px;
-    }
+	    .testimonial-bottom-subtitle {
+	        color: #555;
+	        font-size: 13px;
+	        line-height: 1.25;
+	        margin-top: 2px;
+	        overflow: hidden;
+	        text-overflow: ellipsis;
+	        white-space: nowrap;
+	    }
 
     .testimonial-review-link {
         color: #e60000;
         flex: 0 0 auto;
         font-size: 13px;
-        font-weight: 500;
-        line-height: 1.25;
-        text-decoration: none;
-        white-space: nowrap;
+	        font-weight: 500;
+	        line-height: 1.25;
+	        text-decoration: none;
+	        text-align: right;
+	        white-space: nowrap;
 
         &:hover {
             text-decoration: underline;

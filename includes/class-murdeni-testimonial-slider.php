@@ -26,21 +26,54 @@ class Murdeni_Testimonial_Slider {
     /**
      * Register block
      */
-    public function register_block() {
-        // Register block type from metadata (block.json)
-        if (function_exists('register_block_type_from_metadata')) {
-            register_block_type_from_metadata(
-                MURDENI_BLOCKS_PATH . 'build/testimonial-slider',
+	    public function register_block() {
+	        // Register block type from metadata (block.json)
+	        if (function_exists('register_block_type_from_metadata')) {
+	            register_block_type_from_metadata(
+	                MURDENI_BLOCKS_PATH . 'build/testimonial-slider',
                 array(
                     'render_callback' => array($this, 'render_testimonial_slider'),
                 )
             );
-        }
-    }
+	        }
+	    }
 
-    /**
-     * Enqueue frontend scripts
-     */
+	    /**
+	     * Get stable initials for generated avatars.
+	     */
+	    private function get_author_initials($author_name) {
+	        $words = preg_split('/\s+/', trim($author_name));
+	        $initials = '';
+
+	        if (!empty($words)) {
+	            foreach (array_slice($words, 0, 2) as $word) {
+	                if (!empty($word)) {
+	                    $initials .= strtoupper(substr($word, 0, 1));
+	                }
+	            }
+	        }
+
+	        return !empty($initials) ? $initials : '?';
+	    }
+
+	    /**
+	     * Get a saved or deterministic color for generated avatars.
+	     */
+	    private function get_author_avatar_color($testimonial, $author_name) {
+	        if (!empty($testimonial['authorAvatarColor']) && preg_match('/^#[0-9a-fA-F]{6}$/', $testimonial['authorAvatarColor'])) {
+	            return $testimonial['authorAvatarColor'];
+	        }
+
+	        $colors = array('#16a34a', '#0ea5e9', '#f97316', '#8b5cf6', '#ef4444', '#0891b2');
+	        $seed = !empty($author_name) ? $author_name : (isset($testimonial['id']) ? $testimonial['id'] : '');
+	        $index = abs(crc32($seed)) % count($colors);
+
+	        return $colors[$index];
+	    }
+	
+	    /**
+	     * Enqueue frontend scripts
+	     */
     public function enqueue_frontend_scripts() {
         // Register Slick CSS
         wp_register_style(
@@ -219,23 +252,24 @@ class Murdeni_Testimonial_Slider {
                         $author_name = isset($testimonial['authorName']) ? $testimonial['authorName'] : '';
                         $author_position = isset($testimonial['authorPosition']) ? $testimonial['authorPosition'] : '';
                         $author_image = isset($testimonial['authorImage']) && !empty($testimonial['authorImage']) ? $testimonial['authorImage'] : '';
-                        $bottom_image = isset($testimonial['bottomImage']) && !empty($testimonial['bottomImage']) ? $testimonial['bottomImage'] : '';
-                        $review_time = isset($testimonial['reviewTime']) ? $testimonial['reviewTime'] : '';
-                        $review_url = isset($testimonial['reviewUrl']) ? $testimonial['reviewUrl'] : '';
-                        
-                        if (empty($author_image)) {
-                            $last_letter = substr($author_name, 4);
-                            $color = strtoupper(substr(dechex(crc32($last_letter)), 0, 6));
-                            $initials = substr($author_name, 0, 1);
-                            $author_image = "https://placehold.co/150x150/$color/ffffff.png?text=" . $initials;
-                        }
-                        ?>
-                        <div class="testimonial-slide">
-                            <div class="testimonial-card">
-                                <div class="testimonial-author">
-                                    <div class="author-image">
-                                        <img src="<?php echo esc_url($author_image); ?>" alt="<?php echo esc_attr($author_name); ?>" />
-                                    </div>
+	                        $bottom_image = isset($testimonial['bottomImage']) && !empty($testimonial['bottomImage']) ? $testimonial['bottomImage'] : '';
+	                        $review_time = isset($testimonial['reviewTime']) ? $testimonial['reviewTime'] : '';
+	                        $review_url = isset($testimonial['reviewUrl']) ? $testimonial['reviewUrl'] : '';
+	                        $author_initials = $this->get_author_initials($author_name);
+	                        $author_avatar_color = $this->get_author_avatar_color($testimonial, $author_name);
+	                        ?>
+	                        <div class="testimonial-slide">
+	                            <div class="testimonial-card">
+	                                <div class="testimonial-author">
+	                                    <div class="author-image">
+	                                        <?php if (!empty($author_image)) : ?>
+	                                        <img src="<?php echo esc_url($author_image); ?>" alt="<?php echo esc_attr($author_name); ?>" />
+	                                        <?php else : ?>
+	                                        <span class="author-initials" style="background-color: <?php echo esc_attr($author_avatar_color); ?>;">
+	                                            <?php echo esc_html($author_initials); ?>
+	                                        </span>
+	                                        <?php endif; ?>
+	                                    </div>
                                     <div class="author-info">
                                         <h4><?php echo esc_html($author_name); ?></h4>
                                         <p><?php echo esc_html($author_position); ?></p>

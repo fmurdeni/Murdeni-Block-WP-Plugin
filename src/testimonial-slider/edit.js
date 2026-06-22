@@ -20,6 +20,27 @@ import {
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 
+const avatarColors = ['#16a34a', '#0ea5e9', '#f97316', '#8b5cf6', '#ef4444', '#0891b2'];
+
+const getInitials = (name = '') => {
+    const words = name.trim().split(/\s+/).filter(Boolean);
+    if (!words.length) {
+        return '+';
+    }
+
+    return words.slice(0, 2).map((word) => word.charAt(0).toUpperCase()).join('');
+};
+
+const getAvatarColor = (testimonial = {}) => {
+    if (testimonial.authorAvatarColor) {
+        return testimonial.authorAvatarColor;
+    }
+
+    const name = testimonial.authorName || testimonial.id || '';
+    const total = name.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
+    return avatarColors[total % avatarColors.length];
+};
+
 const Edit = ({ attributes, setAttributes }) => {
     const {
         testimonials,
@@ -57,16 +78,17 @@ const Edit = ({ attributes, setAttributes }) => {
     // Function to handle adding a new testimonial
     const addTestimonial = () => {
         const newTestimonials = [...testimonials];
-        newTestimonials.push({
-            id: `testimonial-${Date.now()}`,
-            rating: 5,
-            content: '',
-            authorName: '',
-            authorPosition: '',
-            authorImage: 'https://placehold.co/150x150/cccccc/ffffff.png?text=+',
-            reviewTime: '',
-            reviewUrl: '',
-        });
+	        newTestimonials.push({
+	            id: `testimonial-${Date.now()}`,
+	            rating: 5,
+	            content: '',
+	            authorName: '',
+	            authorPosition: '',
+	            authorImage: '',
+	            authorAvatarColor: avatarColors[newTestimonials.length % avatarColors.length],
+	            reviewTime: '',
+	            reviewUrl: '',
+	        });
         setAttributes({ testimonials: newTestimonials });
     };
 
@@ -357,12 +379,14 @@ const Edit = ({ attributes, setAttributes }) => {
                                             <Button
                                                 onClick={open}
                                                 className="image-button"
-                                                style={{
-                                                    backgroundImage: `url(${testimonials[activeTestimonial].authorImage})`,
-                                                }}
-                                            >
-                                                {!testimonials[activeTestimonial].authorImage && __('Upload Image', 'murdeni-blocks')}
-                                            </Button>
+	                                                style={testimonials[activeTestimonial].authorImage ? {
+	                                                    backgroundImage: `url(${testimonials[activeTestimonial].authorImage})`,
+	                                                } : {
+                                                        backgroundColor: getAvatarColor(testimonials[activeTestimonial]),
+                                                    }}
+	                                            >
+	                                                {!testimonials[activeTestimonial].authorImage && getInitials(testimonials[activeTestimonial].authorName)}
+	                                            </Button>
                                         )}
                                     />
                                 </MediaUploadCheck>
