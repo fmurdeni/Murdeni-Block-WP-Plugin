@@ -1,15 +1,13 @@
 #!/usr/bin/env node
 
-const { spawnSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
 const root = path.resolve(__dirname, '..');
 const mainFile = path.join(root, 'murdeni-blocks.php');
-const distDir = path.join(root, 'dist');
-const tempDir = path.join(distDir, '.package-tmp');
 const pluginSlug = 'Murdeni-Block-WP-Plugin';
-const packageRoot = path.join(tempDir, pluginSlug);
+const uploadRoot = path.resolve(root, '..', '..', 'pluginupload');
+const outputDir = path.join(uploadRoot, pluginSlug);
 const releaseFiles = [
 	'assets',
 	'build',
@@ -30,6 +28,18 @@ function readPluginVersion() {
 	return match[1];
 }
 
+function assertSafeOutputPath(targetPath) {
+	const resolvedTarget = path.resolve(targetPath);
+	const resolvedUploadRoot = path.resolve(uploadRoot);
+
+	if (
+		!resolvedTarget.startsWith(resolvedUploadRoot + path.sep) ||
+		path.basename(resolvedTarget) !== pluginSlug
+	) {
+		throw new Error(`Refusing to clean unsafe output path: ${resolvedTarget}`);
+	}
+}
+
 function copyRecursive(source, destination) {
 	const stat = fs.statSync(source);
 
@@ -45,57 +55,22 @@ function copyRecursive(source, destination) {
 	fs.copyFileSync(source, destination);
 }
 
-function run(command, args, options = {}) {
-	const result = spawnSync(command, args, {
-		cwd: options.cwd || root,
-		stdio: 'inherit',
-		shell: false,
-	});
-
-	if (result.error) {
-		throw result.error;
-	}
-
-	if (result.status !== 0) {
-		throw new Error(`${command} exited with status ${result.status}.`);
-	}
-}
-
-function zipDirectory(sourceDir, outputFile) {
-	if (process.platform === 'win32') {
-		run('powershell.exe', [
-			'-NoProfile',
-			'-ExecutionPolicy',
-			'Bypass',
-			'-Command',
-			`Compress-Archive -Path '${path.join(sourceDir, '*').replace(/'/g, "''")}' -DestinationPath '${outputFile.replace(/'/g, "''")}' -Force`,
-		]);
-		return;
-	}
-
-	run('zip', ['-qr', outputFile, pluginSlug], { cwd: sourceDir });
-}
-
 function main() {
 	const version = readPluginVersion();
-	const outputFile = path.join(distDir, `murdeni-blocks-v${version}.zip`);
 
-	fs.rmSync(tempDir, { recursive: true, force: true });
-	fs.mkdirSync(packageRoot, { recursive: true });
-	fs.rmSync(outputFile, { force: true });
+	assertSafeOutputPath(outputDir);
+	fs.rmSync(outputDir, { recursive: true, force: true });
+	fs.mkdirSync(outputDir, { recursive: true });
 
 	for (const file of releaseFiles) {
 		const source = path.join(root, file);
 		if (!fs.existsSync(source)) {
 			continue;
 		}
-		copyRecursive(source, path.join(packageRoot, file));
+		copyRecursive(source, path.join(outputDir, file));
 	}
 
-	zipDirectory(tempDir, outputFile);
-	fs.rmSync(tempDir, { recursive: true, force: true });
-
-	console.log(`Created ${path.relative(root, outputFile)}`);
+	console.log(`Copied Murdeni Blocks v${version} to ${outputDir}`);
 }
 
 try {
