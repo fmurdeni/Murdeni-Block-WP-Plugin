@@ -190,7 +190,7 @@ class Murdeni_Testimonial_Slider {
             }
             
             <?php if ($fixed_height) : ?>
-            #<?php echo esc_attr($block_id); ?> .testimonial-card {
+            #<?php echo esc_attr($block_id); ?> .testimonial-slide {
                 height: var(--testimonial-slide-height, 300px);
                 overflow-y: auto;
             }
