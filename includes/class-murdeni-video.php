@@ -239,6 +239,8 @@ class Murdeni_Video {
 				return 'padding-top: 100%;';
 			case '21:9':
 				return 'padding-top: 42.85%;';
+			case '9:16':
+				return 'padding-top: 177.78%;';
 			default:
 				return 'padding-top: 56.25%;';
 		}
@@ -255,7 +257,7 @@ class Murdeni_Video {
 			return '';
 		}
 
-		$pattern = '/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i';
+		$pattern = '/(?:youtube\.com\/(?:shorts\/|[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i';
 		preg_match( $pattern, $url, $matches );
 
 		return isset( $matches[1] ) ? $matches[1] : '';

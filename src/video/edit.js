@@ -52,6 +52,18 @@ export default function Edit({ attributes, setAttributes }) {
 
     const [isValidYouTubeUrl, setIsValidYouTubeUrl] = useState(true);
 
+    // Extract YouTube video ID from standard, short, embed, and Shorts URLs.
+    const getYouTubeVideoId = (url) => {
+        if (!url) {
+            return '';
+        }
+
+        const pattern = /(?:youtube\.com\/(?:shorts\/|embed\/|watch\?v=|watch\?.*&v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+        const match = url.match(pattern);
+
+        return match ? match[1] : '';
+    };
+
     // Validate YouTube URL
     const validateYouTubeUrl = (url) => {
         if (!url) {
@@ -59,8 +71,7 @@ export default function Edit({ attributes, setAttributes }) {
             return true;
         }
         
-        const pattern = /^(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})$/;
-        const isValid = pattern.test(url);
+        const isValid = Boolean(getYouTubeVideoId(url));
         setIsValidYouTubeUrl(isValid);
         return isValid;
     };
@@ -82,6 +93,8 @@ export default function Edit({ attributes, setAttributes }) {
                 return { paddingTop: '100%' };
             case '21:9':
                 return { paddingTop: '42.85%' };
+            case '9:16':
+                return { paddingTop: '177.78%' };
             default:
                 return { paddingTop: '56.25%' };
         }
@@ -164,7 +177,7 @@ export default function Edit({ attributes, setAttributes }) {
                         label={__('YouTube Video URL', 'murdeni-blocks')}
                         value={videoUrl}
                         onChange={onChangeVideoUrl}
-                        help={!isValidYouTubeUrl ? __('Please enter a valid YouTube URL', 'murdeni-blocks') : ''}
+                        help={!isValidYouTubeUrl ? __('Please enter a valid YouTube URL or Shorts URL', 'murdeni-blocks') : ''}
                         className={!isValidYouTubeUrl ? 'has-error' : ''}
                     />
                     <SelectControl
@@ -175,6 +188,7 @@ export default function Edit({ attributes, setAttributes }) {
                             { label: '4:3', value: '4:3' },
                             { label: '1:1', value: '1:1' },
                             { label: '21:9', value: '21:9' },
+                            { label: '9:16 (Shorts)', value: '9:16' },
                         ]}
                         onChange={(value) => setAttributes({ aspectRatio: value })}
                     />
