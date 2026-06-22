@@ -93,6 +93,10 @@
         "full"
       ]
     },
+    "centerContent": {
+      "type": "boolean",
+      "default": false
+    },
     "customClass": {
       "type": "string",
       "default": ""
