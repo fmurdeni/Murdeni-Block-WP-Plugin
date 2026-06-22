@@ -26,7 +26,9 @@
           "content": "Feri adalah pengembang web yang sangat profesional. Dia menyelesaikan proyek e-commerce kami tepat waktu dan hasilnya melebihi ekspektasi. Komunikasi lancar dan dia sangat responsif terhadap revisi.",
           "authorName": "Ahmad Rizky",
           "authorPosition": "CEO, Rizky Store",
-          "authorImage": ""
+          "authorImage": "",
+          "reviewTime": "2 minggu lalu",
+          "reviewUrl": ""
         },
         {
           "id": "testimonial-2",
@@ -34,7 +36,9 @@
           "content": "Saya sangat puas dengan website perusahaan yang dibuat oleh Feri. Desainnya modern, responsif, dan mudah dikelola. Proses pengerjaan sangat transparan dan Feri selalu memberikan saran yang bermanfaat.",
           "authorName": "Sarah Wijaya",
           "authorPosition": "Marketing Director, Wijaya Corp",
-          "authorImage": ""
+          "authorImage": "",
+          "reviewTime": "2 minggu lalu",
+          "reviewUrl": ""
         },
         {
           "id": "testimonial-3",
@@ -42,13 +46,27 @@
           "content": "Bekerja dengan Feri adalah pengalaman yang menyenangkan. Dia memahami kebutuhan bisnis kami dan mengimplementasikannya dengan sempurna. Plugin WordPress yang dia kembangkan sangat membantu operasional kami.",
           "authorName": "Budi Santoso",
           "authorPosition": "Owner, Santoso Travel",
-          "authorImage": ""
+          "authorImage": "",
+          "reviewTime": "3 minggu lalu",
+          "reviewUrl": ""
         }
       ]
     },
+    "cardBottomTitle": {
+      "type": "string",
+      "default": "Sentra Autoglass Tangerang - Kaca..."
+    },
+    "cardBottomSubtitle": {
+      "type": "string",
+      "default": "Toyota Calya"
+    },
+    "cardReviewLinkText": {
+      "type": "string",
+      "default": "Lihat di Google"
+    },
     "slidesToShow": {
       "type": "number",
-      "default": 1
+      "default": 2
     },
     "autoplay": {
       "type": "boolean",

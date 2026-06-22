@@ -1,1 +1,396 @@
-(()=>{"use strict";var e,t={609:()=>{const e=window.wp.blocks,t=window.wp.i18n,l=window.React,n=window.wp.blockEditor,a=window.wp.components,o=window.wp.element,r=(0,l.createElement)("svg",{xmlns:"http://www.w3.org/2000/svg",width:"32px",height:"32px",viewBox:"0 0 20 20"},(0,l.createElement)("rect",{x:"0",fill:"none",width:"20",height:"20"}),(0,l.createElement)("g",null,(0,l.createElement)("path",{d:"M4 3h12c.55 0 1.02.2 1.41.59S18 4.45 18 5v7c0 .55-.2 1.02-.59 1.41S16.55 14 16 14h-1l-5 5v-5H4c-.55 0-1.02-.2-1.41-.59S2 12.55 2 12V5c0-.55.2-1.02.59-1.41S3.45 3 4 3zm11 2H4v1h11V5zm1 3H4v1h12V8zm-3 3H4v1h9v-1z"})));(0,e.registerBlockType)("murdeni/testimonial-slider",{icon:r,edit:({attributes:e,setAttributes:r})=>{const{topImage:i,testimonials:m,slidesToShow:c,autoplay:s,autoplaySpeed:d,arrows:u,dots:g,infinite:h,speed:b,pauseOnHover:p,backgroundColor:k,textColor:v,ratingColor:E,borderRadius:_,boxShadow:C,showOverallRating:w,reviewerCount:x,overallRatingText:R,showReviewLink:T,reviewLinkText:y,reviewLinkUrl:f,fixedHeight:S,slideHeight:N}=e,I=(0,n.useBlockProps)({className:"testimonial-slider-editor"+(S?" fixed-height":""),style:S?{"--slide-height":`${N}px`}:{}}),B=(e,t,l)=>{const n=[...m];n[e]={...n[e],[t]:l},r({testimonials:n})},O=e=>{const t=[];for(let n=0;n<5;n++)t.push((0,l.createElement)("span",{key:n,className:n<e?"star filled":"star empty",style:{color:E},onClick:()=>B(H,"rating",n+1)},"★"));return t},P=()=>{if(!m.length)return 0;const e=m.reduce(((e,t)=>e+(t.rating||0)),0);return e/m.length},[H,U]=(0,o.useState)(0);return(0,l.createElement)(l.Fragment,null,(0,l.createElement)(n.InspectorControls,null,(0,l.createElement)(a.PanelBody,{title:(0,t.__)("Top Image","murdeni-blocks"),initialOpen:!0},(0,l.createElement)(n.MediaUploadCheck,null,(0,l.createElement)(n.MediaUpload,{onSelect:e=>r({topImage:e.url}),allowedTypes:["image"],value:i,render:({open:e})=>(0,l.createElement)("div",null,i?(0,l.createElement)("div",null,(0,l.createElement)("img",{src:i,alt:(0,t.__)("Top Image","murdeni-blocks"),style:{maxWidth:"100%",marginBottom:"10px"}}),(0,l.createElement)("div",null,(0,l.createElement)(a.Button,{onClick:e,variant:"secondary",className:"is-button"},(0,t.__)("Replace Image","murdeni-blocks")),(0,l.createElement)(a.Button,{onClick:()=>r({topImage:""}),variant:"link",isDestructive:!0},(0,t.__)("Remove Image","murdeni-blocks")))):(0,l.createElement)(a.Button,{onClick:e,variant:"primary",className:"is-button"},(0,t.__)("Upload Top Image","murdeni-blocks")))}))),(0,l.createElement)(a.PanelBody,{title:(0,t.__)("Slider Settings","murdeni-blocks"),initialOpen:!1},(0,l.createElement)(a.RangeControl,{label:(0,t.__)("Slides to Show","murdeni-blocks"),value:c,onChange:e=>r({slidesToShow:e}),min:1,max:3}),(0,l.createElement)(a.ToggleControl,{label:(0,t.__)("Autoplay","murdeni-blocks"),checked:s,onChange:e=>r({autoplay:e})}),s&&(0,l.createElement)(a.RangeControl,{label:(0,t.__)("Autoplay Speed (ms)","murdeni-blocks"),value:d,onChange:e=>r({autoplaySpeed:e}),min:1e3,max:1e4,step:500}),(0,l.createElement)(a.ToggleControl,{label:(0,t.__)("Show Arrows","murdeni-blocks"),checked:u,onChange:e=>r({arrows:e})}),(0,l.createElement)(a.ToggleControl,{label:(0,t.__)("Show Dots","murdeni-blocks"),checked:g,onChange:e=>r({dots:e})}),(0,l.createElement)(a.ToggleControl,{label:(0,t.__)("Infinite Loop","murdeni-blocks"),checked:h,onChange:e=>r({infinite:e})}),(0,l.createElement)(a.RangeControl,{label:(0,t.__)("Animation Speed (ms)","murdeni-blocks"),value:b,onChange:e=>r({speed:e}),min:100,max:3e3,step:100}),(0,l.createElement)(a.ToggleControl,{label:(0,t.__)("Pause on Hover","murdeni-blocks"),checked:p,onChange:e=>r({pauseOnHover:e})})),(0,l.createElement)(a.PanelBody,{title:(0,t.__)("Rating Settings","murdeni-blocks"),initialOpen:!1},(0,l.createElement)(a.ToggleControl,{label:(0,t.__)("Show Overall Rating","murdeni-blocks"),checked:w,onChange:e=>r({showOverallRating:e})}),w&&(0,l.createElement)(l.Fragment,null,(0,l.createElement)(a.RangeControl,{label:(0,t.__)("Reviewer Count","murdeni-blocks"),value:x,onChange:e=>r({reviewerCount:e}),min:0,max:1e3}),(0,l.createElement)(a.TextControl,{label:(0,t.__)("Rating Text Format","murdeni-blocks"),help:(0,t.__)("Use %d as placeholder for reviewer count","murdeni-blocks"),value:R,onChange:e=>r({overallRatingText:e})}),(0,l.createElement)(a.ToggleControl,{label:(0,t.__)("Show Review Link","murdeni-blocks"),checked:T,onChange:e=>r({showReviewLink:e})}),T&&(0,l.createElement)(l.Fragment,null,(0,l.createElement)(a.TextControl,{label:(0,t.__)("Review Link Text","murdeni-blocks"),value:y,onChange:e=>r({reviewLinkText:e})}),(0,l.createElement)(a.TextControl,{label:(0,t.__)("Review Link URL","murdeni-blocks"),value:f,onChange:e=>r({reviewLinkUrl:e})})))),(0,l.createElement)(a.PanelBody,{title:(0,t.__)("Height Settings","murdeni-blocks"),initialOpen:!1},(0,l.createElement)(a.ToggleControl,{label:(0,t.__)("Fixed Height Slides","murdeni-blocks"),help:(0,t.__)("Enable to make all slides the same height","murdeni-blocks"),checked:S,onChange:e=>r({fixedHeight:e})}),S&&(0,l.createElement)(a.RangeControl,{label:(0,t.__)("Slide Height (px)","murdeni-blocks"),value:N,onChange:e=>r({slideHeight:e}),min:100,max:800,step:10})),(0,l.createElement)(a.PanelBody,{title:(0,t.__)("Style Settings","murdeni-blocks"),initialOpen:!1},(0,l.createElement)(a.PanelRow,null,(0,l.createElement)("span",null,(0,t.__)("Background Color","murdeni-blocks"))),(0,l.createElement)(a.ColorPicker,{color:k,onChange:e=>r({backgroundColor:e}),enableAlpha:!0}),(0,l.createElement)(a.PanelRow,null,(0,l.createElement)("span",null,(0,t.__)("Text Color","murdeni-blocks"))),(0,l.createElement)(a.ColorPicker,{color:v,onChange:e=>r({textColor:e}),enableAlpha:!0}),(0,l.createElement)(a.PanelRow,null,(0,l.createElement)("span",null,(0,t.__)("Rating Color","murdeni-blocks"))),(0,l.createElement)(a.ColorPicker,{color:E,onChange:e=>r({ratingColor:e}),enableAlpha:!0}),(0,l.createElement)(a.RangeControl,{label:(0,t.__)("Border Radius (px)","murdeni-blocks"),value:_,onChange:e=>r({borderRadius:e}),min:0,max:50}),(0,l.createElement)(a.ToggleControl,{label:(0,t.__)("Box Shadow","murdeni-blocks"),checked:C,onChange:e=>r({boxShadow:e})}))),(0,l.createElement)("div",{...I},i&&(0,l.createElement)("div",{className:"testimonial-top-image"},(0,l.createElement)("img",{src:i,alt:""})),w&&(0,l.createElement)("div",{className:"testimonial-overall-rating"},(0,l.createElement)("div",{className:"overall-rating-stars"},O(P()),(0,l.createElement)("span",{className:"average-rating"},P().toFixed(1))),(0,l.createElement)("div",{className:"overall-rating-text"},R.replace("%d",x)),T&&(0,l.createElement)("div",{className:"review-link"},(0,l.createElement)("a",{href:f,target:"_blank",rel:"noopener noreferrer"},y))),(0,l.createElement)("div",{className:"testimonial-slider-tabs"},m.map(((e,n)=>(0,l.createElement)("button",{key:e.id,className:"testimonial-tab "+(n===H?"active":""),onClick:()=>U(n)},(0,t.__)("Testimonial","murdeni-blocks")," ",n+1))),(0,l.createElement)("button",{className:"testimonial-add-button",onClick:()=>{const e=[...m];e.push({id:`testimonial-${Date.now()}`,rating:5,content:"",authorName:"",authorPosition:"",authorImage:"https://placehold.co/150x150/cccccc/ffffff.png?text=+",bottomImage:""}),r({testimonials:e})}},(0,t.__)("+ Add","murdeni-blocks"))),m.length>0&&(0,l.createElement)("div",{className:"testimonial-card-editor",style:{backgroundColor:k,color:v,borderRadius:`${_}px`,boxShadow:C?"0 4px 16px rgba(0,0,0,0.1)":"none"}},(0,l.createElement)("div",{className:"testimonial-author"},(0,l.createElement)("div",{className:"author-image"},(0,l.createElement)(n.MediaUploadCheck,null,(0,l.createElement)(n.MediaUpload,{onSelect:e=>B(H,"authorImage",e.url),allowedTypes:["image"],value:m[H].authorImage,render:({open:e})=>(0,l.createElement)(a.Button,{onClick:e,className:"image-button",style:{backgroundImage:`url(${m[H].authorImage})`}},!m[H].authorImage&&(0,t.__)("Upload Author Image","murdeni-blocks"))}))),(0,l.createElement)("div",{className:"author-info"},(0,l.createElement)(n.RichText,{tagName:"h4",value:m[H].authorName,onChange:e=>B(H,"authorName",e),placeholder:(0,t.__)("Author Name","murdeni-blocks")}),(0,l.createElement)(n.RichText,{tagName:"p",value:m[H].authorPosition,onChange:e=>B(H,"authorPosition",e),placeholder:(0,t.__)("Author Position","murdeni-blocks")}))),(0,l.createElement)("div",{className:"testimonial-rating"},O(m[H].rating)),(0,l.createElement)("div",{className:"testimonial-content"},(0,l.createElement)(n.RichText,{tagName:"p",value:m[H].content,onChange:e=>B(H,"content",e),placeholder:(0,t.__)("Enter testimonial content...","murdeni-blocks")})),(0,l.createElement)("div",{className:"testimonial-bottom-image"},(0,l.createElement)(n.MediaUploadCheck,null,(0,l.createElement)(n.MediaUpload,{onSelect:e=>B(H,"bottomImage",e.url),allowedTypes:["image"],value:m[H].bottomImage,render:({open:e})=>(0,l.createElement)("div",null,m[H].bottomImage?(0,l.createElement)("div",null,(0,l.createElement)("img",{src:m[H].bottomImage,alt:(0,t.__)("Bottom Image","murdeni-blocks"),style:{maxWidth:"100%",marginBottom:"10px"}}),(0,l.createElement)("div",null,(0,l.createElement)(a.Button,{onClick:e,variant:"secondary",className:"is-button"},(0,t.__)("Replace Image","murdeni-blocks")),(0,l.createElement)(a.Button,{onClick:()=>B(H,"bottomImage",""),variant:"link",isDestructive:!0},(0,t.__)("Remove Image","murdeni-blocks")))):(0,l.createElement)(a.Button,{onClick:e,variant:"secondary",className:"is-button"},(0,t.__)("Upload Bottom Image","murdeni-blocks")))}))),m.length>1&&(0,l.createElement)(a.Button,{className:"remove-testimonial-button",onClick:()=>(e=>{const t=[...m];t.splice(e,1),r({testimonials:t}),e>=t.length&&t.length>0&&U(t.length-1)})(H),isDestructive:!0},(0,t.__)("Remove Testimonial","murdeni-blocks")))))},save:()=>null})}},l={};function n(e){var a=l[e];if(void 0!==a)return a.exports;var o=l[e]={exports:{}};return t[e](o,o.exports,n),o.exports}n.m=t,e=[],n.O=(t,l,a,o)=>{if(!l){var r=1/0;for(s=0;s<e.length;s++){for(var[l,a,o]=e[s],i=!0,m=0;m<l.length;m++)(!1&o||r>=o)&&Object.keys(n.O).every((e=>n.O[e](l[m])))?l.splice(m--,1):(i=!1,o<r&&(r=o));if(i){e.splice(s--,1);var c=a();void 0!==c&&(t=c)}}return t}o=o||0;for(var s=e.length;s>0&&e[s-1][2]>o;s--)e[s]=e[s-1];e[s]=[l,a,o]},n.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),(()=>{var e={915:0,155:0};n.O.j=t=>0===e[t];var t=(t,l)=>{var a,o,[r,i,m]=l,c=0;if(r.some((t=>0!==e[t]))){for(a in i)n.o(i,a)&&(n.m[a]=i[a]);if(m)var s=m(n)}for(t&&t(l);c<r.length;c++)o=r[c],n.o(e,o)&&e[o]&&e[o][0](),e[o]=0;return n.O(s)},l=globalThis.webpackChunkmurdeni_blocks=globalThis.webpackChunkmurdeni_blocks||[];l.forEach(t.bind(null,0)),l.push=t.bind(null,l.push.bind(l))})();var a=n.O(void 0,[155],(()=>n(609)));a=n.O(a)})();
+(function (wp) {
+    var el = wp.element.createElement;
+    var Fragment = wp.element.Fragment;
+    var useState = wp.element.useState;
+    var __ = wp.i18n.__;
+    var registerBlockType = wp.blocks.registerBlockType;
+    var blockEditor = wp.blockEditor;
+    var components = wp.components;
+
+    var InspectorControls = blockEditor.InspectorControls;
+    var MediaUpload = blockEditor.MediaUpload;
+    var MediaUploadCheck = blockEditor.MediaUploadCheck;
+    var RichText = blockEditor.RichText;
+    var useBlockProps = blockEditor.useBlockProps;
+    var Button = components.Button;
+    var PanelBody = components.PanelBody;
+    var PanelRow = components.PanelRow;
+    var RangeControl = components.RangeControl;
+    var ToggleControl = components.ToggleControl;
+    var ColorPicker = components.ColorPicker;
+    var TextControl = components.TextControl;
+
+    function renderStars(rating, color, onRate) {
+        var stars = [];
+        for (var i = 0; i < 5; i++) {
+            (function (index) {
+                stars.push(el(
+                    'span',
+                    {
+                        key: index,
+                        className: index < rating ? 'star filled' : 'star empty',
+                        style: { color: color },
+                        onClick: function () { return onRate(index + 1); }
+                    },
+                    '★'
+                ));
+            })(i);
+        }
+        return stars;
+    }
+
+    function calculateAverageRating(testimonials) {
+        if (!testimonials || !testimonials.length) {
+            return 0;
+        }
+        return testimonials.reduce(function (total, testimonial) {
+            return total + (testimonial.rating || 0);
+        }, 0) / testimonials.length;
+    }
+
+    function Edit(props) {
+        var attributes = props.attributes;
+        var setAttributes = props.setAttributes;
+        var testimonials = attributes.testimonials || [];
+        var activeState = useState(0);
+        var activeTestimonial = activeState[0];
+        var setActiveTestimonial = activeState[1];
+        var active = testimonials[activeTestimonial] || {};
+
+        var blockProps = useBlockProps({
+            className: 'testimonial-slider-editor' + (attributes.fixedHeight ? ' fixed-height' : ''),
+            style: attributes.fixedHeight ? { '--slide-height': attributes.slideHeight + 'px' } : {}
+        });
+
+        function updateTestimonial(index, property, value) {
+            var nextTestimonials = testimonials.slice();
+            nextTestimonials[index] = Object.assign({}, nextTestimonials[index], (_a = {}, _a[property] = value, _a));
+            setAttributes({ testimonials: nextTestimonials });
+            var _a;
+        }
+
+        function addTestimonial() {
+            setAttributes({
+                testimonials: testimonials.concat([{
+                    id: 'testimonial-' + Date.now(),
+                    rating: 5,
+                    content: '',
+	                    authorName: '',
+	                    authorPosition: '',
+	                    authorImage: '',
+	                    reviewTime: '',
+	                    reviewUrl: ''
+	                }])
+	            });
+            setActiveTestimonial(testimonials.length);
+        }
+
+        function removeTestimonial(index) {
+            var nextTestimonials = testimonials.slice();
+            nextTestimonials.splice(index, 1);
+            setAttributes({ testimonials: nextTestimonials });
+            if (index >= nextTestimonials.length && nextTestimonials.length > 0) {
+                setActiveTestimonial(nextTestimonials.length - 1);
+            }
+        }
+
+        var averageRating = calculateAverageRating(testimonials);
+
+        return el(
+            Fragment,
+            null,
+            el(
+                InspectorControls,
+                null,
+                el(
+                    PanelBody,
+                    { title: __('Slider Settings', 'murdeni-blocks'), initialOpen: true },
+                    el(RangeControl, {
+                        label: __('Slides to Show', 'murdeni-blocks'),
+                        value: attributes.slidesToShow,
+                        onChange: function (value) { return setAttributes({ slidesToShow: value }); },
+                        min: 1,
+                        max: 2
+                    }),
+                    el(ToggleControl, {
+                        label: __('Autoplay', 'murdeni-blocks'),
+                        checked: attributes.autoplay,
+                        onChange: function (value) { return setAttributes({ autoplay: value }); }
+                    }),
+                    attributes.autoplay && el(RangeControl, {
+                        label: __('Autoplay Speed (ms)', 'murdeni-blocks'),
+                        value: attributes.autoplaySpeed,
+                        onChange: function (value) { return setAttributes({ autoplaySpeed: value }); },
+                        min: 1000,
+                        max: 10000,
+                        step: 500
+                    }),
+                    el(ToggleControl, {
+                        label: __('Show Arrows', 'murdeni-blocks'),
+                        checked: attributes.arrows,
+                        onChange: function (value) { return setAttributes({ arrows: value }); }
+                    }),
+                    el(ToggleControl, {
+                        label: __('Show Dots', 'murdeni-blocks'),
+                        checked: attributes.dots,
+                        onChange: function (value) { return setAttributes({ dots: value }); }
+                    }),
+                    el(ToggleControl, {
+                        label: __('Infinite Loop', 'murdeni-blocks'),
+                        checked: attributes.infinite,
+                        onChange: function (value) { return setAttributes({ infinite: value }); }
+                    }),
+                    el(RangeControl, {
+                        label: __('Animation Speed (ms)', 'murdeni-blocks'),
+                        value: attributes.speed,
+                        onChange: function (value) { return setAttributes({ speed: value }); },
+                        min: 100,
+                        max: 3000,
+                        step: 100
+                    }),
+	                    el(ToggleControl, {
+	                        label: __('Pause on Hover', 'murdeni-blocks'),
+	                        checked: attributes.pauseOnHover,
+	                        onChange: function (value) { return setAttributes({ pauseOnHover: value }); }
+	                    })
+	                ),
+	                el(
+	                    PanelBody,
+	                    { title: __('Card Bottom Settings', 'murdeni-blocks'), initialOpen: false },
+	                    el(TextControl, {
+	                        label: __('Bottom Title', 'murdeni-blocks'),
+	                        value: attributes.cardBottomTitle,
+	                        onChange: function (value) { return setAttributes({ cardBottomTitle: value }); }
+	                    }),
+	                    el(TextControl, {
+	                        label: __('Bottom Subtitle', 'murdeni-blocks'),
+	                        value: attributes.cardBottomSubtitle,
+	                        onChange: function (value) { return setAttributes({ cardBottomSubtitle: value }); }
+	                    }),
+	                    el(TextControl, {
+	                        label: __('Review Link Text', 'murdeni-blocks'),
+	                        value: attributes.cardReviewLinkText,
+	                        onChange: function (value) { return setAttributes({ cardReviewLinkText: value }); }
+	                    })
+	                ),
+	                el(
+	                    PanelBody,
+	                    { title: __('Rating Settings', 'murdeni-blocks'), initialOpen: false },
+                    el(ToggleControl, {
+                        label: __('Show Overall Rating', 'murdeni-blocks'),
+                        checked: attributes.showOverallRating,
+                        onChange: function (value) { return setAttributes({ showOverallRating: value }); }
+                    }),
+                    attributes.showOverallRating && el(
+                        Fragment,
+                        null,
+                        el(RangeControl, {
+                            label: __('Reviewer Count', 'murdeni-blocks'),
+                            value: attributes.reviewerCount,
+                            onChange: function (value) { return setAttributes({ reviewerCount: value }); },
+                            min: 0,
+                            max: 1000
+                        }),
+                        el(TextControl, {
+                            label: __('Rating Text Format', 'murdeni-blocks'),
+                            help: __('Use %d as placeholder for reviewer count', 'murdeni-blocks'),
+                            value: attributes.overallRatingText,
+                            onChange: function (value) { return setAttributes({ overallRatingText: value }); }
+                        })
+                    )
+                ),
+                el(
+                    PanelBody,
+                    { title: __('Height Settings', 'murdeni-blocks'), initialOpen: false },
+                    el(ToggleControl, {
+                        label: __('Fixed Height Slides', 'murdeni-blocks'),
+                        checked: attributes.fixedHeight,
+                        onChange: function (value) { return setAttributes({ fixedHeight: value }); }
+                    }),
+                    attributes.fixedHeight && el(RangeControl, {
+                        label: __('Slide Height (px)', 'murdeni-blocks'),
+                        value: attributes.slideHeight,
+                        onChange: function (value) { return setAttributes({ slideHeight: value }); },
+                        min: 100,
+                        max: 800,
+                        step: 10
+                    })
+                ),
+                el(
+                    PanelBody,
+                    { title: __('Style Settings', 'murdeni-blocks'), initialOpen: false },
+                    el(PanelRow, null, el('span', null, __('Background Color', 'murdeni-blocks'))),
+                    el(ColorPicker, {
+                        color: attributes.backgroundColor,
+                        onChange: function (value) { return setAttributes({ backgroundColor: value }); },
+                        enableAlpha: true
+                    }),
+                    el(PanelRow, null, el('span', null, __('Text Color', 'murdeni-blocks'))),
+                    el(ColorPicker, {
+                        color: attributes.textColor,
+                        onChange: function (value) { return setAttributes({ textColor: value }); },
+                        enableAlpha: true
+                    }),
+                    el(PanelRow, null, el('span', null, __('Rating Color', 'murdeni-blocks'))),
+                    el(ColorPicker, {
+                        color: attributes.ratingColor,
+                        onChange: function (value) { return setAttributes({ ratingColor: value }); },
+                        enableAlpha: true
+                    }),
+                    el(RangeControl, {
+                        label: __('Border Radius (px)', 'murdeni-blocks'),
+                        value: attributes.borderRadius,
+                        onChange: function (value) { return setAttributes({ borderRadius: value }); },
+                        min: 0,
+                        max: 50
+                    }),
+                    el(ToggleControl, {
+                        label: __('Box Shadow', 'murdeni-blocks'),
+                        checked: attributes.boxShadow,
+                        onChange: function (value) { return setAttributes({ boxShadow: value }); }
+                    })
+                )
+            ),
+            el(
+                'div',
+                blockProps,
+                attributes.showOverallRating && el(
+                    'div',
+                    { className: 'testimonial-overall-rating' },
+                    el(
+                        'div',
+                        { className: 'overall-rating-stars' },
+                        renderStars(averageRating, attributes.ratingColor, function () {}),
+                        el('span', { className: 'average-rating' }, averageRating.toFixed(1))
+                    ),
+                    el('div', { className: 'overall-rating-text' }, (attributes.overallRatingText || '').replace('%d', attributes.reviewerCount || 0))
+                ),
+                el(
+                    'div',
+                    { className: 'testimonial-slider-tabs' },
+                    testimonials.map(function (testimonial, index) {
+                        return el(
+                            'button',
+                            {
+                                key: testimonial.id,
+                                className: 'testimonial-tab ' + (index === activeTestimonial ? 'active' : ''),
+                                onClick: function () { return setActiveTestimonial(index); }
+                            },
+                            __('Testimonial', 'murdeni-blocks') + ' ' + (index + 1)
+                        );
+                    }),
+                    el('button', { className: 'testimonial-add-button', onClick: addTestimonial }, __('+ Add', 'murdeni-blocks'))
+                ),
+                testimonials.length > 0 && el(
+                    'div',
+                    {
+                        className: 'testimonial-card-editor',
+                        style: {
+                            backgroundColor: attributes.backgroundColor,
+                            color: attributes.textColor,
+                            borderRadius: attributes.borderRadius + 'px',
+                            boxShadow: attributes.boxShadow ? '0 4px 16px rgba(0,0,0,0.1)' : 'none'
+                        }
+                    },
+                    el(
+                        'div',
+                        { className: 'testimonial-author' },
+                        el(
+                            'div',
+                            { className: 'author-image' },
+                            el(
+                                MediaUploadCheck,
+                                null,
+                                el(MediaUpload, {
+                                    onSelect: function (media) { return updateTestimonial(activeTestimonial, 'authorImage', media.url); },
+                                    allowedTypes: ['image'],
+                                    value: active.authorImage,
+                                    render: function (renderProps) {
+                                        return el(
+                                            Button,
+                                            {
+                                                onClick: renderProps.open,
+                                                className: 'image-button',
+                                                style: { backgroundImage: active.authorImage ? 'url(' + active.authorImage + ')' : undefined }
+                                            },
+                                            !active.authorImage && __('Upload', 'murdeni-blocks')
+                                        );
+                                    }
+                                })
+                            )
+                        ),
+                        el(
+                            'div',
+                            { className: 'author-info' },
+                            el(RichText, {
+                                tagName: 'h4',
+                                value: active.authorName,
+                                onChange: function (value) { return updateTestimonial(activeTestimonial, 'authorName', value); },
+                                placeholder: __('Author Name', 'murdeni-blocks')
+                            }),
+                            el(RichText, {
+                                tagName: 'p',
+                                value: active.authorPosition,
+                                onChange: function (value) { return updateTestimonial(activeTestimonial, 'authorPosition', value); },
+                                placeholder: __('Author Details', 'murdeni-blocks')
+                            })
+                        ),
+                        el(RichText, {
+                            tagName: 'div',
+                            className: 'testimonial-review-time',
+                            value: active.reviewTime,
+                            onChange: function (value) { return updateTestimonial(activeTestimonial, 'reviewTime', value); },
+                            placeholder: __('Review time...', 'murdeni-blocks')
+                        })
+                    ),
+                    el('div', { className: 'testimonial-rating' }, renderStars(active.rating || 5, attributes.ratingColor, function (rating) {
+                        updateTestimonial(activeTestimonial, 'rating', rating);
+                    })),
+                    el(
+                        'div',
+                        { className: 'testimonial-content' },
+                        el(RichText, {
+                            tagName: 'p',
+                            value: active.content,
+                            onChange: function (value) { return updateTestimonial(activeTestimonial, 'content', value); },
+                            placeholder: __('Enter testimonial content...', 'murdeni-blocks')
+                        })
+                    ),
+	                    el(
+	                        'div',
+	                        { className: 'testimonial-card-bottom' },
+	                        el(
+	                            'div',
+	                            { className: 'testimonial-bottom-copy' },
+	                            attributes.cardBottomTitle && el('div', { className: 'testimonial-bottom-title' }, attributes.cardBottomTitle),
+	                            attributes.cardBottomSubtitle && el('div', { className: 'testimonial-bottom-subtitle' }, attributes.cardBottomSubtitle)
+	                        ),
+	                        el(
+	                            'div',
+	                            { className: 'testimonial-bottom-link-editor' },
+	                            attributes.cardReviewLinkText && el('span', { className: 'testimonial-review-link' }, attributes.cardReviewLinkText),
+	                            el(TextControl, {
+	                                value: active.reviewUrl,
+	                                onChange: function (value) { return updateTestimonial(activeTestimonial, 'reviewUrl', value); },
+                                placeholder: __('Review URL...', 'murdeni-blocks')
+                            })
+                        )
+                    ),
+                    testimonials.length > 1 && el(
+                        Button,
+                        { className: 'remove-testimonial-button', onClick: function () { return removeTestimonial(activeTestimonial); }, isDestructive: true },
+                        __('Remove Testimonial', 'murdeni-blocks')
+                    )
+                )
+            )
+        );
+    }
+
+    registerBlockType('murdeni/testimonial-slider', {
+        icon: 'format-status',
+        edit: Edit,
+        save: function () {
+            return null;
+        }
+    });
+})(window.wp);

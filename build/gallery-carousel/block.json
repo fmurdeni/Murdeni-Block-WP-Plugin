@@ -63,6 +63,14 @@
       "type": "string",
       "default": "Gallery Carousel"
     },
+    "headerDescription": {
+      "type": "string",
+      "default": ""
+    },
+    "headerAlignment": {
+      "type": "string",
+      "default": "center"
+    },
     "displayViewAll": {
       "type": "boolean",
       "default": true

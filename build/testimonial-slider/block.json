@@ -40,7 +40,8 @@
           "authorName": "Ahmad Rizky",
           "authorPosition": "CEO, Rizky Store",
           "authorImage": "",
-          "bottomImage": ""
+          "reviewTime": "2 minggu lalu",
+          "reviewUrl": ""
         },
         {
           "id": "testimonial-2",
@@ -49,7 +50,8 @@
           "authorName": "Sarah Wijaya",
           "authorPosition": "Marketing Director, Wijaya Corp",
           "authorImage": "",
-          "bottomImage": ""
+          "reviewTime": "2 minggu lalu",
+          "reviewUrl": ""
         },
         {
           "id": "testimonial-3",
@@ -58,13 +60,26 @@
           "authorName": "Budi Santoso",
           "authorPosition": "Owner, Santoso Travel",
           "authorImage": "",
-          "bottomImage": ""
+          "reviewTime": "3 minggu lalu",
+          "reviewUrl": ""
         }
       ]
     },
+    "cardBottomTitle": {
+      "type": "string",
+      "default": "Sentra Autoglass Tangerang - Kaca..."
+    },
+    "cardBottomSubtitle": {
+      "type": "string",
+      "default": "Toyota Calya"
+    },
+    "cardReviewLinkText": {
+      "type": "string",
+      "default": "Lihat di Google"
+    },
     "slidesToShow": {
       "type": "number",
-      "default": 1
+      "default": 2
     },
     "autoplay": {
       "type": "boolean",

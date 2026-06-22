@@ -1,0 +1,161 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "murdeni/instagram-badge",
+    "version": "1.0.0",
+    "title": "Instagram Badge",
+    "category": "murdeni-blocks",
+    "icon": "instagram",
+    "description": "Display a customizable Instagram profile badge.",
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"]
+    },
+    "textdomain": "murdeni-blocks",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "attributes": {
+        "avatar": {
+            "type": "object",
+            "default": {
+                "id": 0,
+                "url": "",
+                "alt": ""
+            }
+        },
+        "username": {
+            "type": "string",
+            "default": "@klikkacamobil"
+        },
+        "followersText": {
+            "type": "string",
+            "default": "1,095 followers"
+        },
+        "profileUrl": {
+            "type": "string",
+            "default": "https://www.instagram.com/klikkacamobil/?hl=en"
+        },
+        "showAvatar": {
+            "type": "boolean",
+            "default": true
+        },
+        "showInstagramIcon": {
+            "type": "boolean",
+            "default": true
+        },
+        "showBlueCheck": {
+            "type": "boolean",
+            "default": true
+        },
+        "showFollowers": {
+            "type": "boolean",
+            "default": true
+        },
+        "openInNewTab": {
+            "type": "boolean",
+            "default": true
+        },
+        "badgeWidth": {
+            "type": "number",
+            "default": 420
+        },
+        "badgeWidthUnit": {
+            "type": "string",
+            "default": "px"
+        },
+        "badgeAlignment": {
+            "type": "string",
+            "default": "left"
+        },
+        "backgroundType": {
+            "type": "string",
+            "default": "solid"
+        },
+        "backgroundColor": {
+            "type": "string",
+            "default": "#202022"
+        },
+        "gradientStartColor": {
+            "type": "string",
+            "default": "#202022"
+        },
+        "gradientEndColor": {
+            "type": "string",
+            "default": "#111111"
+        },
+        "borderColor": {
+            "type": "string",
+            "default": "#0b0b0c"
+        },
+        "borderWidth": {
+            "type": "number",
+            "default": 1
+        },
+        "borderRadius": {
+            "type": "number",
+            "default": 14
+        },
+        "padding": {
+            "type": "object",
+            "default": {
+                "top": 18,
+                "right": 22,
+                "bottom": 18,
+                "left": 22
+            }
+        },
+        "gap": {
+            "type": "number",
+            "default": 14
+        },
+        "avatarSize": {
+            "type": "number",
+            "default": 52
+        },
+        "avatarBorderRadius": {
+            "type": "number",
+            "default": 50
+        },
+        "iconSize": {
+            "type": "number",
+            "default": 18
+        },
+        "checkSize": {
+            "type": "number",
+            "default": 16
+        },
+        "usernameFontSize": {
+            "type": "number",
+            "default": 18
+        },
+        "followersFontSize": {
+            "type": "number",
+            "default": 15
+        },
+        "usernameColor": {
+            "type": "string",
+            "default": "#ffffff"
+        },
+        "followersColor": {
+            "type": "string",
+            "default": "#b9b9bd"
+        },
+        "iconColor": {
+            "type": "string",
+            "default": "#ffffff"
+        },
+        "blueCheckColor": {
+            "type": "string",
+            "default": "#1d9bf0"
+        },
+        "boxShadow": {
+            "type": "boolean",
+            "default": false
+        },
+        "customClass": {
+            "type": "string",
+            "default": ""
+        }
+    }
+}

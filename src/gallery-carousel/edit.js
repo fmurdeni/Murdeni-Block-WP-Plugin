@@ -45,6 +45,8 @@ export default function Edit({ attributes, setAttributes }) {
         autoplaySpeed,
         displayHeader,
         headerTitle,
+        headerDescription,
+        headerAlignment,
         displayViewAll,
         viewAllText,
         viewAllUrl,
@@ -215,6 +217,21 @@ export default function Edit({ attributes, setAttributes }) {
                                 value={headerTitle}
                                 onChange={(value) => setAttributes({ headerTitle: value })}
                             />
+                            <TextControl
+                                label={__('Header Description', 'murdeni-blocks')}
+                                value={headerDescription}
+                                onChange={(value) => setAttributes({ headerDescription: value })}
+                            />
+                            <SelectControl
+                                label={__('Header Alignment', 'murdeni-blocks')}
+                                value={headerAlignment}
+                                options={[
+                                    { label: __('Left', 'murdeni-blocks'), value: 'left' },
+                                    { label: __('Center', 'murdeni-blocks'), value: 'center' },
+                                    { label: __('Right', 'murdeni-blocks'), value: 'right' },
+                                ]}
+                                onChange={(value) => setAttributes({ headerAlignment: value })}
+                            />
                             <ToggleControl
                                 label={__('Display View All Link', 'murdeni-blocks')}
                                 checked={displayViewAll}
@@ -283,13 +300,25 @@ export default function Edit({ attributes, setAttributes }) {
             <div {...blockProps}>
                 {displayHeader && (
                     <div className="murdeni-gallery-carousel__header">
-                        <RichText
-                            tagName="h2"
-                            className="murdeni-gallery-carousel__title"
-                            value={headerTitle}
-                            onChange={(value) => setAttributes({ headerTitle: value })}
-                            placeholder={__('Gallery Carousel', 'murdeni-blocks')}
-                        />
+                        <div
+                            className={`murdeni-gallery-carousel__heading is-align-${headerAlignment}`}
+                            style={{ textAlign: headerAlignment }}
+                        >
+                            <RichText
+                                tagName="h2"
+                                className="murdeni-gallery-carousel__title"
+                                value={headerTitle}
+                                onChange={(value) => setAttributes({ headerTitle: value })}
+                                placeholder={__('Gallery Carousel', 'murdeni-blocks')}
+                            />
+                            <RichText
+                                tagName="p"
+                                className="murdeni-gallery-carousel__description"
+                                value={headerDescription}
+                                onChange={(value) => setAttributes({ headerDescription: value })}
+                                placeholder={__('Add description...', 'murdeni-blocks')}
+                            />
+                        </div>
                         {displayViewAll && (
                             <div className="murdeni-gallery-carousel__view-all-wrapper">
                                 <RichText

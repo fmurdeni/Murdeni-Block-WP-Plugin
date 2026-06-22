@@ -104,7 +104,8 @@ class Murdeni_Testimonial_Slider {
         // Extract attributes
         $testimonials = isset($attributes['testimonials']) ? $attributes['testimonials'] : array();
         $top_image = isset($attributes['topImage']) ? $attributes['topImage'] : '';
-        $slides_to_show = isset($attributes['slidesToShow']) ? $attributes['slidesToShow'] : 1;
+        $slides_to_show = isset($attributes['slidesToShow']) ? absint($attributes['slidesToShow']) : 2;
+        $slides_to_show = max(1, min(2, $slides_to_show));
         $autoplay = isset($attributes['autoplay']) ? $attributes['autoplay'] : true;
         $autoplay_speed = isset($attributes['autoplaySpeed']) ? $attributes['autoplaySpeed'] : 3000;
         $arrows = isset($attributes['arrows']) ? $attributes['arrows'] : true;
@@ -125,6 +126,9 @@ class Murdeni_Testimonial_Slider {
         $review_link_url = isset($attributes['reviewLinkUrl']) ? $attributes['reviewLinkUrl'] : '#';
         $fixed_height = isset($attributes['fixedHeight']) ? $attributes['fixedHeight'] : false;
         $slide_height = isset($attributes['slideHeight']) ? $attributes['slideHeight'] : 300;
+        $card_bottom_title = isset($attributes['cardBottomTitle']) ? $attributes['cardBottomTitle'] : 'Sentra Autoglass Tangerang - Kaca...';
+        $card_bottom_subtitle = isset($attributes['cardBottomSubtitle']) ? $attributes['cardBottomSubtitle'] : 'Toyota Calya';
+        $card_review_link_text = isset($attributes['cardReviewLinkText']) ? $attributes['cardReviewLinkText'] : __('Lihat di Google', 'murdeni-blocks');
         
         // Generate unique ID for this block instance
         $block_id = 'murdeni-testimonial-slider-' . uniqid();
@@ -214,8 +218,10 @@ class Murdeni_Testimonial_Slider {
                         $content = isset($testimonial['content']) ? $testimonial['content'] : '';
                         $author_name = isset($testimonial['authorName']) ? $testimonial['authorName'] : '';
                         $author_position = isset($testimonial['authorPosition']) ? $testimonial['authorPosition'] : '';
-                        $author_image = /* isset($testimonial['authorImage']) && !empty($testimonial['authorImage']) ? $testimonial['authorImage'] : */ '';
+                        $author_image = isset($testimonial['authorImage']) && !empty($testimonial['authorImage']) ? $testimonial['authorImage'] : '';
                         $bottom_image = isset($testimonial['bottomImage']) && !empty($testimonial['bottomImage']) ? $testimonial['bottomImage'] : '';
+                        $review_time = isset($testimonial['reviewTime']) ? $testimonial['reviewTime'] : '';
+                        $review_url = isset($testimonial['reviewUrl']) ? $testimonial['reviewUrl'] : '';
                         
                         if (empty($author_image)) {
                             $last_letter = substr($author_name, 4);
@@ -234,6 +240,9 @@ class Murdeni_Testimonial_Slider {
                                         <h4><?php echo esc_html($author_name); ?></h4>
                                         <p><?php echo esc_html($author_position); ?></p>
                                     </div>
+                                    <?php if (!empty($review_time)) : ?>
+                                    <div class="testimonial-review-time"><?php echo esc_html($review_time); ?></div>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="testimonial-rating">
                                     <?php 
@@ -246,6 +255,23 @@ class Murdeni_Testimonial_Slider {
                                 <div class="testimonial-content">
                                     <p><?php echo wp_kses_post($content); ?></p>
                                 </div>
+                                <?php if (!empty($card_bottom_title) || !empty($card_bottom_subtitle) || !empty($review_url)) : ?>
+                                <div class="testimonial-card-bottom">
+                                    <div class="testimonial-bottom-copy">
+                                        <?php if (!empty($card_bottom_title)) : ?>
+                                        <div class="testimonial-bottom-title"><?php echo esc_html($card_bottom_title); ?></div>
+                                        <?php endif; ?>
+                                        <?php if (!empty($card_bottom_subtitle)) : ?>
+                                        <div class="testimonial-bottom-subtitle"><?php echo esc_html($card_bottom_subtitle); ?></div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <?php if (!empty($review_url)) : ?>
+                                    <a class="testimonial-review-link" href="<?php echo esc_url($review_url); ?>" target="_blank" rel="noopener noreferrer">
+                                        <?php echo esc_html($card_review_link_text); ?>
+                                    </a>
+                                    <?php endif; ?>
+                                </div>
+                                <?php endif; ?>
                                 <?php if (!empty($bottom_image)) : ?>
                                 <div class="testimonial-bottom-image">
                                     <img src="<?php echo esc_url($bottom_image); ?>" alt="" />

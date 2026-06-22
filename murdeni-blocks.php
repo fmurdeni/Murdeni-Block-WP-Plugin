@@ -39,6 +39,7 @@ require_once MURDENI_BLOCKS_PATH . 'includes/class-murdeni-google-map-embed.php'
 require_once MURDENI_BLOCKS_PATH . 'includes/class-murdeni-whatsapp-button.php';
 require_once MURDENI_BLOCKS_PATH . 'includes/class-murdeni-custom-listing.php';
 require_once MURDENI_BLOCKS_PATH . 'includes/class-murdeni-gallery-carousel.php';
+require_once MURDENI_BLOCKS_PATH . 'includes/class-murdeni-instagram-badge.php';
 
 function murdeni_blocks_load_textdomain() {
     load_plugin_textdomain('murdeni-blocks', false, dirname(MURDENI_BLOCKS_BASENAME) . '/languages');
@@ -109,6 +110,9 @@ function murdeni_blocks_init() {
 
     $gallery_carousel = new Murdeni_Gallery_Carousel();
     $gallery_carousel->init();
+
+    $instagram_badge = new Murdeni_Instagram_Badge();
+    $instagram_badge->init();
 }
 
 murdeni_blocks_init();

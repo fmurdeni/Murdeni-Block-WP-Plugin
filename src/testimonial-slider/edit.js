@@ -23,6 +23,9 @@ import { useState } from '@wordpress/element';
 const Edit = ({ attributes, setAttributes }) => {
     const {
         testimonials,
+        cardBottomTitle,
+        cardBottomSubtitle,
+        cardReviewLinkText,
         slidesToShow,
         autoplay,
         autoplaySpeed,
@@ -61,6 +64,8 @@ const Edit = ({ attributes, setAttributes }) => {
             authorName: '',
             authorPosition: '',
             authorImage: 'https://placehold.co/150x150/cccccc/ffffff.png?text=+',
+            reviewTime: '',
+            reviewUrl: '',
         });
         setAttributes({ testimonials: newTestimonials });
     };
@@ -128,7 +133,7 @@ const Edit = ({ attributes, setAttributes }) => {
                         value={slidesToShow}
                         onChange={(value) => setAttributes({ slidesToShow: value })}
                         min={1}
-                        max={3}
+                        max={2}
                     />
                     <ToggleControl
                         label={__('Autoplay', 'murdeni-blocks')}
@@ -172,6 +177,23 @@ const Edit = ({ attributes, setAttributes }) => {
                         label={__('Pause on Hover', 'murdeni-blocks')}
                         checked={pauseOnHover}
                         onChange={(value) => setAttributes({ pauseOnHover: value })}
+                    />
+                </PanelBody>
+                <PanelBody title={__('Card Bottom Settings', 'murdeni-blocks')} initialOpen={false}>
+                    <TextControl
+                        label={__('Bottom Title', 'murdeni-blocks')}
+                        value={cardBottomTitle}
+                        onChange={(value) => setAttributes({ cardBottomTitle: value })}
+                    />
+                    <TextControl
+                        label={__('Bottom Subtitle', 'murdeni-blocks')}
+                        value={cardBottomSubtitle}
+                        onChange={(value) => setAttributes({ cardBottomSubtitle: value })}
+                    />
+                    <TextControl
+                        label={__('Review Link Text', 'murdeni-blocks')}
+                        value={cardReviewLinkText}
+                        onChange={(value) => setAttributes({ cardReviewLinkText: value })}
                     />
                 </PanelBody>
                 <PanelBody title={__('Rating Settings', 'murdeni-blocks')} initialOpen={false}>
@@ -324,17 +346,6 @@ const Edit = ({ attributes, setAttributes }) => {
                             boxShadow: boxShadow ? '0 4px 16px rgba(0,0,0,0.1)' : 'none',
                         }}
                     >
-                        <div className="testimonial-rating">
-                            {renderStars(testimonials[activeTestimonial].rating)}
-                        </div>
-                        <div className="testimonial-content">
-                            <RichText
-                                tagName="p"
-                                value={testimonials[activeTestimonial].content}
-                                onChange={(content) => updateTestimonial(activeTestimonial, 'content', content)}
-                                placeholder={__('Enter testimonial content...', 'murdeni-blocks')}
-                            />
-                        </div>
                         <div className="testimonial-author">
                             <div className="author-image">
                                 <MediaUploadCheck>
@@ -368,6 +379,44 @@ const Edit = ({ attributes, setAttributes }) => {
                                     value={testimonials[activeTestimonial].authorPosition}
                                     onChange={(authorPosition) => updateTestimonial(activeTestimonial, 'authorPosition', authorPosition)}
                                     placeholder={__('Author Position', 'murdeni-blocks')}
+                                />
+                            </div>
+                            <RichText
+                                tagName="div"
+                                className="testimonial-review-time"
+                                value={testimonials[activeTestimonial].reviewTime}
+                                onChange={(reviewTime) => updateTestimonial(activeTestimonial, 'reviewTime', reviewTime)}
+                                placeholder={__('Review time...', 'murdeni-blocks')}
+                            />
+                        </div>
+                        <div className="testimonial-rating">
+                            {renderStars(testimonials[activeTestimonial].rating)}
+                        </div>
+                        <div className="testimonial-content">
+                            <RichText
+                                tagName="p"
+                                value={testimonials[activeTestimonial].content}
+                                onChange={(content) => updateTestimonial(activeTestimonial, 'content', content)}
+                                placeholder={__('Enter testimonial content...', 'murdeni-blocks')}
+                            />
+                        </div>
+                        <div className="testimonial-card-bottom">
+                            <div className="testimonial-bottom-copy">
+                                {cardBottomTitle && (
+                                    <div className="testimonial-bottom-title">{cardBottomTitle}</div>
+                                )}
+                                {cardBottomSubtitle && (
+                                    <div className="testimonial-bottom-subtitle">{cardBottomSubtitle}</div>
+                                )}
+                            </div>
+                            <div className="testimonial-bottom-link-editor">
+                                {cardReviewLinkText && (
+                                    <span className="testimonial-review-link">{cardReviewLinkText}</span>
+                                )}
+                                <TextControl
+                                    value={testimonials[activeTestimonial].reviewUrl}
+                                    onChange={(reviewUrl) => updateTestimonial(activeTestimonial, 'reviewUrl', reviewUrl)}
+                                    placeholder={__('Review URL...', 'murdeni-blocks')}
                                 />
                             </div>
                         </div>

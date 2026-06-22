@@ -8,15 +8,42 @@
     // Header styles
     &__header {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
+        gap: 16px;
         margin-bottom: 20px;
+    }
+
+    &__heading {
+        flex: 1 1 auto;
+        width: 100%;
+        text-align: center;
+
+        &.is-align-left {
+            text-align: left;
+        }
+
+        &.is-align-center {
+            text-align: center;
+        }
+
+        &.is-align-right {
+            text-align: right;
+        }
     }
 
     &__title {
         margin: 0;
         font-size: 24px;
         font-weight: 600;
+    }
+
+    &__description {
+        margin: 8px 0 0;
+        color: #555;
+        font-size: 16px;
+        line-height: 1.5;
     }
 
     &__view-all {

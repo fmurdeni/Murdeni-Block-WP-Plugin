@@ -1,0 +1,72 @@
+.murdeni-instagram-badge__wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.murdeni-instagram-badge {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    border-style: solid;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:is(a):hover {
+        transform: translateY(-1px);
+        text-decoration: none;
+    }
+
+    &__avatar {
+        flex: 0 0 auto;
+        overflow: hidden;
+        background: #111;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 10px;
+        text-align: center;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__content {
+        min-width: 0;
+    }
+
+    &__identity {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+        line-height: 1.15;
+    }
+
+    &__instagram-icon,
+    &__check {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+    }
+
+    &__username {
+        display: inline-block;
+        min-width: 0;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        font-weight: 700;
+        line-height: 1.15;
+    }
+
+    &__followers {
+        margin-top: 4px;
+        line-height: 1.25;
+    }
+}
