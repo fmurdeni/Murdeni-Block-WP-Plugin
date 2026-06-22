@@ -56,17 +56,17 @@
         }
     }
 
-    .testimonial-slider {
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-        padding: 2px 0;
-    }
+	    .testimonial-slider {
+	        position: relative;
+	        width: 100%;
+	        overflow: hidden;
+	        padding: 2px 0 38px;
+	    }
 
 	    .testimonial-slide {
-	        padding: 10px 14px;
-        box-sizing: border-box;
-    }
+	        padding: 10px 18px;
+	        box-sizing: border-box;
+	    }
 
     .testimonial-card {
         background-color: var(--testimonial-bg-color, #ffffff);
@@ -253,10 +253,12 @@
         right: -20px;
     }
 
-    .slick-dots {
-        bottom: -30px;
+	    .slick-dots {
+	        bottom: 0;
+	        display: block !important;
+	        line-height: 1;
 
-        li {
+	        li {
             button:before {
                 font-size: 10px;
                 color: #ccc;

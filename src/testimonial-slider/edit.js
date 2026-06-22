@@ -154,13 +154,13 @@ const Edit = ({ attributes, setAttributes }) => {
         <>
             <InspectorControls>
                 <PanelBody title={__('Slider Settings', 'murdeni-blocks')} initialOpen={true}>
-                    <RangeControl
-                        label={__('Slides to Show', 'murdeni-blocks')}
-                        value={2}
-                        onChange={() => setAttributes({ slidesToShow: 2 })}
-                        min={2}
-                        max={2}
-                    />
+	                    <RangeControl
+	                        label={__('Slides to Show', 'murdeni-blocks')}
+	                        value={1}
+	                        onChange={() => setAttributes({ slidesToShow: 1 })}
+	                        min={1}
+	                        max={1}
+	                    />
                     <ToggleControl
                         label={__('Autoplay', 'murdeni-blocks')}
                         checked={autoplay}

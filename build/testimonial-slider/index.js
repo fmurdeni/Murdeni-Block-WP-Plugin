@@ -133,10 +133,10 @@
                     { title: __('Slider Settings', 'murdeni-blocks'), initialOpen: true },
 	                    el(RangeControl, {
 	                        label: __('Slides to Show', 'murdeni-blocks'),
-	                        value: 2,
-	                        onChange: function () { return setAttributes({ slidesToShow: 2 }); },
-	                        min: 2,
-	                        max: 2
+	                        value: 1,
+	                        onChange: function () { return setAttributes({ slidesToShow: 1 }); },
+	                        min: 1,
+	                        max: 1
 	                    }),
                     el(ToggleControl, {
                         label: __('Autoplay', 'murdeni-blocks'),

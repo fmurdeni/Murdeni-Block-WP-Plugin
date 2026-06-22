@@ -28,7 +28,7 @@
             }
             
             // Get settings from data attributes
-            const slidesToShow = 2;
+            const slidesToShow = 1;
             const autoplay = $slider.data('autoplay') !== undefined ? $slider.data('autoplay') : true;
             const autoplaySpeed = $slider.data('autoplay-speed') || 3000;
             const arrows = $slider.data('arrows') !== undefined ? $slider.data('arrows') : true;
@@ -50,14 +50,14 @@
                 pauseOnHover: pauseOnHover,
                 adaptiveHeight: true,
                 centerMode: true,
-                centerPadding: '9%',
+                centerPadding: '22%',
                 responsive: [
                     {
                         breakpoint: 992,
                         settings: {
-                            slidesToShow: 2,
+                            slidesToShow: 1,
                             centerMode: true,
-                            centerPadding: '7%',
+                            centerPadding: '16%',
                             arrows: false
                         }
                     },

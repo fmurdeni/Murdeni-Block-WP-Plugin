@@ -144,7 +144,7 @@ class Murdeni_Testimonial_Slider {
         // Extract attributes
         $testimonials = isset($attributes['testimonials']) ? $attributes['testimonials'] : array();
         $top_image = isset($attributes['topImage']) ? $attributes['topImage'] : '';
-        $slides_to_show = 2;
+        $slides_to_show = 1;
         $autoplay = isset($attributes['autoplay']) ? $attributes['autoplay'] : true;
         $autoplay_speed = isset($attributes['autoplaySpeed']) ? $attributes['autoplaySpeed'] : 3000;
         $arrows = isset($attributes['arrows']) ? $attributes['arrows'] : true;
