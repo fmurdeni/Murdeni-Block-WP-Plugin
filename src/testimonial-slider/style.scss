@@ -77,13 +77,15 @@
         display: flex;
         flex-direction: column;
         box-shadow: var(--testimonial-box-shadow, 0 1px 4px rgba(0, 0, 0, 0.12));
+        text-align: left;
     }
 
     .testimonial-rating {
         color: var(--testimonial-rating-color, #FFD700);
         display: flex;
         gap: 4px;
-        margin: 10px 0 18px;
+        justify-content: flex-start;
+        margin: 10px 0 18px 56px;
         line-height: 1;
 
         .star {
@@ -147,6 +149,7 @@
     .author-info {
         min-width: 0;
         flex: 1 1 auto;
+        text-align: left;
 
         h4 {
             margin: 0 0 3px;

@@ -77,6 +77,23 @@ class Murdeni_Testimonial_Slider {
 	    private function has_custom_author_image($author_image) {
 	        return !empty($author_image) && strpos($author_image, 'placehold.co') === false;
 	    }
+
+	    /**
+	     * Normalize per-testimonial review URLs before rendering.
+	     */
+	    private function normalize_review_url($review_url) {
+	        $review_url = trim((string) $review_url);
+
+	        if (empty($review_url)) {
+	            return '';
+	        }
+
+	        if (!preg_match('/^[a-z][a-z0-9+.-]*:/i', $review_url) && strpos($review_url, '//') !== 0 && strpos($review_url, '#') !== 0) {
+	            $review_url = 'https://' . $review_url;
+	        }
+
+	        return $review_url;
+	    }
 	
 	    /**
 	     * Enqueue frontend scripts
@@ -260,7 +277,7 @@ class Murdeni_Testimonial_Slider {
 	                        $author_image = isset($testimonial['authorImage']) && $this->has_custom_author_image($testimonial['authorImage']) ? $testimonial['authorImage'] : '';
 	                        $bottom_image = isset($testimonial['bottomImage']) && !empty($testimonial['bottomImage']) ? $testimonial['bottomImage'] : '';
 	                        $review_time = isset($testimonial['reviewTime']) ? $testimonial['reviewTime'] : '';
-	                        $review_url = isset($testimonial['reviewUrl']) ? $testimonial['reviewUrl'] : '';
+	                        $review_url = isset($testimonial['reviewUrl']) ? $this->normalize_review_url($testimonial['reviewUrl']) : '';
 	                        $author_initials = $this->get_author_initials($author_name);
 	                        $author_avatar_color = $this->get_author_avatar_color($testimonial, $author_name);
 	                        ?>
