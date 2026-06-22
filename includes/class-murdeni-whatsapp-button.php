@@ -54,7 +54,7 @@ class Murdeni_WhatsApp_Button {
         $icon_position = isset($attributes['iconPosition']) ? $attributes['iconPosition'] : 'before';
         $button_width = isset($attributes['buttonWidth']) ? $attributes['buttonWidth'] : 'auto';
         $center_content = isset($attributes['centerContent']) ? $attributes['centerContent'] : false;
-        $enable_animation = isset($attributes['enableAnimation']) ? $attributes['enableAnimation'] : true;
+        $enable_animation = array_key_exists('enableAnimation', $attributes) ? filter_var($attributes['enableAnimation'], FILTER_VALIDATE_BOOLEAN) : true;
         $custom_class = isset($attributes['customClass']) ? $attributes['customClass'] : '';
         $open_in_new_tab = isset($attributes['openInNewTab']) ? $attributes['openInNewTab'] : true;
         $floating_button = isset($attributes['floatingButton']) ? $attributes['floatingButton'] : false;
@@ -87,6 +87,20 @@ class Murdeni_WhatsApp_Button {
                 --text-color: <?php echo esc_attr($text_color); ?>;
                 --border-radius: <?php echo esc_attr($border_radius); ?>px;
             }
+            <?php if (!$enable_animation) : ?>
+            #<?php echo esc_attr($block_id); ?>,
+            #<?php echo esc_attr($block_id); ?> .whatsapp-button,
+            #<?php echo esc_attr($block_id); ?> .whatsapp-button-wrapper.image-button img {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
+            }
+            #<?php echo esc_attr($block_id); ?> .whatsapp-button:hover,
+            #<?php echo esc_attr($block_id); ?> .whatsapp-button-wrapper.image-button:hover img {
+                filter: none !important;
+                transform: none !important;
+            }
+            <?php endif; ?>
         </style>
         
         <div id="<?php echo esc_attr($block_id); ?>" class="murdeni-whatsapp-button <?php echo esc_attr($button_size); ?> <?php echo esc_attr($button_style); ?> <?php echo $button_width === 'full' ? 'full-width' : ''; ?> <?php echo $center_content ? 'content-align-center' : ''; ?> <?php echo $enable_animation ? '' : 'animation-disabled'; ?> <?php echo esc_attr($custom_class); ?> <?php echo $floating_button ? 'floating ' . esc_attr($floating_position) : ''; ?>">

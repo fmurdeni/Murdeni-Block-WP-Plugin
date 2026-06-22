@@ -3,6 +3,20 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+    const disabledButtons = document.querySelectorAll('.murdeni-whatsapp-button.animation-disabled');
+
+    disabledButtons.forEach(button => {
+        button.style.opacity = '';
+        button.style.transform = '';
+        button.style.transition = '';
+
+        const whatsappButton = button.querySelector('.whatsapp-button');
+        if (whatsappButton) {
+            whatsappButton.style.transform = '';
+            whatsappButton.style.transition = '';
+        }
+    });
+
     // Add animation effect to floating WhatsApp buttons
     const floatingButtons = document.querySelectorAll('.murdeni-whatsapp-button.floating:not(.animation-disabled)');
     
