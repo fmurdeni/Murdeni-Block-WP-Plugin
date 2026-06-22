@@ -437,13 +437,16 @@ const Edit = ({ attributes, setAttributes }) => {
                                     <div className="testimonial-bottom-subtitle">{cardBottomSubtitle}</div>
                                 )}
                             </div>
-                            <div className="testimonial-bottom-link-editor">
-                                {cardReviewLinkText && (
-                                    <span className="testimonial-review-link">{cardReviewLinkText}</span>
-                                )}
-                                <TextControl
-                                    value={testimonials[activeTestimonial].reviewUrl}
-                                    onChange={(reviewUrl) => updateTestimonial(activeTestimonial, 'reviewUrl', reviewUrl)}
+	                            <div className="testimonial-bottom-link-editor">
+	                                {cardReviewLinkText && testimonials[activeTestimonial].reviewUrl && (
+	                                    <a className="testimonial-review-link" href={testimonials[activeTestimonial].reviewUrl} target="_blank" rel="noopener noreferrer">{cardReviewLinkText}</a>
+	                                )}
+	                                {cardReviewLinkText && !testimonials[activeTestimonial].reviewUrl && (
+	                                    <span className="testimonial-review-link">{cardReviewLinkText}</span>
+	                                )}
+	                                <TextControl
+	                                    value={testimonials[activeTestimonial].reviewUrl}
+	                                    onChange={(reviewUrl) => updateTestimonial(activeTestimonial, 'reviewUrl', reviewUrl)}
                                     placeholder={__('Review URL...', 'murdeni-blocks')}
                                 />
                             </div>

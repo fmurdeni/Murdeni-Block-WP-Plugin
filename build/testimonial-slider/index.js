@@ -394,7 +394,8 @@
 	                        el(
 	                            'div',
 	                            { className: 'testimonial-bottom-link-editor' },
-	                            attributes.cardReviewLinkText && el('span', { className: 'testimonial-review-link' }, attributes.cardReviewLinkText),
+	                            attributes.cardReviewLinkText && active.reviewUrl && el('a', { className: 'testimonial-review-link', href: active.reviewUrl, target: '_blank', rel: 'noopener noreferrer' }, attributes.cardReviewLinkText),
+	                            attributes.cardReviewLinkText && !active.reviewUrl && el('span', { className: 'testimonial-review-link' }, attributes.cardReviewLinkText),
 	                            el(TextControl, {
 	                                value: active.reviewUrl,
 	                                onChange: function (value) { return updateTestimonial(activeTestimonial, 'reviewUrl', value); },
