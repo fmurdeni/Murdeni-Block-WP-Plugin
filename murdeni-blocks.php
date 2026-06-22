@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Murdeni Blocks
  * Description: Collection of custom blocks for WordPress including Post Grid, Post Grid Popup, Portfolio Grid, and Skills Percentage.
- * Version: 1.0.11
+ * Version: 1.0.12
  * Author: Murdeni
  * Text Domain: murdeni-blocks
  */
@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('MURDENI_BLOCKS_VERSION', '1.0.11');
+define('MURDENI_BLOCKS_VERSION', '1.0.12');
 define('MURDENI_BLOCKS_PATH', plugin_dir_path(__FILE__));
 define('MURDENI_BLOCKS_URL', plugin_dir_url(__FILE__));
 define('MURDENI_BLOCKS_BASENAME', plugin_basename(__FILE__));
@@ -40,6 +40,7 @@ require_once MURDENI_BLOCKS_PATH . 'includes/class-murdeni-whatsapp-button.php';
 require_once MURDENI_BLOCKS_PATH . 'includes/class-murdeni-custom-listing.php';
 require_once MURDENI_BLOCKS_PATH . 'includes/class-murdeni-gallery-carousel.php';
 require_once MURDENI_BLOCKS_PATH . 'includes/class-murdeni-instagram-badge.php';
+require_once MURDENI_BLOCKS_PATH . 'includes/class-murdeni-image-text.php';
 
 function murdeni_blocks_load_textdomain() {
     load_plugin_textdomain('murdeni-blocks', false, dirname(MURDENI_BLOCKS_BASENAME) . '/languages');
@@ -113,6 +114,9 @@ function murdeni_blocks_init() {
 
     $instagram_badge = new Murdeni_Instagram_Badge();
     $instagram_badge->init();
+
+    $image_text = new Murdeni_Image_Text();
+    $image_text->init();
 }
 
 murdeni_blocks_init();

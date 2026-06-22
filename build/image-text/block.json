@@ -1,0 +1,85 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "murdeni/image-text",
+  "version": "1.0.0",
+  "title": "Murdeni Image Text",
+  "category": "murdeni-blocks",
+  "icon": "format-image",
+  "description": "Display a title, uploaded image, and description.",
+  "keywords": [
+    "image",
+    "text",
+    "title",
+    "description"
+  ],
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "textdomain": "murdeni-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "description": {
+      "type": "string",
+      "default": ""
+    },
+    "image": {
+      "type": "object",
+      "default": {
+        "id": 0,
+        "url": "",
+        "alt": ""
+      }
+    },
+    "alignment": {
+      "type": "string",
+      "default": "center"
+    },
+    "imageWidth": {
+      "type": "number",
+      "default": 100
+    },
+    "imageWidthUnit": {
+      "type": "string",
+      "default": "%"
+    },
+    "imageBorderRadius": {
+      "type": "number",
+      "default": 0
+    },
+    "contentGap": {
+      "type": "number",
+      "default": 16
+    },
+    "titleFontSize": {
+      "type": "number",
+      "default": 24
+    },
+    "descriptionFontSize": {
+      "type": "number",
+      "default": 16
+    },
+    "titleColor": {
+      "type": "string",
+      "default": "#111827"
+    },
+    "descriptionColor": {
+      "type": "string",
+      "default": "#4b5563"
+    },
+    "customClass": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}
