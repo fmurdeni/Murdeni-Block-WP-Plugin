@@ -28,7 +28,7 @@
             }
             
             // Get settings from data attributes
-            const slidesToShow = Math.min(parseInt($slider.data('slides-to-show'), 10) || 2, 2);
+            const slidesToShow = 2;
             const autoplay = $slider.data('autoplay') !== undefined ? $slider.data('autoplay') : true;
             const autoplaySpeed = $slider.data('autoplay-speed') || 3000;
             const arrows = $slider.data('arrows') !== undefined ? $slider.data('arrows') : true;
@@ -55,7 +55,7 @@
                     {
                         breakpoint: 992,
                         settings: {
-                            slidesToShow: Math.min(slidesToShow, 2),
+                            slidesToShow: 2,
                             centerMode: true,
                             centerPadding: '7%',
                             arrows: false

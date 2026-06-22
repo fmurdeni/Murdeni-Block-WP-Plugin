@@ -41,6 +41,10 @@
 	        return avatarColors[total % avatarColors.length];
 	    }
 
+	    function hasCustomAuthorImage(testimonial) {
+	        return !!(testimonial && testimonial.authorImage && testimonial.authorImage.indexOf('placehold.co') === -1);
+	    }
+
     function renderStars(rating, color, onRate) {
         var stars = [];
         for (var i = 0; i < 5; i++) {
@@ -127,13 +131,13 @@
                 el(
                     PanelBody,
                     { title: __('Slider Settings', 'murdeni-blocks'), initialOpen: true },
-                    el(RangeControl, {
-                        label: __('Slides to Show', 'murdeni-blocks'),
-                        value: attributes.slidesToShow,
-                        onChange: function (value) { return setAttributes({ slidesToShow: value }); },
-                        min: 1,
-                        max: 2
-                    }),
+	                    el(RangeControl, {
+	                        label: __('Slides to Show', 'murdeni-blocks'),
+	                        value: 2,
+	                        onChange: function () { return setAttributes({ slidesToShow: 2 }); },
+	                        min: 2,
+	                        max: 2
+	                    }),
                     el(ToggleControl, {
                         label: __('Autoplay', 'murdeni-blocks'),
                         checked: attributes.autoplay,
@@ -333,9 +337,9 @@
                                             {
                                                 onClick: renderProps.open,
                                                 className: 'image-button',
-	                                                style: active.authorImage ? { backgroundImage: 'url(' + active.authorImage + ')' } : { backgroundColor: getAvatarColor(active) }
+	                                                style: hasCustomAuthorImage(active) ? { backgroundImage: 'url(' + active.authorImage + ')' } : { backgroundColor: getAvatarColor(active) }
 	                                            },
-	                                            !active.authorImage && getInitials(active.authorName)
+	                                            !hasCustomAuthorImage(active) && getInitials(active.authorName)
 	                                        );
                                     }
                                 })

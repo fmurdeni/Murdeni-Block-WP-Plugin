@@ -70,6 +70,13 @@ class Murdeni_Testimonial_Slider {
 
 	        return $colors[$index];
 	    }
+
+	    /**
+	     * Check whether the testimonial has a real uploaded author image.
+	     */
+	    private function has_custom_author_image($author_image) {
+	        return !empty($author_image) && strpos($author_image, 'placehold.co') === false;
+	    }
 	
 	    /**
 	     * Enqueue frontend scripts
@@ -137,8 +144,7 @@ class Murdeni_Testimonial_Slider {
         // Extract attributes
         $testimonials = isset($attributes['testimonials']) ? $attributes['testimonials'] : array();
         $top_image = isset($attributes['topImage']) ? $attributes['topImage'] : '';
-        $slides_to_show = isset($attributes['slidesToShow']) ? absint($attributes['slidesToShow']) : 2;
-        $slides_to_show = max(1, min(2, $slides_to_show));
+        $slides_to_show = 2;
         $autoplay = isset($attributes['autoplay']) ? $attributes['autoplay'] : true;
         $autoplay_speed = isset($attributes['autoplaySpeed']) ? $attributes['autoplaySpeed'] : 3000;
         $arrows = isset($attributes['arrows']) ? $attributes['arrows'] : true;
@@ -251,7 +257,7 @@ class Murdeni_Testimonial_Slider {
                         $content = isset($testimonial['content']) ? $testimonial['content'] : '';
                         $author_name = isset($testimonial['authorName']) ? $testimonial['authorName'] : '';
                         $author_position = isset($testimonial['authorPosition']) ? $testimonial['authorPosition'] : '';
-                        $author_image = isset($testimonial['authorImage']) && !empty($testimonial['authorImage']) ? $testimonial['authorImage'] : '';
+	                        $author_image = isset($testimonial['authorImage']) && $this->has_custom_author_image($testimonial['authorImage']) ? $testimonial['authorImage'] : '';
 	                        $bottom_image = isset($testimonial['bottomImage']) && !empty($testimonial['bottomImage']) ? $testimonial['bottomImage'] : '';
 	                        $review_time = isset($testimonial['reviewTime']) ? $testimonial['reviewTime'] : '';
 	                        $review_url = isset($testimonial['reviewUrl']) ? $testimonial['reviewUrl'] : '';

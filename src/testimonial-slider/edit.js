@@ -41,6 +41,10 @@ const getAvatarColor = (testimonial = {}) => {
     return avatarColors[total % avatarColors.length];
 };
 
+const hasCustomAuthorImage = (testimonial = {}) => {
+    return Boolean(testimonial.authorImage && !testimonial.authorImage.includes('placehold.co'));
+};
+
 const Edit = ({ attributes, setAttributes }) => {
     const {
         testimonials,
@@ -152,9 +156,9 @@ const Edit = ({ attributes, setAttributes }) => {
                 <PanelBody title={__('Slider Settings', 'murdeni-blocks')} initialOpen={true}>
                     <RangeControl
                         label={__('Slides to Show', 'murdeni-blocks')}
-                        value={slidesToShow}
-                        onChange={(value) => setAttributes({ slidesToShow: value })}
-                        min={1}
+                        value={2}
+                        onChange={() => setAttributes({ slidesToShow: 2 })}
+                        min={2}
                         max={2}
                     />
                     <ToggleControl
@@ -379,13 +383,13 @@ const Edit = ({ attributes, setAttributes }) => {
                                             <Button
                                                 onClick={open}
                                                 className="image-button"
-	                                                style={testimonials[activeTestimonial].authorImage ? {
+	                                                style={hasCustomAuthorImage(testimonials[activeTestimonial]) ? {
 	                                                    backgroundImage: `url(${testimonials[activeTestimonial].authorImage})`,
 	                                                } : {
                                                         backgroundColor: getAvatarColor(testimonials[activeTestimonial]),
                                                     }}
 	                                            >
-	                                                {!testimonials[activeTestimonial].authorImage && getInitials(testimonials[activeTestimonial].authorName)}
+	                                                {!hasCustomAuthorImage(testimonials[activeTestimonial]) && getInitials(testimonials[activeTestimonial].authorName)}
 	                                            </Button>
                                         )}
                                     />

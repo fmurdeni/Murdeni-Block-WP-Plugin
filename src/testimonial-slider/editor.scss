@@ -143,10 +143,12 @@
 	            }
 	        }
 
-        .testimonial-author {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
+	        .testimonial-author {
+	            display: flex;
+	            align-items: flex-start;
+	            justify-content: flex-start;
+	            gap: 12px;
+	            text-align: left;
 
             .author-image {
                 width: 44px;

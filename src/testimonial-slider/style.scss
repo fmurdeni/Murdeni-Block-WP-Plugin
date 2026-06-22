@@ -104,12 +104,14 @@
         }
     }
 
-    .testimonial-author {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        min-width: 0;
-    }
+	    .testimonial-author {
+	        display: flex;
+	        align-items: flex-start;
+	        justify-content: flex-start;
+	        gap: 12px;
+	        min-width: 0;
+	        text-align: left;
+	    }
 
     .author-image {
         width: 44px;
