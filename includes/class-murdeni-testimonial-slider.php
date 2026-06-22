@@ -296,18 +296,17 @@ class Murdeni_Testimonial_Slider {
                                     <div class="author-info">
                                         <h4><?php echo esc_html($author_name); ?></h4>
                                         <p><?php echo esc_html($author_position); ?></p>
+                                        <div class="testimonial-rating">
+                                            <?php
+                                            for ($i = 0; $i < 5; $i++) {
+                                                echo '<span class="' . ($i < $rating ? 'star filled' : 'star empty') . '">&#9733;</span>';
+                                            }
+                                            ?>
+                                        </div>
                                     </div>
                                     <?php if (!empty($review_time)) : ?>
                                     <div class="testimonial-review-time"><?php echo esc_html($review_time); ?></div>
                                     <?php endif; ?>
-                                </div>
-                                <div class="testimonial-rating">
-                                    <?php 
-                                    // Output stars based on rating
-                                    for ($i = 0; $i < 5; $i++) {
-                                        echo '<span class="' . ($i < $rating ? 'star filled' : 'star empty') . '">★</span>';
-                                    }
-                                    ?>
                                 </div>
                                 <div class="testimonial-content">
                                     <p><?php echo wp_kses_post($content); ?></p>

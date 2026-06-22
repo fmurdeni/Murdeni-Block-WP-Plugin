@@ -112,11 +112,11 @@
         border: 1px solid #e0e0e0;
         background: #fff;
 
-        .testimonial-rating {
-            display: flex;
-            gap: 4px;
-            margin: 10px 0 18px;
-            line-height: 1;
+	        .testimonial-rating {
+	            display: flex;
+	            gap: 4px;
+	            margin: 8px 0 0;
+	            line-height: 1;
 
             .star {
                 cursor: pointer;

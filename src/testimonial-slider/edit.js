@@ -402,13 +402,16 @@ const Edit = ({ attributes, setAttributes }) => {
                                     onChange={(authorName) => updateTestimonial(activeTestimonial, 'authorName', authorName)}
                                     placeholder={__('Author Name', 'murdeni-blocks')}
                                 />
-                                <RichText
-                                    tagName="p"
-                                    value={testimonials[activeTestimonial].authorPosition}
-                                    onChange={(authorPosition) => updateTestimonial(activeTestimonial, 'authorPosition', authorPosition)}
-                                    placeholder={__('Author Position', 'murdeni-blocks')}
-                                />
-                            </div>
+	                                <RichText
+	                                    tagName="p"
+	                                    value={testimonials[activeTestimonial].authorPosition}
+	                                    onChange={(authorPosition) => updateTestimonial(activeTestimonial, 'authorPosition', authorPosition)}
+	                                    placeholder={__('Author Position', 'murdeni-blocks')}
+	                                />
+	                                <div className="testimonial-rating">
+	                                    {renderStars(testimonials[activeTestimonial].rating)}
+	                                </div>
+	                            </div>
                             <RichText
                                 tagName="div"
                                 className="testimonial-review-time"
@@ -417,10 +420,7 @@ const Edit = ({ attributes, setAttributes }) => {
                                 placeholder={__('Review time...', 'murdeni-blocks')}
                             />
                         </div>
-                        <div className="testimonial-rating">
-                            {renderStars(testimonials[activeTestimonial].rating)}
-                        </div>
-                        <div className="testimonial-content">
+	                        <div className="testimonial-content">
                             <RichText
                                 tagName="p"
                                 value={testimonials[activeTestimonial].content}

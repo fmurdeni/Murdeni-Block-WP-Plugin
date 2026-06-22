@@ -80,13 +80,13 @@
         text-align: left;
     }
 
-    .testimonial-rating {
-        color: var(--testimonial-rating-color, #FFD700);
-        display: flex;
-        gap: 4px;
-        justify-content: flex-start;
-        margin: 10px 0 18px 56px;
-        line-height: 1;
+	    .testimonial-rating {
+	        color: var(--testimonial-rating-color, #FFD700);
+	        display: flex;
+	        gap: 4px;
+	        justify-content: flex-start;
+	        margin: 8px 0 0;
+	        line-height: 1;
 
         .star {
             font-size: 18px;
