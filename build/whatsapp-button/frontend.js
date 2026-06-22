@@ -4,7 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // Add animation effect to floating WhatsApp buttons
-    const floatingButtons = document.querySelectorAll('.murdeni-whatsapp-button.floating');
+    const floatingButtons = document.querySelectorAll('.murdeni-whatsapp-button.floating:not(.animation-disabled)');
     
     floatingButtons.forEach(button => {
         // Add entrance animation

@@ -97,6 +97,10 @@
       "type": "boolean",
       "default": false
     },
+    "enableAnimation": {
+      "type": "boolean",
+      "default": true
+    },
     "customClass": {
       "type": "string",
       "default": ""

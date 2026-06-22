@@ -54,6 +54,7 @@ class Murdeni_WhatsApp_Button {
         $icon_position = isset($attributes['iconPosition']) ? $attributes['iconPosition'] : 'before';
         $button_width = isset($attributes['buttonWidth']) ? $attributes['buttonWidth'] : 'auto';
         $center_content = isset($attributes['centerContent']) ? $attributes['centerContent'] : false;
+        $enable_animation = isset($attributes['enableAnimation']) ? $attributes['enableAnimation'] : true;
         $custom_class = isset($attributes['customClass']) ? $attributes['customClass'] : '';
         $open_in_new_tab = isset($attributes['openInNewTab']) ? $attributes['openInNewTab'] : true;
         $floating_button = isset($attributes['floatingButton']) ? $attributes['floatingButton'] : false;
@@ -88,7 +89,7 @@ class Murdeni_WhatsApp_Button {
             }
         </style>
         
-        <div id="<?php echo esc_attr($block_id); ?>" class="murdeni-whatsapp-button <?php echo esc_attr($button_size); ?> <?php echo esc_attr($button_style); ?> <?php echo $button_width === 'full' ? 'full-width' : ''; ?> <?php echo $center_content ? 'content-align-center' : ''; ?> <?php echo esc_attr($custom_class); ?> <?php echo $floating_button ? 'floating ' . esc_attr($floating_position) : ''; ?>">
+        <div id="<?php echo esc_attr($block_id); ?>" class="murdeni-whatsapp-button <?php echo esc_attr($button_size); ?> <?php echo esc_attr($button_style); ?> <?php echo $button_width === 'full' ? 'full-width' : ''; ?> <?php echo $center_content ? 'content-align-center' : ''; ?> <?php echo $enable_animation ? '' : 'animation-disabled'; ?> <?php echo esc_attr($custom_class); ?> <?php echo $floating_button ? 'floating ' . esc_attr($floating_position) : ''; ?>">
             <div class="whatsapp-button-wrapper<?php echo $button_style === 'image' ? ' image-button' : ''; ?>">
                 <a 
                     href="<?php echo esc_url($whatsapp_url); ?>" 
