@@ -1,6 +1,6 @@
 {
   "name": "murdeni-blocks",
-  "version": "1.0.0",
+  "version": "1.0.13",
   "description": "Collection of custom blocks for WordPress including Post Grid, Post Grid Popup, and Portfolio Grid",
   "scripts": {
     "build": "wp-scripts build && npm run build:copy-files",
@@ -9,7 +9,8 @@
     "format": "wp-scripts format",
     "lint:css": "wp-scripts lint-style",
     "lint:js": "wp-scripts lint-js",
-    "packages-update": "wp-scripts packages-update"
+    "packages-update": "wp-scripts packages-update",
+    "package": "node scripts/package-plugin.js"
   },
   "author": "Feri Murdeni",
   "license": "GPL-2.0-or-later",
