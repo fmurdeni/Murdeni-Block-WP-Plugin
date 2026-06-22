@@ -275,7 +275,6 @@ class Murdeni_Testimonial_Slider {
                         $author_name = isset($testimonial['authorName']) ? $testimonial['authorName'] : '';
                         $author_position = isset($testimonial['authorPosition']) ? $testimonial['authorPosition'] : '';
 	                        $author_image = isset($testimonial['authorImage']) && $this->has_custom_author_image($testimonial['authorImage']) ? $testimonial['authorImage'] : '';
-	                        $bottom_image = isset($testimonial['bottomImage']) && !empty($testimonial['bottomImage']) ? $testimonial['bottomImage'] : '';
 	                        $review_time = isset($testimonial['reviewTime']) ? $testimonial['reviewTime'] : '';
 	                        $review_url = isset($testimonial['reviewUrl']) ? $this->normalize_review_url($testimonial['reviewUrl']) : '';
 	                        $author_initials = $this->get_author_initials($author_name);
@@ -326,11 +325,6 @@ class Murdeni_Testimonial_Slider {
                                         <?php echo esc_html($card_review_link_text); ?>
                                     </a>
                                     <?php endif; ?>
-                                </div>
-                                <?php endif; ?>
-                                <?php if (!empty($bottom_image)) : ?>
-                                <div class="testimonial-bottom-image">
-                                    <img src="<?php echo esc_url($bottom_image); ?>" alt="" />
                                 </div>
                                 <?php endif; ?>
                             </div>
