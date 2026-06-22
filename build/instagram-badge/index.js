@@ -107,14 +107,22 @@
         );
     }
 
+    function getBoxValue(value, fallback) {
+        if (value === undefined || value === null || value === '') {
+            return fallback + 'px';
+        }
+
+        return typeof value === 'number' ? value + 'px' : value;
+    }
+
     function getPaddingStyle(padding) {
         padding = padding || {};
         return [
-            padding.top || 18,
-            padding.right || 22,
-            padding.bottom || 18,
-            padding.left || 22
-        ].join('px ') + 'px';
+            getBoxValue(padding.top, 18),
+            getBoxValue(padding.right, 22),
+            getBoxValue(padding.bottom, 18),
+            getBoxValue(padding.left, 22)
+        ].join(' ');
     }
 
     function getWidthValue(value, unit) {
