@@ -92,13 +92,19 @@
     }
 
     .testimonial-content {
-        flex: 1 1 auto;
+        flex: 0 0 auto;
+        min-height: calc(14px * 1.55 * 4);
 
         p {
             margin: 0;
             color: var(--testimonial-text-color, #333333);
-	            font-size: 14px;
-	            line-height: 1.55;
+            font-size: 14px;
+            line-height: 1.55;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 4;
+            line-clamp: 4;
+            overflow: hidden;
             position: relative;
         }
     }
@@ -271,6 +277,14 @@
     }
 
     @media (max-width: 768px) {
+        .testimonial-content {
+            min-height: calc(13px * 1.55 * 4);
+
+            p {
+                font-size: 13px;
+            }
+        }
+
         .slick-prev {
             left: -15px;
         }
