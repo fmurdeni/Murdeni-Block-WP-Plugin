@@ -101,9 +101,9 @@ function openVideoLightbox(videoId, videoLayout = 'default') {
     // Create iframe
     const iframe = document.createElement('iframe');
     iframe.className = 'murdeni-video__lightbox-video';
-    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1`;
     iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-    iframe.allowFullscreen = true;
+    iframe.allowFullscreen = !isShort;
     content.appendChild(iframe);
     
     // Show lightbox
