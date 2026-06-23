@@ -41,6 +41,8 @@ export default function Edit({ attributes, setAttributes }) {
         overlayDark,
         title,
         titleType,
+        showTopLabel,
+        topLabel,
         subtitle,
         subtitleSize,
         description,
@@ -171,6 +173,11 @@ export default function Edit({ attributes, setAttributes }) {
                             { label: 'H3', value: 'h3' },
                         ]}
                         onChange={(value) => setAttributes({ titleType: value })}
+                    />
+                    <ToggleControl
+                        label={__('Show Top Label', 'murdeni-blocks')}
+                        checked={showTopLabel}
+                        onChange={(value) => setAttributes({ showTopLabel: value })}
                     />
                     <ToggleControl
                         label={__('Show Subtitle', 'murdeni-blocks')}
@@ -349,6 +356,16 @@ export default function Edit({ attributes, setAttributes }) {
                     }}
                 >
                     <div className="murdeni-hero-banner__inner">
+                        {showTopLabel && (
+                            <RichText
+                                tagName="div"
+                                className="murdeni-hero-banner__top-label"
+                                value={topLabel}
+                                onChange={(value) => setAttributes({ topLabel: value })}
+                                placeholder={__('Add top label...', 'murdeni-blocks')}
+                            />
+                        )}
+
                         {/* Title */}
                         <RichText
                             tagName={titleType}

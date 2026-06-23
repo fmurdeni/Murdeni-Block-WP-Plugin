@@ -48,6 +48,8 @@ class Murdeni_Hero_Banner {
         $title = isset($attributes['title']) ? $attributes['title'] : '';
         $title_type = isset($attributes['titleType']) ? $attributes['titleType'] : 'h2';
         $title_size = isset($attributes['titleSize']) ? $attributes['titleSize'] : 32;
+        $show_top_label = isset($attributes['showTopLabel']) ? $attributes['showTopLabel'] : true;
+        $top_label = isset($attributes['topLabel']) ? $attributes['topLabel'] : 'Melayani JKT . TNG . BGR . BDG';
         $subtitle = isset($attributes['subtitle']) ? $attributes['subtitle'] : '';
         $subtitle_size = isset($attributes['subtitleSize']) ? $attributes['subtitleSize'] : 'medium';
         $show_subtitle = isset($attributes['showSubtitle']) ? $attributes['showSubtitle'] : true;
@@ -90,6 +92,12 @@ class Murdeni_Hero_Banner {
 
             <div class="murdeni-hero-banner__content" style="position: relative; z-index: 2; width: 100%; padding: 0 20px;">
                 <div class="murdeni-hero-banner__inner">
+                    <?php if ($show_top_label && $top_label) : ?>
+                        <div class="murdeni-hero-banner__top-label">
+                            <?php echo wp_kses_post($top_label); ?>
+                        </div>
+                    <?php endif; ?>
+
                     <?php if ($title) : ?>
                         <<?php echo esc_attr($title_type); ?> class="murdeni-hero-banner__title" style="font-size: <?php echo esc_attr($title_size); ?>px;">
                             <?php echo wp_kses_post($title); ?>

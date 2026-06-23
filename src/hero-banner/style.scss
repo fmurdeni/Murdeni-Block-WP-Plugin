@@ -17,6 +17,26 @@
     font-weight: 700;
     line-height: 1.2;
   }
+
+  &__top-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    margin-bottom: 1.75rem;
+    padding: 0.45em 1.15em;
+    border: 2px solid currentColor;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 4px 4px 0 rgba(0, 61, 134, 0.14);
+    color: #003d86;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    line-height: 1.1;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+  }
   
   &__subtitle {
     margin-bottom: 1em;
@@ -78,6 +98,15 @@
     
     .murdeni-hero-banner__buttons {
       justify-content: flex-end;
+    }
+  }
+
+  @media (max-width: 767px) {
+    &__top-label {
+      margin-bottom: 2rem;
+      padding: 0.42em 1em;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
     }
   }
 }

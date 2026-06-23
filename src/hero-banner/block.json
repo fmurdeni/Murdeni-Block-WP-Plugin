@@ -35,6 +35,18 @@
       "type": "string",
       "default": "h2"
     },
+    "showTopLabel": {
+      "type": "boolean",
+      "default": true
+    },
+    "topLabel": {
+      "type": "string",
+      "default": "Melayani JKT . TNG . BGR . BDG"
+    },
+    "titleSize": {
+      "type": "number",
+      "default": 32
+    },
     "subtitle": {
       "type": "string",
       "default": "Subtitle text goes here"
