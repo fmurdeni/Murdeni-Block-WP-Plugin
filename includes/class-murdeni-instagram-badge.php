@@ -96,8 +96,8 @@ class Murdeni_Instagram_Badge {
 		}
 
 		$badge_style = array(
-			'width: ' . $badge_width . $badge_width_unit,
-			'max-width: 100%',
+			'width: 100%',
+			'max-width: ' . $badge_width . $badge_width_unit,
 			'background: ' . $background_style,
 			'border-color: ' . $border_color,
 			'border-width: ' . $border_width . 'px',

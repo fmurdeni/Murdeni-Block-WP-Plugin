@@ -145,8 +145,8 @@
         };
 
         var badgeStyle = {
-            width: getWidthValue(attributes.badgeWidth, attributes.badgeWidthUnit),
-            maxWidth: '100%',
+            width: '100%',
+            maxWidth: getWidthValue(attributes.badgeWidth, attributes.badgeWidthUnit),
             background:
                 attributes.backgroundType === 'gradient'
                     ? 'linear-gradient(135deg, ' + attributes.gradientStartColor + ', ' + attributes.gradientEndColor + ')'
