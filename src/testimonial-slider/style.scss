@@ -176,6 +176,9 @@
         font-size: 13px;
         line-height: 1.2;
         margin-top: 1px;
+        max-width: 96px;
+        overflow: hidden;
+        text-overflow: ellipsis;
         white-space: nowrap;
     }
 
@@ -294,6 +297,73 @@
 
         .slick-next {
             right: -15px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .testimonial-slide {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+
+        .testimonial-card {
+            padding: 16px;
+        }
+
+        .testimonial-author {
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 8px 10px;
+        }
+
+        .author-image {
+            width: 36px;
+            height: 36px;
+
+            .author-initials {
+                font-size: 14px;
+            }
+        }
+
+        .author-info {
+            flex: 1 1 calc(100% - 46px);
+            max-width: calc(100% - 46px);
+
+            h4,
+            p {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+
+        .testimonial-review-time {
+            flex: 0 1 100%;
+            max-width: 100%;
+            margin-left: 46px;
+            margin-top: -4px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .testimonial-rating {
+            gap: 3px;
+
+            .star {
+                font-size: 16px;
+            }
+        }
+
+        .testimonial-card-bottom {
+            gap: 10px;
+            grid-template-columns: minmax(0, 1fr) auto;
+        }
+
+        .testimonial-review-link {
+            max-width: 92px;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 }

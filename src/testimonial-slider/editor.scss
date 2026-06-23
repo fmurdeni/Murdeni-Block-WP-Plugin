@@ -201,8 +201,12 @@
                 font-size: 13px;
                 line-height: 1.2;
                 margin-top: 1px;
+                max-width: 96px;
                 min-width: 90px;
+                overflow: hidden;
+                text-overflow: ellipsis;
                 text-align: right;
+                white-space: nowrap;
             }
         }
 
@@ -264,6 +268,49 @@
         .remove-testimonial-button {
             margin-top: 20px;
             width: 100%;
+        }
+    }
+
+    @media (max-width: 600px) {
+        padding: 12px;
+
+        .testimonial-card-editor {
+            padding: 16px;
+
+            .testimonial-author {
+                flex-wrap: wrap;
+                gap: 8px 10px;
+
+                .author-image {
+                    width: 36px;
+                    height: 36px;
+
+                    .image-button {
+                        font-size: 14px;
+                    }
+                }
+
+                .author-info {
+                    flex: 1 1 calc(100% - 46px);
+                    max-width: calc(100% - 46px);
+
+                    h4,
+                    p {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                }
+
+                .testimonial-review-time {
+                    flex: 0 1 100%;
+                    max-width: 100%;
+                    min-width: 0;
+                    margin-left: 46px;
+                    margin-top: -4px;
+                    text-align: left;
+                }
+            }
         }
     }
 }
