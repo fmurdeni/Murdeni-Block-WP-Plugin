@@ -380,28 +380,30 @@
 	                        el(
 	                            'div',
 	                            { className: 'testimonial-bottom-copy' },
-	                            activeBottomTitle && el('div', { className: 'testimonial-bottom-title' }, activeBottomTitle),
-	                            activeBottomSubtitle && el('div', { className: 'testimonial-bottom-subtitle' }, activeBottomSubtitle),
-	                            el(TextControl, {
-	                                label: __('Bottom Title', 'murdeni-blocks'),
+	                            el(RichText, {
+	                                tagName: 'div',
+	                                className: 'testimonial-bottom-title',
 	                                value: activeBottomTitle,
-	                                onChange: function (value) { return updateTestimonial(activeTestimonial, 'cardBottomTitle', value); }
+	                                onChange: function (value) { return updateTestimonial(activeTestimonial, 'cardBottomTitle', value); },
+	                                placeholder: __('Bottom title...', 'murdeni-blocks')
 	                            }),
-	                            el(TextControl, {
-	                                label: __('Bottom Subtitle', 'murdeni-blocks'),
+	                            el(RichText, {
+	                                tagName: 'div',
+	                                className: 'testimonial-bottom-subtitle',
 	                                value: activeBottomSubtitle,
-	                                onChange: function (value) { return updateTestimonial(activeTestimonial, 'cardBottomSubtitle', value); }
+	                                onChange: function (value) { return updateTestimonial(activeTestimonial, 'cardBottomSubtitle', value); },
+	                                placeholder: __('Bottom subtitle...', 'murdeni-blocks')
 	                            })
 	                        ),
 	                        el(
 	                            'div',
 	                            { className: 'testimonial-bottom-link-editor' },
-	                            activeReviewLinkText && active.reviewUrl && el('a', { className: 'testimonial-review-link', href: active.reviewUrl, target: '_blank', rel: 'noopener noreferrer' }, activeReviewLinkText),
-	                            activeReviewLinkText && !active.reviewUrl && el('span', { className: 'testimonial-review-link' }, activeReviewLinkText),
-	                            el(TextControl, {
-	                                label: __('Review Link Text', 'murdeni-blocks'),
+	                            el(RichText, {
+	                                tagName: 'span',
+	                                className: 'testimonial-review-link',
 	                                value: activeReviewLinkText,
-	                                onChange: function (value) { return updateTestimonial(activeTestimonial, 'cardReviewLinkText', value); }
+	                                onChange: function (value) { return updateTestimonial(activeTestimonial, 'cardReviewLinkText', value); },
+	                                placeholder: __('Review link text...', 'murdeni-blocks')
 	                            }),
 	                            el(TextControl, {
 	                                label: __('Review URL', 'murdeni-blocks'),

@@ -426,34 +426,28 @@ const Edit = ({ attributes, setAttributes }) => {
                         </div>
                         <div className="testimonial-card-bottom">
                             <div className="testimonial-bottom-copy">
-                                {activeBottomTitle && (
-                                    <div className="testimonial-bottom-title">{activeBottomTitle}</div>
-                                )}
-                                {activeBottomSubtitle && (
-                                    <div className="testimonial-bottom-subtitle">{activeBottomSubtitle}</div>
-                                )}
-                                <TextControl
-                                    label={__('Bottom Title', 'murdeni-blocks')}
+                                <RichText
+                                    tagName="div"
+                                    className="testimonial-bottom-title"
                                     value={activeBottomTitle}
                                     onChange={(value) => updateTestimonial(activeTestimonial, 'cardBottomTitle', value)}
+                                    placeholder={__('Bottom title...', 'murdeni-blocks')}
                                 />
-                                <TextControl
-                                    label={__('Bottom Subtitle', 'murdeni-blocks')}
+                                <RichText
+                                    tagName="div"
+                                    className="testimonial-bottom-subtitle"
                                     value={activeBottomSubtitle}
                                     onChange={(value) => updateTestimonial(activeTestimonial, 'cardBottomSubtitle', value)}
+                                    placeholder={__('Bottom subtitle...', 'murdeni-blocks')}
                                 />
                             </div>
 	                            <div className="testimonial-bottom-link-editor">
-	                                {activeReviewLinkText && testimonials[activeTestimonial].reviewUrl && (
-	                                    <a className="testimonial-review-link" href={testimonials[activeTestimonial].reviewUrl} target="_blank" rel="noopener noreferrer">{activeReviewLinkText}</a>
-	                                )}
-	                                {activeReviewLinkText && !testimonials[activeTestimonial].reviewUrl && (
-	                                    <span className="testimonial-review-link">{activeReviewLinkText}</span>
-	                                )}
-	                                <TextControl
-	                                    label={__('Review Link Text', 'murdeni-blocks')}
+	                                <RichText
+	                                    tagName="span"
+	                                    className="testimonial-review-link"
 	                                    value={activeReviewLinkText}
 	                                    onChange={(value) => updateTestimonial(activeTestimonial, 'cardReviewLinkText', value)}
+	                                    placeholder={__('Review link text...', 'murdeni-blocks')}
 	                                />
 	                                <TextControl
 	                                    label={__('Review URL', 'murdeni-blocks')}
