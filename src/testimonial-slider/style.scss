@@ -171,14 +171,18 @@
     }
 
     .testimonial-review-time {
-        flex: 0 0 auto;
-        color: #444;
-        font-size: 13px;
-        line-height: 1.2;
-        margin-top: 1px;
+        color: #777;
+        display: block;
+        font-size: 12px;
+        font-style: italic;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        line-height: 1.25;
+        margin: 4px 0 8px;
         max-width: 96px;
         overflow: hidden;
         text-overflow: ellipsis;
+        text-align: left;
         white-space: nowrap;
     }
 
@@ -338,10 +342,8 @@
         }
 
         .testimonial-review-time {
-            flex: 0 1 100%;
             max-width: 100%;
-            margin-left: 46px;
-            margin-top: -4px;
+            margin: 4px 0 8px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;

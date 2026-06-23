@@ -352,17 +352,17 @@
 	                                onChange: function (value) { return updateTestimonial(activeTestimonial, 'authorPosition', value); },
 	                                placeholder: __('Author Details', 'murdeni-blocks')
 	                            }),
+	                            el(RichText, {
+	                                tagName: 'div',
+	                                className: 'testimonial-review-time',
+	                                value: active.reviewTime,
+	                                onChange: function (value) { return updateTestimonial(activeTestimonial, 'reviewTime', value); },
+	                                placeholder: __('Review time...', 'murdeni-blocks')
+	                            }),
 	                            el('div', { className: 'testimonial-rating' }, renderStars(active.rating || 5, attributes.ratingColor, function (rating) {
 	                                updateTestimonial(activeTestimonial, 'rating', rating);
 	                            }))
 	                        ),
-                        el(RichText, {
-                            tagName: 'div',
-                            className: 'testimonial-review-time',
-                            value: active.reviewTime,
-                            onChange: function (value) { return updateTestimonial(activeTestimonial, 'reviewTime', value); },
-                            placeholder: __('Review time...', 'murdeni-blocks')
-                        })
                     ),
 	                    el(
                         'div',

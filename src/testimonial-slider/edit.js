@@ -404,17 +404,17 @@ const Edit = ({ attributes, setAttributes }) => {
 	                                    onChange={(authorPosition) => updateTestimonial(activeTestimonial, 'authorPosition', authorPosition)}
 	                                    placeholder={__('Author Position', 'murdeni-blocks')}
 	                                />
+                                <RichText
+                                    tagName="div"
+                                    className="testimonial-review-time"
+                                    value={testimonials[activeTestimonial].reviewTime}
+                                    onChange={(reviewTime) => updateTestimonial(activeTestimonial, 'reviewTime', reviewTime)}
+                                    placeholder={__('Review time...', 'murdeni-blocks')}
+                                />
 	                                <div className="testimonial-rating">
 	                                    {renderStars(testimonials[activeTestimonial].rating)}
 	                                </div>
 	                            </div>
-                            <RichText
-                                tagName="div"
-                                className="testimonial-review-time"
-                                value={testimonials[activeTestimonial].reviewTime}
-                                onChange={(reviewTime) => updateTestimonial(activeTestimonial, 'reviewTime', reviewTime)}
-                                placeholder={__('Review time...', 'murdeni-blocks')}
-                            />
                         </div>
 	                        <div className="testimonial-content">
                             <RichText
