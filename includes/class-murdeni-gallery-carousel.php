@@ -165,7 +165,7 @@ class Murdeni_Gallery_Carousel {
 			),
 			'hoverEffect' => array(
 				'type'    => 'string',
-				'default' => 'zoom',
+				'default' => 'none',
 			),
 			'borderRadius' => array(
 				'type'    => 'number',
@@ -203,7 +203,7 @@ class Murdeni_Gallery_Carousel {
 		$show_dots        = isset( $attributes['showDots'] ) ? $attributes['showDots'] : true;
 		$autoplay         = isset( $attributes['autoplay'] ) ? $attributes['autoplay'] : false;
 		$autoplay_speed   = isset( $attributes['autoplaySpeed'] ) ? $attributes['autoplaySpeed'] : 3000;
-		$hover_effect     = isset( $attributes['hoverEffect'] ) ? $attributes['hoverEffect'] : 'zoom';
+		$hover_effect     = isset( $attributes['hoverEffect'] ) ? $attributes['hoverEffect'] : 'none';
 		$border_radius    = isset( $attributes['borderRadius'] ) ? $attributes['borderRadius'] : 0;
 		$border_width     = isset( $attributes['borderWidth'] ) ? $attributes['borderWidth'] : 0;
 		$border_color     = isset( $attributes['borderColor'] ) ? $attributes['borderColor'] : '';

@@ -85,7 +85,7 @@
     },
     "hoverEffect": {
       "type": "string",
-      "default": "zoom"
+      "default": "none"
     },
     "borderRadius": {
       "type": "number",
