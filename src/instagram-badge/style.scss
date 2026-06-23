@@ -9,10 +9,10 @@
     box-sizing: border-box;
     border-style: solid;
     text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: filter 0.2s ease, box-shadow 0.2s ease;
 
     &:is(a):hover {
-        transform: translateY(-1px);
+        filter: brightness(0.85);
         text-decoration: none;
     }
 
@@ -68,5 +68,46 @@
     &__followers {
         margin-top: 4px;
         line-height: 1.25;
+    }
+}
+
+@media (max-width: 600px) {
+    .murdeni-instagram-badge__wrapper {
+        box-sizing: border-box;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .murdeni-instagram-badge {
+        gap: 8px !important;
+    }
+
+    .murdeni-instagram-badge__avatar {
+        height: 44px !important;
+        width: 44px !important;
+    }
+
+    .murdeni-instagram-badge__identity {
+        gap: 6px;
+    }
+
+    .murdeni-instagram-badge__username {
+        font-size: 15px !important;
+        line-height: 1.15;
+    }
+
+    .murdeni-instagram-badge__followers {
+        font-size: 12.5px !important;
+        margin-top: 3px;
+    }
+
+    .murdeni-instagram-badge__instagram-icon svg {
+        height: 14px !important;
+        width: 14px !important;
+    }
+
+    .murdeni-instagram-badge__check svg {
+        height: 13px !important;
+        width: 13px !important;
     }
 }

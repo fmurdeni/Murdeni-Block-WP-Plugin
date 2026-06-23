@@ -238,6 +238,68 @@
     }
 }
 
+body.is-dark-theme {
+    .testimonial-slider-container {
+        .testimonial-card {
+            align-items: stretch !important;
+            background-color: #182231 !important;
+            border-color: rgba(255, 255, 255, 0.32) !important;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28) !important;
+        }
+
+        .author-info {
+            h4 {
+                color: #f8fafc !important;
+            }
+
+            p {
+                color: #cbd5e1 !important;
+            }
+        }
+
+        .testimonial-review-time {
+            color: #94a3b8 !important;
+        }
+
+        .testimonial-content p {
+            color: #e5e7eb !important;
+        }
+
+        .testimonial-card-bottom {
+            border-top-color: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .testimonial-bottom-title {
+            color: #f8fafc !important;
+        }
+
+        .testimonial-bottom-subtitle {
+            color: #cbd5e1 !important;
+        }
+
+        .testimonial-review-link {
+            color: #ff3b3b !important;
+        }
+
+        .testimonial-rating {
+            color: #f7de6f !important;
+        }
+
+        .testimonial-rating .star,
+        .testimonial-overall-rating .overall-rating-stars .star {
+            color: #f7de6f !important;
+        }
+
+        .slick-dots li button:before {
+            color: rgba(255, 255, 255, 0.35) !important;
+        }
+
+        .slick-dots li.slick-active button:before {
+            color: #f7de6f !important;
+        }
+    }
+}
+
 /* Slick overrides */
 .testimonial-slider-container {
     .slick-prev,

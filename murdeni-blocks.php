@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Murdeni Blocks
  * Description: Collection of custom blocks for WordPress including Post Grid, Post Grid Popup, Portfolio Grid, and Skills Percentage.
- * Version: 1.0.31
+ * Version: 1.0.32
  * Author: Murdeni
  * Text Domain: murdeni-blocks
  */
@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('MURDENI_BLOCKS_VERSION', '1.0.31');
+define('MURDENI_BLOCKS_VERSION', '1.0.32');
 define('MURDENI_BLOCKS_PATH', plugin_dir_path(__FILE__));
 define('MURDENI_BLOCKS_URL', plugin_dir_url(__FILE__));
 define('MURDENI_BLOCKS_BASENAME', plugin_basename(__FILE__));
