@@ -243,6 +243,10 @@ class Murdeni_Gallery_Carousel {
 
 		// Get aspect ratio style.
 		$aspect_ratio_style = $this->get_aspect_ratio_style( $aspect_ratio );
+		$allowed_thumbnail_sizes = array( 'thumbnail', 'medium', 'large', 'full' );
+		if ( ! in_array( $thumbnail_size, $allowed_thumbnail_sizes, true ) ) {
+			$thumbnail_size = 'medium';
+		}
 
 		// Start output.
 		ob_start();
@@ -331,15 +335,22 @@ class Murdeni_Gallery_Carousel {
 						// Video URL.
 						$video_url = isset( $item['videoUrl'] ) ? $item['videoUrl'] : '';
 						$video_id  = $this->get_youtube_video_id( $video_url );
+						$media_url = isset( $item['mediaUrl'] ) ? $item['mediaUrl'] : '';
+						if ( ! empty( $item['mediaId'] ) ) {
+							$sized_media_url = wp_get_attachment_image_url( absint( $item['mediaId'] ), $thumbnail_size );
+							if ( ! empty( $sized_media_url ) ) {
+								$media_url = $sized_media_url;
+							}
+						}
 						?>
 						<div class="<?php echo esc_attr( implode( ' ', $item_classes ) ); ?>" style="<?php echo ! empty( $item_style ) ? esc_attr( implode( '; ', $item_style ) ) . '; ' : ''; ?>margin-right: <?php echo esc_attr( $gap_size ); ?>px;">
 							<div class="murdeni-gallery-carousel__item-inner">
 								<div class="murdeni-gallery-carousel__item-media-wrapper" style="<?php echo esc_attr( $aspect_ratio_style ); ?>">
-									<a href="<?php echo $is_video && ! empty( $video_id ) ? esc_url( 'https://www.youtube.com/watch?v=' . $video_id ) : esc_url( $item['mediaUrl'] ); ?>" 
+									<a href="<?php echo $is_video && ! empty( $video_id ) ? esc_url( 'https://www.youtube.com/watch?v=' . $video_id ) : esc_url( $media_url ); ?>" 
 										class="murdeni-gallery-carousel__item-link"
 									>
 										<img 
-											src="<?php echo esc_url( $item['mediaUrl'] ); ?>" 
+											src="<?php echo esc_url( $media_url ); ?>" 
 											alt="<?php echo esc_attr( $item['caption'] ?? '' ); ?>" 
 											class="murdeni-gallery-carousel__item-media"
 										/>
