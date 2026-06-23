@@ -143,14 +143,6 @@ class Murdeni_Gallery_Carousel {
 				'type'    => 'string',
 				'default' => __('Gallery Carousel', 'murdeni-blocks'),
 			),
-			'headerDescription' => array(
-				'type'    => 'string',
-				'default' => '',
-			),
-			'headerAlignment' => array(
-				'type'    => 'string',
-				'default' => 'center',
-			),
 			'displayViewAll' => array(
 				'type'    => 'boolean',
 				'default' => true,
@@ -220,12 +212,6 @@ class Murdeni_Gallery_Carousel {
 		// Header attributes
 		$display_header   = isset( $attributes['displayHeader'] ) ? $attributes['displayHeader'] : true;
 		$header_title     = isset( $attributes['headerTitle'] ) ? $attributes['headerTitle'] : __('Gallery Carousel', 'murdeni-blocks');
-		$header_description = isset( $attributes['headerDescription'] ) ? $attributes['headerDescription'] : '';
-		$header_alignment = isset( $attributes['headerAlignment'] ) ? $attributes['headerAlignment'] : 'center';
-		$allowed_header_alignments = array( 'left', 'center', 'right' );
-		if ( ! in_array( $header_alignment, $allowed_header_alignments, true ) ) {
-			$header_alignment = 'center';
-		}
 		$display_view_all = isset( $attributes['displayViewAll'] ) ? $attributes['displayViewAll'] : true;
 		$view_all_text    = isset( $attributes['viewAllText'] ) ? $attributes['viewAllText'] : __('View All', 'murdeni-blocks');
 		$view_all_url     = isset( $attributes['viewAllUrl'] ) ? $attributes['viewAllUrl'] : '';
@@ -243,10 +229,6 @@ class Murdeni_Gallery_Carousel {
 
 		// Get aspect ratio style.
 		$aspect_ratio_style = $this->get_aspect_ratio_style( $aspect_ratio );
-		$allowed_thumbnail_sizes = array( 'thumbnail', 'medium', 'large', 'full' );
-		if ( ! in_array( $thumbnail_size, $allowed_thumbnail_sizes, true ) ) {
-			$thumbnail_size = 'medium';
-		}
 
 		// Start output.
 		ob_start();
@@ -276,12 +258,7 @@ class Murdeni_Gallery_Carousel {
 		<div id="<?php echo esc_attr( $carousel_id ); ?>" class="<?php echo esc_attr( implode( ' ', $carousel_classes ) ); ?>" <?php echo implode( ' ', $carousel_data_attrs ); ?>>
 			<?php if ( $display_header ) : ?>
 			<div class="murdeni-gallery-carousel__header">
-				<div class="murdeni-gallery-carousel__heading is-align-<?php echo esc_attr( $header_alignment ); ?>" style="text-align: <?php echo esc_attr( $header_alignment ); ?>;">
-					<h2 class="murdeni-gallery-carousel__title"><?php echo esc_html( $header_title ); ?></h2>
-					<?php if ( ! empty( $header_description ) ) : ?>
-					<p class="murdeni-gallery-carousel__description"><?php echo wp_kses_post( $header_description ); ?></p>
-					<?php endif; ?>
-				</div>
+				<h2 class="murdeni-gallery-carousel__title"><?php echo esc_html( $header_title ); ?></h2>
 				<?php if ( $display_view_all && ! empty( $view_all_url ) ) : ?>
 				<a href="<?php echo esc_url( $view_all_url ); ?>" class="murdeni-gallery-carousel__view-all"><?php echo esc_html( $view_all_text ); ?></a>
 				<?php endif; ?>
@@ -335,22 +312,15 @@ class Murdeni_Gallery_Carousel {
 						// Video URL.
 						$video_url = isset( $item['videoUrl'] ) ? $item['videoUrl'] : '';
 						$video_id  = $this->get_youtube_video_id( $video_url );
-						$media_url = isset( $item['mediaUrl'] ) ? $item['mediaUrl'] : '';
-						if ( ! empty( $item['mediaId'] ) ) {
-							$sized_media_url = wp_get_attachment_image_url( absint( $item['mediaId'] ), $thumbnail_size );
-							if ( ! empty( $sized_media_url ) ) {
-								$media_url = $sized_media_url;
-							}
-						}
 						?>
 						<div class="<?php echo esc_attr( implode( ' ', $item_classes ) ); ?>" style="<?php echo ! empty( $item_style ) ? esc_attr( implode( '; ', $item_style ) ) . '; ' : ''; ?>margin-right: <?php echo esc_attr( $gap_size ); ?>px;">
 							<div class="murdeni-gallery-carousel__item-inner">
 								<div class="murdeni-gallery-carousel__item-media-wrapper" style="<?php echo esc_attr( $aspect_ratio_style ); ?>">
-									<a href="<?php echo $is_video && ! empty( $video_id ) ? esc_url( 'https://www.youtube.com/watch?v=' . $video_id ) : esc_url( $media_url ); ?>" 
+									<a href="<?php echo $is_video && ! empty( $video_id ) ? esc_url( 'https://www.youtube.com/watch?v=' . $video_id ) : esc_url( $item['mediaUrl'] ); ?>" 
 										class="murdeni-gallery-carousel__item-link"
 									>
 										<img 
-											src="<?php echo esc_url( $media_url ); ?>" 
+											src="<?php echo esc_url( $item['mediaUrl'] ); ?>" 
 											alt="<?php echo esc_attr( $item['caption'] ?? '' ); ?>" 
 											class="murdeni-gallery-carousel__item-media"
 										/>
