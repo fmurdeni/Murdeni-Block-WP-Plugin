@@ -343,7 +343,7 @@ const Edit = ({ attributes, setAttributes }) => {
                 <div className="testimonial-slider-tabs">
                     {testimonials.map((testimonial, index) => (
                         <button
-                            key={testimonial.id}
+                            key={`${testimonial.id || 'testimonial'}-${index}`}
                             className={`testimonial-tab ${index === activeTestimonial ? 'active' : ''}`}
                             onClick={() => setActiveTestimonial(index)}
                         >

@@ -40,6 +40,21 @@
             const smoothLoop = infinite && originalCount > 1;
             let isLoopResetting = false;
 
+            $slider.children().each(function() {
+                const $slide = $(this);
+                const $bottom = $slide.find('.testimonial-card-bottom').first();
+
+                if (!$bottom.length || $bottom.find('.testimonial-review-link').length) {
+                    return;
+                }
+
+                const $previousLink = $slide.prev().find('.testimonial-review-link').last();
+
+                if ($previousLink.length) {
+                    $bottom.append($previousLink.clone(false, false));
+                }
+            });
+
             if (smoothLoop && !$slider.data('smooth-loop-ready')) {
                 const $originalSlides = $slider.children().clone(true, true);
                 $slider.empty();

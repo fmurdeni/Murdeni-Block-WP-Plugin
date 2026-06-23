@@ -96,6 +96,21 @@ class Murdeni_Testimonial_Slider {
 	    }
 
 	    /**
+	     * Get a testimonial review URL from current and legacy item keys.
+	     */
+	    private function get_testimonial_review_url($testimonial) {
+	        $url_keys = array('reviewUrl', 'reviewLinkUrl', 'linkUrl', 'url');
+
+	        foreach ($url_keys as $key) {
+	            if (!empty($testimonial[$key])) {
+	                return $this->normalize_review_url($testimonial[$key]);
+	            }
+	        }
+
+	        return '';
+	    }
+
+	    /**
 	     * Read a per-testimonial bottom field while preserving old global defaults.
 	     */
 	    private function get_testimonial_item_value($testimonial, $key, $fallback = '') {
@@ -285,6 +300,7 @@ class Murdeni_Testimonial_Slider {
                 <?php
                 // Loop through testimonials
                 if (!empty($testimonials)) :
+                    $last_review_url = '';
                     foreach ($testimonials as $testimonial) :
                         $rating = isset($testimonial['rating']) ? $testimonial['rating'] : 5;
                         $content = isset($testimonial['content']) ? $testimonial['content'] : '';
@@ -292,7 +308,13 @@ class Murdeni_Testimonial_Slider {
                         $author_position = isset($testimonial['authorPosition']) ? $testimonial['authorPosition'] : '';
 	                        $author_image = isset($testimonial['authorImage']) && $this->has_custom_author_image($testimonial['authorImage']) ? $testimonial['authorImage'] : '';
 	                        $review_time = isset($testimonial['reviewTime']) ? $testimonial['reviewTime'] : '';
-	                        $review_url = isset($testimonial['reviewUrl']) ? $this->normalize_review_url($testimonial['reviewUrl']) : '';
+	                        $review_url = $this->get_testimonial_review_url($testimonial);
+	                        if (empty($review_url) && !empty($last_review_url)) {
+	                            $review_url = $last_review_url;
+	                        }
+	                        if (!empty($review_url)) {
+	                            $last_review_url = $review_url;
+	                        }
 	                        $item_bottom_title = $this->get_testimonial_item_value($testimonial, 'cardBottomTitle', $card_bottom_title);
 	                        $item_bottom_subtitle = $this->get_testimonial_item_value($testimonial, 'cardBottomSubtitle', $card_bottom_subtitle);
 	                        $item_review_link_text = $this->get_testimonial_non_empty_item_value($testimonial, 'cardReviewLinkText', $card_review_link_text);

@@ -290,7 +290,7 @@
                         return el(
                             'button',
                             {
-                                key: testimonial.id,
+                                key: (testimonial.id || 'testimonial') + '-' + index,
                                 className: 'testimonial-tab ' + (index === activeTestimonial ? 'active' : ''),
                                 onClick: function () { return setActiveTestimonial(index); }
                             },
