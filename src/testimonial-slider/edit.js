@@ -45,6 +45,12 @@ const hasCustomAuthorImage = (testimonial = {}) => {
     return Boolean(testimonial.authorImage && !testimonial.authorImage.includes('placehold.co'));
 };
 
+const getItemValue = (testimonial = {}, property, fallback = '') => {
+    return Object.prototype.hasOwnProperty.call(testimonial, property)
+        ? testimonial[property]
+        : fallback;
+};
+
 const Edit = ({ attributes, setAttributes }) => {
     const {
         testimonials,
@@ -91,6 +97,9 @@ const Edit = ({ attributes, setAttributes }) => {
 	            authorImage: '',
 	            authorAvatarColor: avatarColors[newTestimonials.length % avatarColors.length],
 	            reviewTime: '',
+	            cardBottomTitle: cardBottomTitle || 'Klik Kaca Mobil Tangerang - Garansi & Cepat 2 Jam Beres',
+	            cardBottomSubtitle: cardBottomSubtitle || 'Bengkel Kaca Mobil',
+	            cardReviewLinkText: cardReviewLinkText || 'Lihat di Google',
 	            reviewUrl: '',
 	        });
         setAttributes({ testimonials: newTestimonials });
@@ -149,6 +158,10 @@ const Edit = ({ attributes, setAttributes }) => {
     
     // State to track active testimonial for editing
     const [activeTestimonial, setActiveTestimonial] = useState(0);
+    const active = testimonials[activeTestimonial] || {};
+    const activeBottomTitle = getItemValue(active, 'cardBottomTitle', cardBottomTitle);
+    const activeBottomSubtitle = getItemValue(active, 'cardBottomSubtitle', cardBottomSubtitle);
+    const activeReviewLinkText = getItemValue(active, 'cardReviewLinkText', cardReviewLinkText);
 
     return (
         <>
@@ -203,23 +216,6 @@ const Edit = ({ attributes, setAttributes }) => {
                         label={__('Pause on Hover', 'murdeni-blocks')}
                         checked={pauseOnHover}
                         onChange={(value) => setAttributes({ pauseOnHover: value })}
-                    />
-                </PanelBody>
-                <PanelBody title={__('Card Bottom Settings', 'murdeni-blocks')} initialOpen={false}>
-                    <TextControl
-                        label={__('Bottom Title', 'murdeni-blocks')}
-                        value={cardBottomTitle}
-                        onChange={(value) => setAttributes({ cardBottomTitle: value })}
-                    />
-                    <TextControl
-                        label={__('Bottom Subtitle', 'murdeni-blocks')}
-                        value={cardBottomSubtitle}
-                        onChange={(value) => setAttributes({ cardBottomSubtitle: value })}
-                    />
-                    <TextControl
-                        label={__('Review Link Text', 'murdeni-blocks')}
-                        value={cardReviewLinkText}
-                        onChange={(value) => setAttributes({ cardReviewLinkText: value })}
                     />
                 </PanelBody>
                 <PanelBody title={__('Rating Settings', 'murdeni-blocks')} initialOpen={false}>
@@ -430,21 +426,37 @@ const Edit = ({ attributes, setAttributes }) => {
                         </div>
                         <div className="testimonial-card-bottom">
                             <div className="testimonial-bottom-copy">
-                                {cardBottomTitle && (
-                                    <div className="testimonial-bottom-title">{cardBottomTitle}</div>
+                                {activeBottomTitle && (
+                                    <div className="testimonial-bottom-title">{activeBottomTitle}</div>
                                 )}
-                                {cardBottomSubtitle && (
-                                    <div className="testimonial-bottom-subtitle">{cardBottomSubtitle}</div>
+                                {activeBottomSubtitle && (
+                                    <div className="testimonial-bottom-subtitle">{activeBottomSubtitle}</div>
                                 )}
+                                <TextControl
+                                    label={__('Bottom Title', 'murdeni-blocks')}
+                                    value={activeBottomTitle}
+                                    onChange={(value) => updateTestimonial(activeTestimonial, 'cardBottomTitle', value)}
+                                />
+                                <TextControl
+                                    label={__('Bottom Subtitle', 'murdeni-blocks')}
+                                    value={activeBottomSubtitle}
+                                    onChange={(value) => updateTestimonial(activeTestimonial, 'cardBottomSubtitle', value)}
+                                />
                             </div>
 	                            <div className="testimonial-bottom-link-editor">
-	                                {cardReviewLinkText && testimonials[activeTestimonial].reviewUrl && (
-	                                    <a className="testimonial-review-link" href={testimonials[activeTestimonial].reviewUrl} target="_blank" rel="noopener noreferrer">{cardReviewLinkText}</a>
+	                                {activeReviewLinkText && testimonials[activeTestimonial].reviewUrl && (
+	                                    <a className="testimonial-review-link" href={testimonials[activeTestimonial].reviewUrl} target="_blank" rel="noopener noreferrer">{activeReviewLinkText}</a>
 	                                )}
-	                                {cardReviewLinkText && !testimonials[activeTestimonial].reviewUrl && (
-	                                    <span className="testimonial-review-link">{cardReviewLinkText}</span>
+	                                {activeReviewLinkText && !testimonials[activeTestimonial].reviewUrl && (
+	                                    <span className="testimonial-review-link">{activeReviewLinkText}</span>
 	                                )}
 	                                <TextControl
+	                                    label={__('Review Link Text', 'murdeni-blocks')}
+	                                    value={activeReviewLinkText}
+	                                    onChange={(value) => updateTestimonial(activeTestimonial, 'cardReviewLinkText', value)}
+	                                />
+	                                <TextControl
+	                                    label={__('Review URL', 'murdeni-blocks')}
 	                                    value={testimonials[activeTestimonial].reviewUrl}
 	                                    onChange={(reviewUrl) => updateTestimonial(activeTestimonial, 'reviewUrl', reviewUrl)}
                                     placeholder={__('Review URL...', 'murdeni-blocks')}

@@ -94,6 +94,13 @@ class Murdeni_Testimonial_Slider {
 
 	        return $review_url;
 	    }
+
+	    /**
+	     * Read a per-testimonial bottom field while preserving old global defaults.
+	     */
+	    private function get_testimonial_item_value($testimonial, $key, $fallback = '') {
+	        return array_key_exists($key, $testimonial) ? $testimonial[$key] : $fallback;
+	    }
 	
 	    /**
 	     * Enqueue frontend scripts
@@ -277,6 +284,9 @@ class Murdeni_Testimonial_Slider {
 	                        $author_image = isset($testimonial['authorImage']) && $this->has_custom_author_image($testimonial['authorImage']) ? $testimonial['authorImage'] : '';
 	                        $review_time = isset($testimonial['reviewTime']) ? $testimonial['reviewTime'] : '';
 	                        $review_url = isset($testimonial['reviewUrl']) ? $this->normalize_review_url($testimonial['reviewUrl']) : '';
+	                        $item_bottom_title = $this->get_testimonial_item_value($testimonial, 'cardBottomTitle', $card_bottom_title);
+	                        $item_bottom_subtitle = $this->get_testimonial_item_value($testimonial, 'cardBottomSubtitle', $card_bottom_subtitle);
+	                        $item_review_link_text = $this->get_testimonial_item_value($testimonial, 'cardReviewLinkText', $card_review_link_text);
 	                        $author_initials = $this->get_author_initials($author_name);
 	                        $author_avatar_color = $this->get_author_avatar_color($testimonial, $author_name);
 	                        ?>
@@ -310,19 +320,19 @@ class Murdeni_Testimonial_Slider {
                                 <div class="testimonial-content">
                                     <p><?php echo wp_kses_post($content); ?></p>
                                 </div>
-                                <?php if (!empty($card_bottom_title) || !empty($card_bottom_subtitle) || !empty($review_url)) : ?>
+                                <?php if (!empty($item_bottom_title) || !empty($item_bottom_subtitle) || !empty($review_url)) : ?>
                                 <div class="testimonial-card-bottom">
                                     <div class="testimonial-bottom-copy">
-                                        <?php if (!empty($card_bottom_title)) : ?>
-                                        <div class="testimonial-bottom-title"><?php echo esc_html($card_bottom_title); ?></div>
+                                        <?php if (!empty($item_bottom_title)) : ?>
+                                        <div class="testimonial-bottom-title"><?php echo esc_html($item_bottom_title); ?></div>
                                         <?php endif; ?>
-                                        <?php if (!empty($card_bottom_subtitle)) : ?>
-                                        <div class="testimonial-bottom-subtitle"><?php echo esc_html($card_bottom_subtitle); ?></div>
+                                        <?php if (!empty($item_bottom_subtitle)) : ?>
+                                        <div class="testimonial-bottom-subtitle"><?php echo esc_html($item_bottom_subtitle); ?></div>
                                         <?php endif; ?>
                                     </div>
-                                    <?php if (!empty($review_url)) : ?>
+                                    <?php if (!empty($review_url) && !empty($item_review_link_text)) : ?>
                                     <a class="testimonial-review-link" href="<?php echo esc_url($review_url); ?>" target="_blank" rel="noopener noreferrer">
-                                        <?php echo esc_html($card_review_link_text); ?>
+                                        <?php echo esc_html($item_review_link_text); ?>
                                     </a>
                                     <?php endif; ?>
                                 </div>

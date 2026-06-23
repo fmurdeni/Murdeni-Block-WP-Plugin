@@ -17,6 +17,10 @@
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
   "attributes": {
+    "topImage": {
+      "type": "string",
+      "default": ""
+    },
     "testimonials": {
       "type": "array",
       "default": [
@@ -29,6 +33,9 @@
           "authorImage": "",
           "authorAvatarColor": "#16a34a",
           "reviewTime": "2 minggu lalu",
+          "cardBottomTitle": "Klik Kaca Mobil Tangerang - Garansi & Cepat 2 Jam Beres",
+          "cardBottomSubtitle": "Bengkel Kaca Mobil",
+          "cardReviewLinkText": "Lihat di Google",
           "reviewUrl": ""
         },
         {
@@ -40,6 +47,9 @@
           "authorImage": "",
           "authorAvatarColor": "#0ea5e9",
           "reviewTime": "2 minggu lalu",
+          "cardBottomTitle": "Klik Kaca Mobil Tangerang - Garansi & Cepat 2 Jam Beres",
+          "cardBottomSubtitle": "Bengkel Kaca Mobil",
+          "cardReviewLinkText": "Lihat di Google",
           "reviewUrl": ""
         },
         {
@@ -51,6 +61,9 @@
           "authorImage": "",
           "authorAvatarColor": "#f97316",
           "reviewTime": "3 minggu lalu",
+          "cardBottomTitle": "Klik Kaca Mobil Tangerang - Garansi & Cepat 2 Jam Beres",
+          "cardBottomSubtitle": "Bengkel Kaca Mobil",
+          "cardReviewLinkText": "Lihat di Google",
           "reviewUrl": ""
         }
       ]

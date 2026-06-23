@@ -45,6 +45,11 @@
 	        return !!(testimonial && testimonial.authorImage && testimonial.authorImage.indexOf('placehold.co') === -1);
 	    }
 
+	    function getItemValue(testimonial, property, fallback) {
+	        testimonial = testimonial || {};
+	        return Object.prototype.hasOwnProperty.call(testimonial, property) ? testimonial[property] : fallback;
+	    }
+
     function renderStars(rating, color, onRate) {
         var stars = [];
         for (var i = 0; i < 5; i++) {
@@ -105,6 +110,9 @@
 		                    authorImage: '',
 		                    authorAvatarColor: avatarColors[testimonials.length % avatarColors.length],
 		                    reviewTime: '',
+		                    cardBottomTitle: attributes.cardBottomTitle || 'Klik Kaca Mobil Tangerang - Garansi & Cepat 2 Jam Beres',
+		                    cardBottomSubtitle: attributes.cardBottomSubtitle || 'Bengkel Kaca Mobil',
+		                    cardReviewLinkText: attributes.cardReviewLinkText || 'Lihat di Google',
 		                    reviewUrl: ''
 	                }])
 	            });
@@ -121,6 +129,9 @@
         }
 
         var averageRating = calculateAverageRating(testimonials);
+        var activeBottomTitle = getItemValue(active, 'cardBottomTitle', attributes.cardBottomTitle);
+        var activeBottomSubtitle = getItemValue(active, 'cardBottomSubtitle', attributes.cardBottomSubtitle);
+        var activeReviewLinkText = getItemValue(active, 'cardReviewLinkText', attributes.cardReviewLinkText);
 
         return el(
             Fragment,
@@ -178,25 +189,6 @@
 	                        label: __('Pause on Hover', 'murdeni-blocks'),
 	                        checked: attributes.pauseOnHover,
 	                        onChange: function (value) { return setAttributes({ pauseOnHover: value }); }
-	                    })
-	                ),
-	                el(
-	                    PanelBody,
-	                    { title: __('Card Bottom Settings', 'murdeni-blocks'), initialOpen: false },
-	                    el(TextControl, {
-	                        label: __('Bottom Title', 'murdeni-blocks'),
-	                        value: attributes.cardBottomTitle,
-	                        onChange: function (value) { return setAttributes({ cardBottomTitle: value }); }
-	                    }),
-	                    el(TextControl, {
-	                        label: __('Bottom Subtitle', 'murdeni-blocks'),
-	                        value: attributes.cardBottomSubtitle,
-	                        onChange: function (value) { return setAttributes({ cardBottomSubtitle: value }); }
-	                    }),
-	                    el(TextControl, {
-	                        label: __('Review Link Text', 'murdeni-blocks'),
-	                        value: attributes.cardReviewLinkText,
-	                        onChange: function (value) { return setAttributes({ cardReviewLinkText: value }); }
 	                    })
 	                ),
 	                el(
@@ -388,15 +380,31 @@
 	                        el(
 	                            'div',
 	                            { className: 'testimonial-bottom-copy' },
-	                            attributes.cardBottomTitle && el('div', { className: 'testimonial-bottom-title' }, attributes.cardBottomTitle),
-	                            attributes.cardBottomSubtitle && el('div', { className: 'testimonial-bottom-subtitle' }, attributes.cardBottomSubtitle)
+	                            activeBottomTitle && el('div', { className: 'testimonial-bottom-title' }, activeBottomTitle),
+	                            activeBottomSubtitle && el('div', { className: 'testimonial-bottom-subtitle' }, activeBottomSubtitle),
+	                            el(TextControl, {
+	                                label: __('Bottom Title', 'murdeni-blocks'),
+	                                value: activeBottomTitle,
+	                                onChange: function (value) { return updateTestimonial(activeTestimonial, 'cardBottomTitle', value); }
+	                            }),
+	                            el(TextControl, {
+	                                label: __('Bottom Subtitle', 'murdeni-blocks'),
+	                                value: activeBottomSubtitle,
+	                                onChange: function (value) { return updateTestimonial(activeTestimonial, 'cardBottomSubtitle', value); }
+	                            })
 	                        ),
 	                        el(
 	                            'div',
 	                            { className: 'testimonial-bottom-link-editor' },
-	                            attributes.cardReviewLinkText && active.reviewUrl && el('a', { className: 'testimonial-review-link', href: active.reviewUrl, target: '_blank', rel: 'noopener noreferrer' }, attributes.cardReviewLinkText),
-	                            attributes.cardReviewLinkText && !active.reviewUrl && el('span', { className: 'testimonial-review-link' }, attributes.cardReviewLinkText),
+	                            activeReviewLinkText && active.reviewUrl && el('a', { className: 'testimonial-review-link', href: active.reviewUrl, target: '_blank', rel: 'noopener noreferrer' }, activeReviewLinkText),
+	                            activeReviewLinkText && !active.reviewUrl && el('span', { className: 'testimonial-review-link' }, activeReviewLinkText),
 	                            el(TextControl, {
+	                                label: __('Review Link Text', 'murdeni-blocks'),
+	                                value: activeReviewLinkText,
+	                                onChange: function (value) { return updateTestimonial(activeTestimonial, 'cardReviewLinkText', value); }
+	                            }),
+	                            el(TextControl, {
+	                                label: __('Review URL', 'murdeni-blocks'),
 	                                value: active.reviewUrl,
 	                                onChange: function (value) { return updateTestimonial(activeTestimonial, 'reviewUrl', value); },
                                 placeholder: __('Review URL...', 'murdeni-blocks')
