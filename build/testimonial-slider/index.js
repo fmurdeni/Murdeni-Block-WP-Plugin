@@ -131,7 +131,7 @@
         var averageRating = calculateAverageRating(testimonials);
         var activeBottomTitle = getItemValue(active, 'cardBottomTitle', attributes.cardBottomTitle);
         var activeBottomSubtitle = getItemValue(active, 'cardBottomSubtitle', attributes.cardBottomSubtitle);
-        var activeReviewLinkText = getItemValue(active, 'cardReviewLinkText', attributes.cardReviewLinkText);
+        var activeReviewLinkText = getItemValue(active, 'cardReviewLinkText', attributes.cardReviewLinkText) || attributes.cardReviewLinkText || 'Lihat di Google';
 
         return el(
             Fragment,

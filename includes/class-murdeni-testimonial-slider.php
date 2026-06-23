@@ -101,6 +101,15 @@ class Murdeni_Testimonial_Slider {
 	    private function get_testimonial_item_value($testimonial, $key, $fallback = '') {
 	        return array_key_exists($key, $testimonial) ? $testimonial[$key] : $fallback;
 	    }
+
+	    /**
+	     * Read a per-testimonial field, but use fallback when the saved value is empty.
+	     */
+	    private function get_testimonial_non_empty_item_value($testimonial, $key, $fallback = '') {
+	        $value = $this->get_testimonial_item_value($testimonial, $key, $fallback);
+
+	        return trim(wp_strip_all_tags((string) $value)) !== '' ? $value : $fallback;
+	    }
 	
 	    /**
 	     * Enqueue frontend scripts
@@ -286,7 +295,7 @@ class Murdeni_Testimonial_Slider {
 	                        $review_url = isset($testimonial['reviewUrl']) ? $this->normalize_review_url($testimonial['reviewUrl']) : '';
 	                        $item_bottom_title = $this->get_testimonial_item_value($testimonial, 'cardBottomTitle', $card_bottom_title);
 	                        $item_bottom_subtitle = $this->get_testimonial_item_value($testimonial, 'cardBottomSubtitle', $card_bottom_subtitle);
-	                        $item_review_link_text = $this->get_testimonial_item_value($testimonial, 'cardReviewLinkText', $card_review_link_text);
+	                        $item_review_link_text = $this->get_testimonial_non_empty_item_value($testimonial, 'cardReviewLinkText', $card_review_link_text);
 	                        $author_initials = $this->get_author_initials($author_name);
 	                        $author_avatar_color = $this->get_author_avatar_color($testimonial, $author_name);
 	                        ?>
@@ -330,7 +339,7 @@ class Murdeni_Testimonial_Slider {
                                         <div class="testimonial-bottom-subtitle"><?php echo esc_html($item_bottom_subtitle); ?></div>
                                         <?php endif; ?>
                                     </div>
-                                    <?php if (!empty($review_url) && !empty($item_review_link_text)) : ?>
+                                    <?php if (!empty($review_url)) : ?>
                                     <a class="testimonial-review-link" href="<?php echo esc_url($review_url); ?>" target="_blank" rel="noopener noreferrer">
                                         <?php echo esc_html($item_review_link_text); ?>
                                     </a>

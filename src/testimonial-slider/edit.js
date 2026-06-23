@@ -161,7 +161,7 @@ const Edit = ({ attributes, setAttributes }) => {
     const active = testimonials[activeTestimonial] || {};
     const activeBottomTitle = getItemValue(active, 'cardBottomTitle', cardBottomTitle);
     const activeBottomSubtitle = getItemValue(active, 'cardBottomSubtitle', cardBottomSubtitle);
-    const activeReviewLinkText = getItemValue(active, 'cardReviewLinkText', cardReviewLinkText);
+    const activeReviewLinkText = getItemValue(active, 'cardReviewLinkText', cardReviewLinkText) || cardReviewLinkText || 'Lihat di Google';
 
     return (
         <>
