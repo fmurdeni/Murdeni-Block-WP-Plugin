@@ -23,33 +23,33 @@
     }
 
     &__top-label {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      max-width: 100%;
-      margin-bottom: 1.75rem;
-      padding: 0.45em 1.15em;
-      border: 2px solid currentColor;
-      border-radius: 999px;
-      background: transparent;
-      box-shadow: none;
-      color: #ffffff;
-      font-size: 0.85rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      line-height: 1.1;
-      text-transform: uppercase;
-      overflow-wrap: anywhere;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      max-width: 100% !important;
+      margin-bottom: 1.75rem !important;
+      padding: 0.45em 1.15em !important;
+      border: 2px solid currentColor !important;
+      border-radius: 999px !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      color: #ffffff !important;
+      font-size: 0.85rem !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.18em !important;
+      line-height: 1.1 !important;
+      text-transform: uppercase !important;
+      overflow-wrap: anywhere !important;
     }
   }
 
   @media (max-width: 767px) {
     .murdeni-hero-banner__top-label {
-      margin-bottom: 0.75rem;
-      padding: 0.42em 1em;
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      transform: translateY(-24px);
+      margin-bottom: 0.75rem !important;
+      padding: 0.42em 1em !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.14em !important;
+      transform: translateY(-24px) !important;
     }
   }
 }

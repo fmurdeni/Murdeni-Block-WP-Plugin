@@ -363,6 +363,25 @@ export default function Edit({ attributes, setAttributes }) {
                                 value={topLabel}
                                 onChange={(value) => setAttributes({ topLabel: value })}
                                 placeholder={__('Add top label...', 'murdeni-blocks')}
+                                style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    maxWidth: '100%',
+                                    marginBottom: '1.75rem',
+                                    padding: '0.45em 1.15em',
+                                    border: '2px solid currentColor',
+                                    borderRadius: '999px',
+                                    background: 'transparent',
+                                    boxShadow: 'none',
+                                    color: '#ffffff',
+                                    fontSize: '0.85rem',
+                                    fontWeight: 800,
+                                    letterSpacing: '0.18em',
+                                    lineHeight: 1.1,
+                                    textTransform: 'uppercase',
+                                    overflowWrap: 'anywhere',
+                                }}
                             />
                         )}
 
