@@ -53,6 +53,7 @@ const getItemValue = (testimonial = {}, property, fallback = '') => {
 
 const Edit = ({ attributes, setAttributes }) => {
     const {
+        topImage,
         testimonials,
         cardBottomTitle,
         cardBottomSubtitle,
@@ -262,6 +263,33 @@ const Edit = ({ attributes, setAttributes }) => {
                             )}
                         </>
                     )}
+                    <div className="testimonial-top-image-control">
+                        <p>{__('Overall Rating Image', 'murdeni-blocks')}</p>
+                        {topImage && (
+                            <img src={topImage} alt="" />
+                        )}
+                        <MediaUploadCheck>
+                            <MediaUpload
+                                onSelect={(media) => setAttributes({ topImage: media.url })}
+                                allowedTypes={['image']}
+                                value={topImage}
+                                render={({ open }) => (
+                                    <Button variant="secondary" onClick={open}>
+                                        {topImage ? __('Replace Image', 'murdeni-blocks') : __('Upload Image', 'murdeni-blocks')}
+                                    </Button>
+                                )}
+                            />
+                        </MediaUploadCheck>
+                        {topImage && (
+                            <Button
+                                variant="link"
+                                isDestructive
+                                onClick={() => setAttributes({ topImage: '' })}
+                            >
+                                {__('Remove Image', 'murdeni-blocks')}
+                            </Button>
+                        )}
+                    </div>
                 </PanelBody>
                 <PanelBody title={__('Height Settings', 'murdeni-blocks')} initialOpen={false}>
                     <ToggleControl
@@ -338,6 +366,11 @@ const Edit = ({ attributes, setAttributes }) => {
                                 </a>
                             </div>
                         )}
+                    </div>
+                )}
+                {topImage && (
+                    <div className="testimonial-top-image">
+                        <img src={topImage} alt="" />
                     </div>
                 )}
                 <div className="testimonial-slider-tabs">

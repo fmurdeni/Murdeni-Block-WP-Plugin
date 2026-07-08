@@ -81,6 +81,7 @@
     function Edit(props) {
         var attributes = props.attributes;
         var setAttributes = props.setAttributes;
+        var topImage = attributes.topImage;
         var testimonials = attributes.testimonials || [];
         var activeState = useState(0);
         var activeTestimonial = activeState[0];
@@ -215,6 +216,37 @@
                             value: attributes.overallRatingText,
                             onChange: function (value) { return setAttributes({ overallRatingText: value }); }
                         })
+                    ),
+                    el(
+                        'div',
+                        { className: 'testimonial-top-image-control' },
+                        el('p', null, __('Overall Rating Image', 'murdeni-blocks')),
+                        topImage && el('img', { src: topImage, alt: '' }),
+                        el(
+                            MediaUploadCheck,
+                            null,
+                            el(MediaUpload, {
+                                onSelect: function (media) { return setAttributes({ topImage: media.url }); },
+                                allowedTypes: ['image'],
+                                value: topImage,
+                                render: function (renderProps) {
+                                    return el(
+                                        Button,
+                                        { variant: 'secondary', onClick: renderProps.open },
+                                        topImage ? __('Replace Image', 'murdeni-blocks') : __('Upload Image', 'murdeni-blocks')
+                                    );
+                                }
+                            })
+                        ),
+                        topImage && el(
+                            Button,
+                            {
+                                variant: 'link',
+                                isDestructive: true,
+                                onClick: function () { return setAttributes({ topImage: '' }); }
+                            },
+                            __('Remove Image', 'murdeni-blocks')
+                        )
                     )
                 ),
                 el(
@@ -282,6 +314,11 @@
                         el('span', { className: 'average-rating' }, averageRating.toFixed(1))
                     ),
                     el('div', { className: 'overall-rating-text' }, (attributes.overallRatingText || '').replace('%d', attributes.reviewerCount || 0))
+                ),
+                topImage && el(
+                    'div',
+                    { className: 'testimonial-top-image' },
+                    el('img', { src: topImage, alt: '' })
                 ),
                 el(
                     'div',
