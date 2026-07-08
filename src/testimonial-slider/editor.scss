@@ -57,6 +57,12 @@
                     background-color: #005a87;
                 }
             }
+
+            .testimonial-review-url-inline {
+                margin: 10px auto 0;
+                max-width: 420px;
+                text-align: left;
+            }
         }
     }
 
@@ -99,32 +105,6 @@
         }
     }
 
-    .testimonial-top-image-control {
-        border-top: 1px solid #e0e0e0;
-        margin-top: 16px;
-        padding-top: 14px;
-
-        p {
-            font-size: 12px;
-            font-weight: 600;
-            margin: 0 0 8px;
-            text-transform: uppercase;
-        }
-
-        img {
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            display: block;
-            height: auto;
-            margin-bottom: 10px;
-            max-width: 180px;
-        }
-
-        .components-button + .components-button {
-            margin-left: 8px;
-        }
-    }
-
     .testimonial-top-image {
         margin: 0 0 20px;
         text-align: center;
@@ -133,6 +113,14 @@
             border-radius: 6px;
             height: auto;
             max-width: 100%;
+        }
+
+        .testimonial-top-image-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 10px;
         }
     }
 

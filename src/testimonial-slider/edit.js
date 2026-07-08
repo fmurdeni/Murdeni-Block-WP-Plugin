@@ -254,42 +254,10 @@ const Edit = ({ attributes, setAttributes }) => {
                                         value={reviewLinkText}
                                         onChange={(value) => setAttributes({ reviewLinkText: value })}
                                     />
-                                    <TextControl
-                                        label={__('Review Link URL', 'murdeni-blocks')}
-                                        value={reviewLinkUrl}
-                                        onChange={(value) => setAttributes({ reviewLinkUrl: value })}
-                                    />
                                 </>
                             )}
                         </>
                     )}
-                    <div className="testimonial-top-image-control">
-                        <p>{__('Overall Rating Image', 'murdeni-blocks')}</p>
-                        {topImage && (
-                            <img src={topImage} alt="" />
-                        )}
-                        <MediaUploadCheck>
-                            <MediaUpload
-                                onSelect={(media) => setAttributes({ topImage: media.url })}
-                                allowedTypes={['image']}
-                                value={topImage}
-                                render={({ open }) => (
-                                    <Button variant="secondary" onClick={open}>
-                                        {topImage ? __('Replace Image', 'murdeni-blocks') : __('Upload Image', 'murdeni-blocks')}
-                                    </Button>
-                                )}
-                            />
-                        </MediaUploadCheck>
-                        {topImage && (
-                            <Button
-                                variant="link"
-                                isDestructive
-                                onClick={() => setAttributes({ topImage: '' })}
-                            >
-                                {__('Remove Image', 'murdeni-blocks')}
-                            </Button>
-                        )}
-                    </div>
                 </PanelBody>
                 <PanelBody title={__('Height Settings', 'murdeni-blocks')} initialOpen={false}>
                     <ToggleControl
@@ -364,15 +332,45 @@ const Edit = ({ attributes, setAttributes }) => {
                                 <a href={reviewLinkUrl} target="_blank" rel="noopener noreferrer">
                                     {reviewLinkText}
                                 </a>
+                                <TextControl
+                                    className="testimonial-review-url-inline"
+                                    label={__('Review Link URL', 'murdeni-blocks')}
+                                    value={reviewLinkUrl}
+                                    onChange={(value) => setAttributes({ reviewLinkUrl: value })}
+                                    placeholder="https://"
+                                />
                             </div>
                         )}
                     </div>
                 )}
-                {topImage && (
-                    <div className="testimonial-top-image">
+                <div className="testimonial-top-image">
+                    {topImage && (
                         <img src={topImage} alt="" />
+                    )}
+                    <div className="testimonial-top-image-actions">
+                        <MediaUploadCheck>
+                            <MediaUpload
+                                onSelect={(media) => setAttributes({ topImage: media.url })}
+                                allowedTypes={['image']}
+                                value={topImage}
+                                render={({ open }) => (
+                                    <Button variant="secondary" onClick={open}>
+                                        {topImage ? __('Replace Image', 'murdeni-blocks') : __('Upload Overall Image', 'murdeni-blocks')}
+                                    </Button>
+                                )}
+                            />
+                        </MediaUploadCheck>
+                        {topImage && (
+                            <Button
+                                variant="link"
+                                isDestructive
+                                onClick={() => setAttributes({ topImage: '' })}
+                            >
+                                {__('Remove Image', 'murdeni-blocks')}
+                            </Button>
+                        )}
                     </div>
-                )}
+                </div>
                 <div className="testimonial-slider-tabs">
                     {testimonials.map((testimonial, index) => (
                         <button

@@ -215,38 +215,17 @@
                             help: __('Use %d as placeholder for reviewer count', 'murdeni-blocks'),
                             value: attributes.overallRatingText,
                             onChange: function (value) { return setAttributes({ overallRatingText: value }); }
+                        }),
+                        el(ToggleControl, {
+                            label: __('Show Review Link', 'murdeni-blocks'),
+                            checked: attributes.showReviewLink,
+                            onChange: function (value) { return setAttributes({ showReviewLink: value }); }
+                        }),
+                        attributes.showReviewLink && el(TextControl, {
+                            label: __('Review Link Text', 'murdeni-blocks'),
+                            value: attributes.reviewLinkText,
+                            onChange: function (value) { return setAttributes({ reviewLinkText: value }); }
                         })
-                    ),
-                    el(
-                        'div',
-                        { className: 'testimonial-top-image-control' },
-                        el('p', null, __('Overall Rating Image', 'murdeni-blocks')),
-                        topImage && el('img', { src: topImage, alt: '' }),
-                        el(
-                            MediaUploadCheck,
-                            null,
-                            el(MediaUpload, {
-                                onSelect: function (media) { return setAttributes({ topImage: media.url }); },
-                                allowedTypes: ['image'],
-                                value: topImage,
-                                render: function (renderProps) {
-                                    return el(
-                                        Button,
-                                        { variant: 'secondary', onClick: renderProps.open },
-                                        topImage ? __('Replace Image', 'murdeni-blocks') : __('Upload Image', 'murdeni-blocks')
-                                    );
-                                }
-                            })
-                        ),
-                        topImage && el(
-                            Button,
-                            {
-                                variant: 'link',
-                                isDestructive: true,
-                                onClick: function () { return setAttributes({ topImage: '' }); }
-                            },
-                            __('Remove Image', 'murdeni-blocks')
-                        )
                     )
                 ),
                 el(
@@ -313,12 +292,57 @@
                         renderStars(averageRating, attributes.ratingColor, function () {}),
                         el('span', { className: 'average-rating' }, averageRating.toFixed(1))
                     ),
-                    el('div', { className: 'overall-rating-text' }, (attributes.overallRatingText || '').replace('%d', attributes.reviewerCount || 0))
+                    el('div', { className: 'overall-rating-text' }, (attributes.overallRatingText || '').replace('%d', attributes.reviewerCount || 0)),
+                    attributes.showReviewLink && el(
+                        'div',
+                        { className: 'review-link' },
+                        el(
+                            'a',
+                            { href: attributes.reviewLinkUrl, target: '_blank', rel: 'noopener noreferrer' },
+                            attributes.reviewLinkText
+                        ),
+                        el(TextControl, {
+                            className: 'testimonial-review-url-inline',
+                            label: __('Review Link URL', 'murdeni-blocks'),
+                            value: attributes.reviewLinkUrl,
+                            onChange: function (value) { return setAttributes({ reviewLinkUrl: value }); },
+                            placeholder: 'https://'
+                        })
+                    )
                 ),
-                topImage && el(
+                el(
                     'div',
                     { className: 'testimonial-top-image' },
-                    el('img', { src: topImage, alt: '' })
+                    topImage && el('img', { src: topImage, alt: '' }),
+                    el(
+                        'div',
+                        { className: 'testimonial-top-image-actions' },
+                        el(
+                            MediaUploadCheck,
+                            null,
+                            el(MediaUpload, {
+                                onSelect: function (media) { return setAttributes({ topImage: media.url }); },
+                                allowedTypes: ['image'],
+                                value: topImage,
+                                render: function (renderProps) {
+                                    return el(
+                                        Button,
+                                        { variant: 'secondary', onClick: renderProps.open },
+                                        topImage ? __('Replace Image', 'murdeni-blocks') : __('Upload Overall Image', 'murdeni-blocks')
+                                    );
+                                }
+                            })
+                        ),
+                        topImage && el(
+                            Button,
+                            {
+                                variant: 'link',
+                                isDestructive: true,
+                                onClick: function () { return setAttributes({ topImage: '' }); }
+                            },
+                            __('Remove Image', 'murdeni-blocks')
+                        )
+                    )
                 ),
                 el(
                     'div',
